@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#173f36" />
+    <meta
+      name="description"
+      content="AWS SAA-C03 문제를 풀고, 오답을 복습하고, 학습 기록을 이어가세요."
+    />
+    <title>AWS Study — SAA-C03 문제 풀이</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script type="module" src="assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">본문으로 이동</a>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="AWS Study 홈"
+        ><span class="brand-mark">a<span>↗</span></span
+        ><span>AWS <b>Study</b></span></a
+      >
+      <span class="course">SOLUTIONS ARCHITECT <span>ASSOCIATE</span></span>
+      <span id="save-status" class="save-status" role="status"
+        >불러오는 중</span
+      >
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="exam-label">MY WORKSPACE</div>
+        <button class="nav-item active" id="home-button">
+          <span aria-hidden="true">▦</span> 학습 홈
+        </button>
+        <div class="sidebar-note">
+          <span class="small-label">준비 중인 시험</span
+          ><strong>AWS SAA-C03</strong
+          ><span>하나씩 풀고, 확실히 이해하기.</span>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="small-label">학습 기록</div>
+          <button class="text-button" id="export-button">
+            ↓ 기록 내보내기
+          </button>
+          <button class="text-button" id="import-button">
+            ↑ 기록 가져오기
+          </button>
+          <input
+            type="file"
+            id="import-file"
+            accept="application/json,.json"
+            hidden
+          />
+          <p>
+            이 브라우저에 자동 저장돼요.<br />다른 기기로 옮길 땐 백업을
+            사용하세요.
+          </p>
+        </div>
+      </aside>
+      <main id="main" tabindex="-1">
+        <div class="loading">
+          <span class="eyebrow">A LITTLE EVERY DAY</span>
+          <h1>오늘의 공부를 준비하고 있어요.</h1>
+          <p>문제와 학습 기록을 불러오는 중이에요.</p>
+        </div>
+      </main>
+    </div>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <dialog id="confirm-dialog" aria-labelledby="dialog-title">
+      <form method="dialog">
+        <span class="eyebrow">학습 기록</span>
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-description"></p>
+        <div class="dialog-actions">
+          <button value="cancel" class="button secondary">취소</button
+          ><button value="apply" class="button primary" id="dialog-apply">
+            적용하기
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <noscript
+      >문제 풀이와 자동 저장을 사용하려면 JavaScript를 켜 주세요.</noscript
+    >
+  </body>
+</html>

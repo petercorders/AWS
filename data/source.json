@@ -1,0 +1,87 @@
+{
+  "repository": "https://github.com/CarbonRaven/AWS-Quiz-SAA-C03",
+  "commit": "cb847d5ab9733fa6663385a9a1adbcda98e6f590",
+  "importedAt": "2026-11-12T00:52:49.205219+00:00",
+  "count": 999,
+  "language": "en",
+  "license": "MIT (upstream repository)",
+  "explanations": false,
+  "excluded": [
+    {
+      "id": 141,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 15,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 170,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 180,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 207,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 223,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 231,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 237,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 282,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 340,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 344,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 362,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 382,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 477,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 545,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 63,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 71,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 92,
+      "reason": "Empty or invalid option text in source"
+    },
+    {
+      "id": 94,
+      "reason": "Empty or invalid option text in source"
+    }
+  ]
+}
