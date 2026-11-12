@@ -9,6 +9,11 @@ import {
   loadState,
   saveState,
 } from "./core.js";
+import {
+  sha256Text,
+  validateExplanations,
+  renderExplanation,
+} from "./explanations.js";
 
 const $ = (selector) => document.querySelector(selector);
 const esc = (value) =>
@@ -35,6 +40,58 @@ let view = "home",
   pendingAction = null,
   importSequence = 0;
 const PAGE_SIZE = 15;
+let explanations = new Map(),
+  explanationPhase = "loading",
+  explanationRequest = false,
+  corpusHash = "",
+  corpusText = "";
+
+async function loadExplanations() {
+  if (explanationRequest) return;
+  explanationRequest = true;
+  explanationPhase = "loading";
+  updateExplanationPanel();
+  try {
+    if (!corpusHash) corpusHash = await sha256Text(corpusText);
+    const response = await fetch("data/explanations.json", {
+      cache: "no-cache",
+    });
+    if (!response.ok) throw new Error("해설 파일을 받지 못했어요.");
+    explanations = validateExplanations(
+      await response.json(),
+      bank,
+      corpusHash,
+    );
+    explanationPhase = "ready";
+  } catch {
+    explanations = new Map();
+    explanationPhase = "error";
+  } finally {
+    explanationRequest = false;
+    updateExplanationPanel();
+    if (view === "home" && document.querySelector("#bank-results"))
+      renderRows();
+  }
+}
+function updateExplanationPanel() {
+  const panel = document.querySelector("#explanation-content");
+  if (!panel || !state?.session) return;
+  const q = byId.get(state.session.ids[state.session.index]);
+  const selected = state.session.results[q.id];
+  if (selected) {
+    panel.innerHTML = explanationContent(q, selected);
+    const heading = document.querySelector(".answer-panel h3");
+    if (heading && explanations.get(q.id)?.reviewNote)
+      heading.textContent = grade(q, selected)
+        ? "✓ 출처 기준 정답이에요."
+        : "출처 정답과 다른 답을 골랐어요.";
+  }
+}
+function explanationContent(q, selected) {
+  const entry = explanations.get(q.id);
+  if (entry) return renderExplanation(q, entry, selected);
+  return `<section class="explanation explanation-unavailable" aria-label="해설 불러오기" aria-busy="${explanationPhase === "loading"}"><h3>한국어 해설</h3><p>${explanationPhase === "loading" ? "해설을 불러오고 있어요. 풀이 기록은 그대로 유지돼요." : "해설을 불러오지 못했어요. 문제는 계속 풀 수 있고, 다시 시도해도 풀이 기록은 유지돼요."}</p><button class="button secondary" data-action="retry-explanations" ${explanationPhase === "loading" ? "disabled" : ""}>${explanationPhase === "loading" ? "불러오는 중" : "해설 다시 불러오기"}</button></section>`;
+}
 
 function notify(message, actions = []) {
   const notice = $("#notice");
@@ -201,7 +258,7 @@ function renderHome() {
     wrong = done - correct;
   const session = state.session,
     resume = Boolean(session);
-  main.innerHTML = `<div class="heading"><div><span class="eyebrow">YOUR LEARNING JOURNEY</span><h1>조금씩 풀고, 확실하게.</h1><p>AWS SAA-C03, 오늘도 한 걸음 더 가까이.</p></div><span class="pill">SAA-C03 · ${bank.length.toLocaleString()}문제</span></div>
+  main.innerHTML = `<div class="heading"><div><span class="eyebrow">YOUR LEARNING JOURNEY</span><h1>조금씩 풀고, 확실하게.</h1><p>AWS SAA-C03, 한국어 해설로 정답의 이유까지.</p></div><span class="pill">SAA-C03 · ${bank.length.toLocaleString()}문제</span></div>
     <section class="hero" aria-label="학습 시작"><div><span class="eyebrow">${resume ? "PICK UP WHERE YOU LEFT OFF" : "READY WHEN YOU ARE"}</span><h2>${resume ? "지난 공부, 이어서 해볼까요?" : "첫 문제부터 가볍게 시작해요."}</h2><p>${resume ? `${MODES[session.mode]} · ${session.index + 1} / ${session.ids.length}번째 문제에서 기다리고 있어요.` : "문제를 풀고 정답을 확인해 보세요. 공부한 만큼 기록이 쌓여요."}</p></div><span class="hero-decoration" aria-hidden="true"></span><button class="button" data-action="${resume ? "resume" : "begin"}">${resume ? "이어서 풀기" : "문제 풀기"} <span aria-hidden="true">↗</span></button></section>
     <section class="stats" aria-label="학습 현황">${stat("풀어본 문제", done.toLocaleString(), `/ ${bank.length.toLocaleString()}`, `전체의 ${Math.round((done / bank.length) * 100)}%를 풀었어요`)}${stat("최근 답안 정답률", done ? Math.round((correct / done) * 100) : "—", "%", "문제마다 마지막으로 제출한 답 기준", "green")}${stat("다시 볼 오답", wrong, "문제", "다시 맞히면 오답에서 빠져요", "red")}${stat("나의 북마크", state.bookmarks.length, "문제", "기억해 두고 싶은 문제를 모아요")}</section>
     <section aria-label="문제 은행"><div class="section-heading"><div><h2>문제 둘러보기</h2><p>순서대로 차근차근, 또는 필요한 문제만 골라서.</p></div><button class="button secondary" data-action="random">⤨ 랜덤 20문제</button></div><div class="bank"><div class="bank-tools"><div class="filters" aria-label="문제 필터">${["all", "unseen", "wrong", "bookmarks"].map((mode) => `<button class="filter ${filter === mode ? "active" : ""}" aria-pressed="${filter === mode}" data-filter="${mode}">${{ all: "전체", unseen: "미풀이", wrong: "오답", bookmarks: "북마크" }[mode]}</button>`).join("")}</div><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">문제 번호 또는 영어 키워드 검색</span><input id="search" type="search" placeholder="문제 번호 또는 영어 키워드" value="${esc(query)}" autocomplete="off"></label></div><div id="bank-results"></div></div></section>${footer()}`;
@@ -245,7 +302,7 @@ function renderRows() {
                     ? "correct"
                     : "wrong"
                   : "";
-              return `<div class="question-row"><span class="row-id">${String(q.id).padStart(3, "0")}</span><button class="row-open" data-open="${q.id}"><span class="row-title">${esc(q.text)}</span><span class="row-meta">${q.answer.length === 1 ? "단일 선택" : `${q.answer.length}개 선택`} · ${record ? `최근 ${result === "correct" ? "정답" : "오답"} · ${record.attempts}회 풀이` : "아직 풀지 않았어요"}</span></button><span class="status-chip ${result}">${record ? (result === "correct" ? "정답" : "오답") : "미풀이"}</span>${star(q.id)}</div>`;
+              return `<div class="question-row"><span class="row-id">${String(q.id).padStart(3, "0")}</span><button class="row-open" data-open="${q.id}"><span class="row-title">${esc(q.text)}</span><span class="row-meta">${q.answer.length === 1 ? "단일 선택" : `${q.answer.length}개 선택`} · ${record ? `최근 ${result === "correct" ? "정답" : "오답"} · ${record.attempts}회 풀이` : "아직 풀지 않았어요"}${explanations.get(q.id)?.reviewNote ? '<span class="review-row"> · 출처 정답 재검토</span>' : ""}</span></button><span class="status-chip ${result}">${record ? (result === "correct" ? "정답" : "오답") : "미풀이"}</span>${star(q.id)}</div>`;
             })
             .join("")
         : `<div class="empty"><h3>${empty[0]}</h3><p>${empty[1]}</p></div>`
@@ -319,14 +376,8 @@ function answerPanel(q, selected) {
     );
   const differs =
     votes.length && [...votes[0][0]].sort().join("") !== q.answer.join("");
-  const terms = [
-    ...new Set(
-      q.text.match(/Amazon\s+[A-Z][A-Za-z0-9]*(?:\s+[A-Z][A-Za-z0-9]*)?/g) ||
-        [],
-    ),
-  ].slice(0, 2);
-  const search = terms.length ? terms.join(" ") : "AWS " + q.text.slice(0, 95);
-  return `<section class="answer-panel ${correct ? "" : "wrong"}" aria-label="채점 결과" role="status"><h3>${correct ? "✓ 정답이에요. 잘했어요!" : "다시 한 번 살펴볼까요?"}</h3><p>출처 정답 <strong>${q.answer.join(", ")}</strong> · 내가 고른 답 ${selected.join(", ")}</p>${votes.length ? `<details ${differs ? "open" : ""}><summary>커뮤니티 투표${differs ? " · 출처 정답과 의견이 달라요" : ""}</summary><div class="vote-list">${votes.map(([key, value]) => `<span>${esc(key)} ${esc(value)}</span>`).join("")}</div></details>` : ""}<p class="source-note">이 자료에는 해설이 없어요. 정답이 의심되면 서비스 동작을 확인해 보세요.<br><a href="https://docs.aws.amazon.com/search/doc-search.html?searchQuery=${encodeURIComponent(search)}" target="_blank" rel="noopener noreferrer">AWS 공식 문서에서 관련 내용 찾기 ↗</a></p></section>`;
+  const underReview = Boolean(explanations.get(q.id)?.reviewNote);
+  return `<section class="answer-panel ${correct ? "" : "wrong"}" aria-label="채점 결과" role="status"><h3>${underReview ? (correct ? "✓ 출처 기준 정답이에요." : "출처 정답과 다른 답을 골랐어요.") : correct ? "✓ 정답이에요. 잘했어요!" : "다시 한 번 살펴볼까요?"}</h3><p>출처 정답 <strong>${q.answer.join(", ")}</strong> · 내가 고른 답 ${selected.join(", ")}</p>${votes.length ? `<details ${differs ? "open" : ""}><summary>커뮤니티 투표${differs ? " · 출처 정답과 의견이 달라요" : ""}</summary><div class="vote-list">${votes.map(([key, value]) => `<span>${esc(key)} ${esc(value)}</span>`).join("")}</div></details>` : ""}</section><div id="explanation-content">${explanationContent(q, selected)}</div>`;
 }
 function renderSummary() {
   const s = state.session,
@@ -425,6 +476,9 @@ main.addEventListener("click", (event) => {
       persist();
       render();
       break;
+    case "retry-explanations":
+      loadExplanations();
+      break;
     case "prev":
       state.session.index--;
       persist();
@@ -442,7 +496,7 @@ main.addEventListener("click", (event) => {
     case "about":
       confirmAction(
         "공부 기록과 문제에 대해",
-        `같은 브라우저와 같은 사이트 주소에서 이어서 풀 수 있어요. 브라우저 데이터 삭제나 시크릿 창 종료 시 기록이 사라질 수 있어요. 다른 기기에는 내보내기·가져오기로 옮겨 주세요.\n\n공개 커뮤니티 자료 ${bank.length}문항이에요. 원본 ${bank.length + source.excluded.length}문항 중 선택지가 비어 있는 ${source.excluded.length}개를 제외했어요. 원본에 없는 해설은 제공하지 않아요. 공식 AWS 시험 자료가 아니며 정답에는 오류가 있을 수 있어요.`,
+        `같은 브라우저와 같은 사이트 주소에서 이어서 풀 수 있어요. 브라우저 데이터 삭제나 시크릿 창 종료 시 기록이 사라질 수 있어요. 다른 기기에는 내보내기·가져오기로 옮겨 주세요.\n\n공개 커뮤니티 자료 ${bank.length}문항이에요. 원본 ${bank.length + source.excluded.length}문항 중 선택지가 비어 있는 ${source.excluded.length}개를 제외했어요. 한국어 해설은 AWS 문서를 참고해 작성한 학습 자료이며 공식 시험 해설이 아니에요. 출처 정답이 의심스러운 문항은 해설에서 별도로 표시해요.`,
         () => {},
         "확인",
       );
@@ -487,9 +541,14 @@ async function init() {
     ]);
     if (responses.some((response) => !response.ok))
       throw new Error("문제 파일을 불러오지 못했어요.");
-    [bank, source] = await Promise.all(
-      responses.map((response) => response.json()),
-    );
+    const [questionText, sourceData] = await Promise.all([
+      responses[0].text(),
+      responses[1].json(),
+    ]);
+    bank = JSON.parse(questionText);
+    source = sourceData;
+    corpusText = questionText;
+    corpusHash = "";
     byId = new Map(bank.map((q) => [q.id, q]));
     try {
       storage = window.localStorage;
@@ -501,6 +560,7 @@ async function init() {
     storageBlocked = loaded.status === "corrupt";
     corruptRaw = loaded.raw;
     render();
+    loadExplanations();
     if (storageBlocked || loaded.status === "unavailable") persist();
     else
       $("#save-status").textContent =

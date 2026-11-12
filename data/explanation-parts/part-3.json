@@ -1,0 +1,5467 @@
+[
+  {
+    "id": 687,
+    "summary": "Forecast는 과거 시계열로 수요를 학습하므로 ML 경험 없이 월별 자원 수요를 예측한다.",
+    "options": {
+      "A": "SageMaker 엔드포인트는 모델 운영 설계가 필요하다.",
+      "B": "SageMaker 학습은 모델 선택과 학습 구성이 필요하다.",
+      "C": "SageMaker 호출은 Forecast 학습과 연결되지 않는다.",
+      "D": "Lambda URL로 Forecast 예측 조회를 노출할 수 있다.",
+      "E": "S3 이력으로 관리형 시계열 예측기를 학습한다."
+    },
+    "references": [
+      {
+        "title": "Amazon Forecast 개요",
+        "url": "https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html"
+      }
+    ],
+    "reviewNote": "Forecast는 신규 고객에게 제공되지 않는 서비스이며, 예측기 학습 후 forecast 생성·조회 단계가 추가로 필요하다. 출제 당시 선택지 기준은 D,E다."
+  },
+  {
+    "id": 688,
+    "summary": "팀별 그룹에 권한 세트를 할당하면 신규 직원도 그룹 가입으로 여러 계정 권한을 상속한다.",
+    "options": {
+      "A": "계정마다 사용자를 중복 생성할 필요가 없다.",
+      "B": "사용자별 정책 할당은 입사자 관리가 반복된다.",
+      "C": "그룹과 권한 세트가 팀별 접근을 중앙 관리한다.",
+      "D": "개인별 권한과 계정 내 추가 설정은 관리가 분산된다."
+    },
+    "references": [
+      {
+        "title": "IAM Identity Center 권한 세트",
+        "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsetsconcept.html"
+      }
+    ]
+  },
+  {
+    "id": 689,
+    "summary": "Config의 encrypted-volumes 관리형 규칙이 EBS 암호화 준수 여부를 코드 없이 평가한다.",
+    "options": {
+      "A": "Lambda 검사 코드를 직접 유지해야 한다.",
+      "B": "Fargate 실행 환경까지 관리해야 한다.",
+      "C": "태그 유무는 실제 암호화 상태를 증명하지 않는다.",
+      "D": "관리형 규칙이 미암호화 볼륨을 식별한다."
+    },
+    "references": [
+      {
+        "title": "EBS 암호화 Config 규칙",
+        "url": "https://docs.aws.amazon.com/config/latest/developerguide/encrypted-volumes.html"
+      }
+    ]
+  },
+  {
+    "id": 690,
+    "summary": "업로드는 멀티파트, 다운로드는 병렬 Range GET으로 대역폭을 활용한다.",
+    "options": {
+      "A": "액세스 포인트는 접근 정책 관리 기능이다.",
+      "B": "버킷 분리는 단일 대용량 파일 전송을 병렬화하지 않는다.",
+      "C": "여러 파트를 동시에 업로드할 수 있다.",
+      "D": "서로 다른 바이트 범위를 동시에 받는다.",
+      "E": "현재 S3는 무작위 접두사를 요구하지 않는다."
+    },
+    "references": [
+      {
+        "title": "S3 성능 지침",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance-guidelines.html"
+      }
+    ]
+  },
+  {
+    "id": 691,
+    "summary": "EFS는 여러 AZ의 인스턴스가 공유하며 S3도 강력한 읽기 일관성을 제공한다. 캐시 재검증 설정을 함께 고려해야 한다.",
+    "options": {
+      "A": "iSCSI 블록 볼륨은 다중 AZ 공유 파일 시스템이 아니다.",
+      "B": "여러 EC2가 동일 파일 시스템을 마운트한다.",
+      "C": "EBS 볼륨은 단일 AZ에 종속된다.",
+      "D": "주기적 복사는 즉시 일관성을 보장하지 않는다.",
+      "E": "S3 최신 객체를 CloudFront 재검증으로 제공한다."
+    },
+    "references": [
+      {
+        "title": "Amazon EFS 개요",
+        "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+      }
+    ],
+    "reviewNote": "CloudFront 최소 TTL이 0보다 크면 no-cache를 무시할 수 있다. 즉시 최신 응답 조건에는 캐시 정책 검토도 필요하다."
+  },
+  {
+    "id": 692,
+    "summary": "지연 시간 라우팅은 사용자에게 네트워크 지연이 낮은 리전의 ALB를 선택한다.",
+    "options": {
+      "A": "지연이 낮은 리전으로 응답한다.",
+      "B": "지리적 위치와 실제 지연은 다를 수 있다.",
+      "C": "장애 조치는 정상 시 최저 지연을 고르지 않는다.",
+      "D": "지리적 거리 기반 정책은 지연 측정과 다르다."
+    },
+    "references": [
+      {
+        "title": "Route 53 라우팅 정책",
+        "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html"
+      }
+    ]
+  },
+  {
+    "id": 693,
+    "summary": "컴퓨팅을 여러 AZ로 분산하고 관리형 DynamoDB로 상태를 분리하면 가용성과 운영 효율이 개선된다.",
+    "options": {
+      "A": "NLB 교체만으로 단일 AZ 문제가 해결되지 않는다.",
+      "B": "DB는 개선되지만 컴퓨팅이 단일 AZ에 남는다.",
+      "C": "DB 복제와 장애 조치를 직접 운영해야 한다.",
+      "D": "다중 AZ 컴퓨팅과 관리형 NoSQL을 결합한다."
+    },
+    "references": [
+      {
+        "title": "DynamoDB 개요",
+        "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 694,
+    "summary": "Redis에 카탈로그와 세션을 외부화하면 빠르게 조회하고 재접속 시 세션을 복원할 수 있다.",
+    "options": {
+      "A": "고정 세션은 인스턴스 장애 시 상태를 보존하지 않는다.",
+      "B": "중앙 Redis로 캐시와 장바구니 세션을 공유한다.",
+      "C": "OpenSearch는 저지연 세션 캐시 용도가 아니다.",
+      "D": "단일 EC2와 스냅샷은 실시간 가용성이 부족하다."
+    },
+    "references": [
+      {
+        "title": "ElastiCache 활용 사례",
+        "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/elasticache-use-cases.html"
+      }
+    ],
+    "reviewNote": "Redis 세션 보존은 Multi-AZ·자동 장애 조치 및 영속 저장 설계가 필요하다. 캐시만으로 장바구니의 절대 무손실은 보장되지 않는다."
+  },
+  {
+    "id": 695,
+    "summary": "Container Insights는 클러스터 지표를, X-Ray는 서비스 간 요청 경로와 지연을 보여준다.",
+    "options": {
+      "A": "캐시는 호출을 줄이지만 추적 정보를 만들지 않는다.",
+      "B": "인프라 지표와 분산 추적을 함께 확보한다.",
+      "C": "CloudTrail은 애플리케이션 호출 추적이 아니다.",
+      "D": "Trusted Advisor는 요청별 성능 추적 도구가 아니다."
+    },
+    "references": [
+      {
+        "title": "Container Insights",
+        "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html"
+      }
+    ]
+  },
+  {
+    "id": 696,
+    "summary": "고객별 KMS 키 정책으로 복호화 주체를 고객 역할에 제한하면 직원의 평문 접근을 막는다.",
+    "options": {
+      "A": "ACM 인증서는 S3 데이터 복호화 권한 체계가 아니다.",
+      "B": "S3 정책은 KMS Decrypt 권한을 직접 제어하지 않는다.",
+      "C": "키마다 고객 역할에만 복호화를 허용한다.",
+      "D": "퍼블릭 인증서 정책으로 S3 복호화를 통제하지 않는다."
+    },
+    "references": [
+      {
+        "title": "KMS 키 정책",
+        "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"
+      }
+    ]
+  },
+  {
+    "id": 697,
+    "summary": "퍼블릭 ALB가 인터넷 요청을 받아 프라이빗 EC2 대상으로 전달한다.",
+    "options": {
+      "A": "Auto Scaling 그룹 식별자는 웹 접속 주소가 아니다.",
+      "B": "퍼블릭 ALB를 DNS 대상으로 지정한다.",
+      "C": "NAT는 외부에서 시작한 웹 연결을 받지 않는다.",
+      "D": "프라이빗 EC2에 공개 IP를 가정하면 배치 조건과 충돌한다."
+    },
+    "references": [
+      {
+        "title": "Application Load Balancer",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 698,
+    "summary": "EFS는 Fargate Pod들이 공유할 수 있는 다중 AZ 영구 파일 저장소다.",
+    "options": {
+      "A": "Fargate는 EBS 영구 볼륨을 지원하지 않는다.",
+      "B": "동일 EFS를 여러 컨테이너가 공유한다.",
+      "C": "EBS는 Fargate 공유 저장소가 아니다.",
+      "D": "파일 시스템 간 Lambda 복제는 불필요하다."
+    },
+    "references": [
+      {
+        "title": "EKS EFS 스토리지",
+        "url": "https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html"
+      }
+    ],
+    "reviewNote": "Fargate에서는 EFS 동적 프로비저닝을 지원하지 않으므로 B는 정적 PV/PVC 구성을 전제한다."
+  },
+  {
+    "id": 699,
+    "summary": "ECS Fargate와 EFS를 사용하면 서버와 저장 용량 관리 없이 영구 파일을 공유한다.",
+    "options": {
+      "A": "자가 관리 노드는 서버 운영이 필요하다.",
+      "B": "관리형 실행 환경에 EFS 영구 볼륨을 연결한다.",
+      "C": "S3는 ECS의 일반 POSIX 볼륨 마운트 대상이 아니다.",
+      "D": "EC2 시작 유형은 호스트 관리가 남는다."
+    },
+    "references": [
+      {
+        "title": "ECS EFS 볼륨",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html"
+      }
+    ]
+  },
+  {
+    "id": 700,
+    "summary": "Global Accelerator는 글로벌 TCP·UDP 트래픽을 정상 리전의 NLB로 전달한다.",
+    "options": {
+      "A": "NLB는 TCP와 UDP를 처리하며 내부 엔드포인트도 지원한다.",
+      "B": "ALB는 UDP를 처리하지 않는다.",
+      "C": "AWS 글로벌 네트워크로 지연과 장애 전환을 개선한다.",
+      "D": "지리 위치 DNS는 최저 지연을 보장하지 않는다.",
+      "E": "CloudFront는 일반 UDP 게임 트래픽을 전달하지 않는다."
+    },
+    "references": [
+      {
+        "title": "Global Accelerator 개요",
+        "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+      }
+    ]
+  },
+  {
+    "id": 701,
+    "summary": "Shield Advanced의 DDoS 보호와 대응 지원으로 공격 완화 및 공격 가시성을 확보한다.",
+    "options": {
+      "A": "알 수 없는 IP 차단만으로 분산 공격을 다루기 어렵다.",
+      "B": "Inspector는 취약점 평가 서비스다.",
+      "C": "DDoS 전문 대응과 공격 보고를 제공한다.",
+      "D": "배포 구조를 변경하며 IP 규칙 직접 관리가 필요하다."
+    },
+    "references": [
+      {
+        "title": "Shield Advanced",
+        "url": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html"
+      }
+    ]
+  },
+  {
+    "id": 702,
+    "summary": "Snowball 데이터를 S3로 반입한 뒤 연결된 FSx for Lustre에서 HPC 저지연 파일 I/O를 처리한다.",
+    "options": {
+      "A": "File Gateway는 HPC 병렬 파일 처리에 최적화되지 않았다.",
+      "B": "S3 연동 Lustre가 고처리량 파일 접근을 제공한다.",
+      "C": "EFS 복사보다 Lustre가 HPC 처리에 적합하다.",
+      "D": "Snowball 반환 데이터는 FSx로 직접 반입하지 않는다."
+    },
+    "references": [
+      {
+        "title": "FSx for Lustre 개요",
+        "url": "https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 703,
+    "summary": "DataSync는 NFS에서 S3로 예약 증분 전송을 수행해 소규모 주기적 백업을 단순화한다.",
+    "options": {
+      "A": "Glue는 NFS 백업 전송 서비스가 아니다.",
+      "B": "NFS 소스와 S3 대상 간 관리형 전송을 지원한다.",
+      "C": "SFTP 서버와 별도 동기화 구현이 필요하다.",
+      "D": "소량 백업을 위한 전용선은 고정비가 크다."
+    },
+    "references": [
+      {
+        "title": "DataSync 개요",
+        "url": "https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html"
+      }
+    ]
+  },
+  {
+    "id": 704,
+    "summary": "NLB는 계층 4에서 대량 UDP 연결을 낮은 지연으로 분산한다.",
+    "options": {
+      "A": "ALB는 UDP 리스너를 지원하지 않는다.",
+      "B": "GWLB는 보안 어플라이언스 트래픽 검사에 사용한다.",
+      "C": "UDP 리스너로 게임 서버에 분산한다.",
+      "D": "다중 리전 서버 증설은 비용과 운영을 늘린다."
+    },
+    "references": [
+      {
+        "title": "Network Load Balancer",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 705,
+    "summary": "이기종 DB 마이그레이션은 스키마 변환과 DMS CDC를 결합해 진행 중 변경을 반영한다.",
+    "options": {
+      "A": "MySQL 스키마를 PostgreSQL용으로 변환한다.",
+      "B": "스키마 변환은 이기종 읽기 복제본을 생성하지 않는다.",
+      "C": "MySQL 복제본은 PostgreSQL 전환이 아니다.",
+      "D": "CDC가 초기 적재 이후 변경을 복제한다.",
+      "E": "MySQL에서 PostgreSQL 읽기 복제본 승격은 불가능하다."
+    },
+    "references": [
+      {
+        "title": "AWS DMS 개요",
+        "url": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 706,
+    "summary": "분석 읽기를 읽기 복제본으로 분리하면 운영 DB의 리소스 경합을 줄인다.",
+    "options": {
+      "A": "활성 연결이 적은 대상을 찾아도 일반 Multi-AZ 대기는 읽을 수 없다.",
+      "B": "읽기 복제본에서 보고서를 실행한다.",
+      "C": "수동 내보내기는 반복 운영 부담이 크다.",
+      "D": "캐시는 새로운 일별 데이터 전체 추출을 대신하지 않는다."
+    },
+    "references": [
+      {
+        "title": "RDS 읽기 복제본",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
+      }
+    ]
+  },
+  {
+    "id": 707,
+    "summary": "ALB 액세스 로그를 S3에 저장하고 Athena SQL로 비정상 요청 패턴을 분석한다.",
+    "options": {
+      "A": "CloudTrail은 ALB 데이터 요청 로그가 아니다.",
+      "B": "서버 운영 없이 대량 액세스 로그를 조회한다.",
+      "C": "텍스트 수작업 검색은 규모가 커질수록 비효율적이다.",
+      "D": "EMR은 이 작업에 불필요한 클러스터 운영을 추가한다."
+    },
+    "references": [
+      {
+        "title": "ALB 액세스 로그",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html"
+      }
+    ]
+  },
+  {
+    "id": 708,
+    "summary": "인터넷 송신용 퍼블릭 NAT는 인터넷 게이트웨이로 연결되는 퍼블릭 서브넷에 둔다.",
+    "options": {
+      "A": "프라이빗 서브넷은 인터넷 게이트웨이 경로가 없다.",
+      "B": "프라이빗 NAT는 인터넷 게이트웨이로 송신하지 못한다.",
+      "C": "퍼블릭 서브넷의 NAT를 프라이빗 라우트가 참조한다.",
+      "D": "프라이빗 NAT는 퍼블릭 서브넷이어도 인터넷 송신용이 아니다."
+    },
+    "references": [
+      {
+        "title": "NAT 게이트웨이",
+        "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html"
+      }
+    ]
+  },
+  {
+    "id": 709,
+    "summary": "SCP를 비운영 계정에 직접 적용하거나 전용 OU에 적용하면 운영 계정은 제외할 수 있다.",
+    "options": {
+      "A": "루트 적용은 운영 계정도 제한한다.",
+      "B": "비운영 계정 세 개만 직접 제한한다.",
+      "C": "관리 계정은 SCP 제한 대상이 아니다.",
+      "D": "운영 OU에 붙이면 제한 대상이 반대다.",
+      "E": "비운영 OU에서 정책을 상속한다."
+    },
+    "references": [
+      {
+        "title": "서비스 제어 정책",
+        "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+      }
+    ]
+  },
+  {
+    "id": 710,
+    "summary": "S3 게이트웨이 엔드포인트와 버킷 정책으로 인터넷을 통하지 않는 접근을 강제한다.",
+    "options": {
+      "A": "엔드포인트 조건으로 허용 경로를 제한한다.",
+      "B": "IAM 권한만으로 사설 네트워크 경로를 만들지 않는다.",
+      "C": "NAT는 인터넷 경로를 사용한다.",
+      "D": "정적 액세스 키는 네트워크 경로를 보호하지 않는다."
+    },
+    "references": [
+      {
+        "title": "S3 게이트웨이 엔드포인트",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+      }
+    ]
+  },
+  {
+    "id": 711,
+    "summary": "Aurora 읽기 복제본으로 조회를 분산하고 RDS Proxy로 연결을 풀링해 연결 폭증을 완화한다.",
+    "options": {
+      "A": "이벤트 기록만으로 연결·읽기 병목이 해소되지 않는다.",
+      "B": "재시작 최적화는 지속 부하를 확장하지 않는다.",
+      "C": "읽기 용량과 연결 관리가 함께 개선된다.",
+      "D": "캐시 동기화 도입은 변경과 운영 부담이 크다."
+    },
+    "references": [
+      {
+        "title": "Amazon RDS Proxy",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html"
+      }
+    ]
+  },
+  {
+    "id": 712,
+    "summary": "VPC에서 온프레미스 DNS로 조회를 보내려면 Resolver 아웃바운드 엔드포인트와 전달 규칙이 필요하다.",
+    "options": {
+      "A": "지정 도메인 쿼리를 VPN 경로의 사내 DNS로 전달한다.",
+      "B": "인바운드는 사내에서 AWS로 조회하는 방향이다.",
+      "C": "프라이빗 존은 기존 사내 DNS 조회를 전달하지 않는다.",
+      "D": "공개 존은 내부 서비스 이름을 외부에 노출한다."
+    },
+    "references": [
+      {
+        "title": "Resolver 아웃바운드 전달",
+        "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-forwarding-outbound-queries.html"
+      }
+    ]
+  },
+  {
+    "id": 713,
+    "summary": "접근 패턴이 변하는 사진은 S3 Intelligent-Tiering에 저장하고 검색용 메타데이터를 DynamoDB에 둔다.",
+    "options": {
+      "A": "DynamoDB 항목 크기 제한은 20MB 사진보다 작다.",
+      "B": "변동 접근 빈도에 따라 저장 계층을 자동 조정한다.",
+      "C": "고정 30일 전환은 여전히 인기 있는 사진에도 적용된다.",
+      "D": "Glacier 복원 지연은 즉시 사진 조회에 부적합하다."
+    },
+    "references": [
+      {
+        "title": "S3 Intelligent-Tiering",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+      }
+    ]
+  },
+  {
+    "id": 714,
+    "summary": "Least outstanding requests는 처리 중 요청이 적은 대상으로 새 요청을 보낸다.",
+    "options": {
+      "A": "라운드 로빈은 대상의 미완료 요청 수를 무시한다.",
+      "B": "미완료 요청 수를 기준으로 과부하 대상을 피한다.",
+      "C": "요청 수 지표를 보더라도 라운드 로빈 동작은 같다.",
+      "D": "알고리즘은 맞지만 CloudWatch 지표로 직접 판단하지 않는다."
+    },
+    "references": [
+      {
+        "title": "ALB 라우팅 알고리즘",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html"
+      }
+    ],
+    "reviewNote": "B와 D의 알고리즘은 동일하며 ALB는 CloudWatch 지표를 입력으로 라우팅하지 않는다. ActiveConnectionCount는 NLB 지표이므로 원문 정답 B의 지표 설명은 부정확하다."
+  },
+  {
+    "id": 715,
+    "summary": "Savings Plans 적용률 예산의 임계값 알림으로 적용 범위 감소를 자동 감지한다.",
+    "options": {
+      "A": "적용률 임계값에 따라 이메일을 보낸다.",
+      "B": "Lambda와 SES 코드를 유지할 필요가 없다.",
+      "C": "정기 보고서는 임계값 경보와 다르다.",
+      "D": "만료 알림은 적용률 저하 감지와 다르다."
+    },
+    "references": [
+      {
+        "title": "AWS Budgets 예산 유형",
+        "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html"
+      }
+    ]
+  },
+  {
+    "id": 716,
+    "summary": "MSK 공개 접근에는 퍼블릭 서브넷, 인증, TLS 암호화가 필요하다.",
+    "options": {
+      "A": "기존 VPC를 활용하고 mTLS로 인증한다.",
+      "B": "새 VPC 생성은 불필요한 네트워크 운영을 늘린다.",
+      "C": "프라이빗 ALB는 공개 Kafka 접근을 제공하지 않는다.",
+      "D": "프라이빗 NLB와 HTTPS 리스너는 Kafka 공개 구성이 아니다."
+    },
+    "references": [
+      {
+        "title": "MSK 퍼블릭 액세스",
+        "url": "https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html"
+      }
+    ],
+    "reviewNote": "퍼블릭 접근은 클러스터 생성 시 직접 켤 수 없고 생성 이후 업데이트해야 한다. A는 퍼블릭 접근 활성화와 TLS 설정을 생략했다."
+  },
+  {
+    "id": 717,
+    "summary": "다중 AZ 내부 SFTP와 S3 업로드 후 워크플로를 결합하면 사내 파일을 즉시 안전하게 처리한다.",
+    "options": {
+      "A": "인터넷 노출 없이 기존 사내 연결을 활용할 수 있다.",
+      "B": "단일 AZ는 장애 내성이 부족하다.",
+      "C": "예약 조회는 파일 도착 즉시 처리가 아니다.",
+      "D": "프라이빗 SFTP와 업로드 완료 워크플로를 결합한다."
+    },
+    "references": [
+      {
+        "title": "Transfer Family 관리형 워크플로",
+        "url": "https://docs.aws.amazon.com/transfer/latest/userguide/transfer-workflows.html"
+      }
+    ]
+  },
+  {
+    "id": 718,
+    "summary": "EMR on Outposts는 데이터 처리를 사내에 유지하면서 AWS 관리 도구를 활용한다.",
+    "options": {
+      "A": "리전 EMR은 데이터를 사내에서 처리하지 않는다.",
+      "B": "DataSync 전송 후 리전 처리는 위치 조건을 어긴다.",
+      "C": "Outposts에서 Hadoop·Spark를 실행한다.",
+      "D": "S3로 이전하면 처리가 AWS 리전으로 이동한다."
+    },
+    "references": [
+      {
+        "title": "EMR on Outposts",
+        "url": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-on-outposts.html"
+      }
+    ]
+  },
+  {
+    "id": 719,
+    "summary": "FSx for ONTAP은 SMB와 NFS를 함께 제공하며 자동 계층화로 비활성 데이터 비용을 줄인다.",
+    "options": {
+      "A": "EFS는 SMB를 기본 지원하지 않는다.",
+      "B": "멀티프로토콜과 자동 용량 계층화를 제공한다.",
+      "C": "File Gateway 캐시를 별도로 운영해야 한다.",
+      "D": "OpenZFS는 SMB를 기본 제공하지 않는다."
+    },
+    "references": [
+      {
+        "title": "FSx for ONTAP 개요",
+        "url": "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html"
+      }
+    ]
+  },
+  {
+    "id": 720,
+    "summary": "독립 배포 가능한 ECS 마이크로서비스로 분리하면 긴 작업을 유지하며 모듈별 확장이 가능하다.",
+    "options": {
+      "A": "Lambda 최대 실행 시간 15분은 20분보다 짧다.",
+      "B": "중단 가능한 Spot은 처음부터 재실행 비용이 크다.",
+      "C": "서비스별 배포와 자동 확장을 지원한다.",
+      "D": "일괄 배포는 단일 애플리케이션 중단을 만든다."
+    },
+    "references": [
+      {
+        "title": "ECS 서비스 자동 확장",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html"
+      }
+    ]
+  },
+  {
+    "id": 721,
+    "summary": "Lambda는 Python 함수를 요청에 따라 자동 확장하며 서버 운영을 제거한다.",
+    "options": {
+      "A": "Spot 호스트와 중단 처리를 관리해야 한다.",
+      "B": "Beanstalk도 EC2 환경 운영이 남는다.",
+      "C": "자가 관리 EKS 노드는 운영 부담이 크다.",
+      "D": "Python 코드를 서버리스 함수로 실행한다."
+    },
+    "references": [
+      {
+        "title": "AWS Lambda 개요",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 722,
+    "summary": "Transit Gateway와 Direct Connect transit VIF를 연결하면 다수 VPC와 사내 경로를 중앙 관리한다.",
+    "options": {
+      "A": "전이 라우팅 허브로 VPC 간 연결을 통합한다.",
+      "B": "DX Gateway 자체는 VPC 간 전이 라우팅을 제공하지 않는다.",
+      "C": "풀 메시 피어링은 연결과 경로 관리가 복잡하다.",
+      "D": "VPC마다 VPN을 만들면 터널 관리가 증가한다."
+    },
+    "references": [
+      {
+        "title": "Transit Gateway와 Direct Connect",
+        "url": "https://docs.aws.amazon.com/vpc/latest/tgw/tgw-dcg-attachments.html"
+      }
+    ],
+    "reviewNote": "A는 Direct Connect gateway와 VPC attachment 구성을 생략했다. 실제로 transit VIF는 DX gateway를 거쳐 Transit Gateway에 연결한다."
+  },
+  {
+    "id": 723,
+    "summary": "기본 호스트 관리 구성을 사용하면 기존 애플리케이션 역할을 교체하지 않고 Systems Manager를 활성화할 수 있다.",
+    "options": {
+      "A": "EC2에는 인스턴스 역할을 둘 동시에 연결하지 못한다.",
+      "B": "IAM 사용자 자격 증명 배포는 불필요하다.",
+      "C": "계정·리전 단위 관리 역할을 사용한다.",
+      "D": "기존 DB 접근 정책을 제거하면 앱이 중단된다."
+    },
+    "references": [
+      {
+        "title": "기본 호스트 관리 구성",
+        "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/fleet-manager-default-host-management-configuration.html"
+      }
+    ]
+  },
+  {
+    "id": 724,
+    "summary": "HPA는 Pod 수를 늘리고 Cluster Autoscaler는 대기 중 Pod에 맞춰 노드를 늘린다.",
+    "options": {
+      "A": "메모리만 추적하면 스케줄 불가 Pod의 요구를 놓친다.",
+      "B": "클러스터 스케줄링 수요에 따라 노드를 조정한다.",
+      "C": "자체 Lambda 자동화보다 관리 부담이 크다.",
+      "D": "일반 ASG만으로 Kubernetes Pod 수요를 알지 못한다."
+    },
+    "references": [
+      {
+        "title": "EKS 노드 자동 확장",
+        "url": "https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html"
+      }
+    ]
+  },
+  {
+    "id": 725,
+    "summary": "완료되지 않은 멀티파트 조각도 과금되므로 수명 주기로 오래된 업로드를 중단한다.",
+    "options": {
+      "A": "Transfer Acceleration은 남은 조각을 정리하지 않는다.",
+      "B": "불완전 업로드를 자동 중단하고 조각을 삭제한다.",
+      "C": "Inventory는 객체 목록이며 조각을 제거하지 않는다.",
+      "D": "CloudFront 캐시는 S3 저장 조각을 줄이지 않는다."
+    },
+    "references": [
+      {
+        "title": "불완전 멀티파트 업로드 정리",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpu-abort-incomplete-mpu-lifecycle-config.html"
+      }
+    ]
+  },
+  {
+    "id": 726,
+    "summary": "Redis의 인메모리 GEO 기능으로 위치 갱신과 주변 검색을 빠르게 처리한다.",
+    "options": {
+      "A": "Multi-AZ는 읽기·쓰기 처리량 확장 수단이 아니다.",
+      "B": "OpenSearch 도입은 위치 갱신 캐시보다 변경이 크다.",
+      "C": "DAX는 RDS 앞에 배치할 수 없다.",
+      "D": "GEO 자료형으로 위치를 빠르게 저장·검색한다."
+    },
+    "references": [
+      {
+        "title": "ElastiCache 활용 사례",
+        "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/elasticache-use-cases.html"
+      }
+    ]
+  },
+  {
+    "id": 727,
+    "summary": "삭제 방지를 켜면 실수로 DeleteTable을 호출해도 테이블이 삭제되지 않는다.",
+    "options": {
+      "A": "삭제 후 자동 복원은 중단 자체를 막지 못한다.",
+      "B": "수동 복구는 데이터 이용 중단이 발생한다.",
+      "C": "삭제 API 자체를 차단한다.",
+      "D": "PITR은 복구 수단이며 삭제를 예방하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS amazondynamodb 공식 문서",
+        "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.Basics.html"
+      }
+    ]
+  },
+  {
+    "id": 728,
+    "summary": "캐시 볼륨은 전체 데이터를 AWS에 두고 자주 읽는 부분만 로컬에 유지한다.",
+    "options": {
+      "A": "Glacier 신속 복원은 추가 비용과 대기 시간이 있다.",
+      "B": "로컬 캐시 적중 시 즉시 읽고 대역폭도 절약한다.",
+      "C": "저장 볼륨은 전체 로컬 용량을 계속 요구한다.",
+      "D": "전용선은 로컬 저장 공간 부족을 해결하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS storagegateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/storagegateway/latest/vgw/StorageGatewayConcepts.html"
+      }
+    ]
+  },
+  {
+    "id": 729,
+    "summary": "예측 확장은 반복 패턴에 대비하고 대상 추적은 실시간 변화에 대응한다.",
+    "options": {
+      "A": "단계 확장은 과거 패턴을 예측하지 않는다.",
+      "B": "예측과 실시간 반응을 결합한다.",
+      "C": "고정 일정은 예상 밖 이용률에 대응하지 않는다.",
+      "D": "단순 확장은 일·주간 패턴을 학습하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html"
+      }
+    ]
+  },
+  {
+    "id": 730,
+    "summary": "반복되는 배송 조회를 Redis에 캐시하면 Aurora 읽기 부하를 원천적으로 줄인다.",
+    "options": {
+      "A": "동일 데이터 반복 읽기를 메모리로 처리한다.",
+      "B": "복제본 추가는 같은 반복 쿼리 비용이 남는다.",
+      "C": "자동 복제본 확장보다 반복 결과 캐시가 경제적이다.",
+      "D": "다중 작성자는 반복 읽기 병목의 해법이 아니다."
+    },
+    "references": [
+      {
+        "title": "ElastiCache 활용 사례",
+        "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/elasticache-use-cases.html"
+      }
+    ]
+  },
+  {
+    "id": 731,
+    "summary": "DynamoDB 기본 읽기는 최종 일관성이므로 최신 값이 필요하면 강력한 읽기를 요청한다.",
+    "options": {
+      "A": "DynamoDB 테이블에는 RDS식 읽기 복제본이 없다.",
+      "B": "GSI는 최종 일관성 읽기만 지원한다.",
+      "C": "완료된 최신 쓰기를 읽는다.",
+      "D": "기존의 오래된 응답 문제를 유지한다."
+    },
+    "references": [
+      {
+        "title": "AWS amazondynamodb 공식 문서",
+        "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html"
+      }
+    ]
+  },
+  {
+    "id": 732,
+    "summary": "WAF의 SQL 주입 규칙으로 HTTP 요청을 검사하고 DB 보안 설정을 병행한다.",
+    "options": {
+      "A": "SG와 NACL은 SQL 문장을 검사하지 않는다.",
+      "B": "관리형 웹 공격 방어를 적용한다.",
+      "C": "네트워크 방화벽보다 WAF가 HTTP 공격 방어에 직접적이다.",
+      "D": "최소 권한은 이미 적용됐으며 SQL 주입 자체를 막지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS waf 공식 문서",
+        "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html"
+      }
+    ]
+  },
+  {
+    "id": 733,
+    "summary": "GuardDuty RDS Protection은 Aurora 로그인 활동에서 비정상·의심 인증을 탐지한다.",
+    "options": {
+      "A": "SCP는 로그인 이상 탐지 도구가 아니다.",
+      "B": "조직 계정의 DB 로그인 위협을 관리형으로 분석한다.",
+      "C": "로그 수집만으로 이상 분석이 자동화되지 않는다.",
+      "D": "CloudTrail은 모든 PostgreSQL 로그인 기록을 제공하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS guardduty 공식 문서",
+        "url": "https://docs.aws.amazon.com/guardduty/latest/ug/rds-protection.html"
+      }
+    ]
+  },
+  {
+    "id": 734,
+    "summary": "Direct Connect gateway로 리전 간 VPC의 사설 연결을 통합할 수 있다. 다만 VPC 간 직접 전이 연결은 별도 설계가 필요하다.",
+    "options": {
+      "A": "VPC 피어링은 사내 연결 전이를 제공하지 않는다.",
+      "B": "VPC마다 VIF를 늘리면 연결 관리가 복잡해진다.",
+      "C": "EC2 VPN 풀 메시 운영 부담이 크다.",
+      "D": "글로벌 DX gateway로 다수 리전 VPC 연결을 통합한다."
+    },
+    "references": [
+      {
+        "title": "AWS directconnect 공식 문서",
+        "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-gateways-intro.html"
+      }
+    ],
+    "reviewNote": "DX gateway는 연결된 VGW 사이 전이 라우팅을 기본 제공하지 않는다. 리전 간 VPC와 사내망 모두의 상호 연결이라면 D만으로 완결되지 않으며 TGW 피어링 등의 추가 설계가 필요하다."
+  },
+  {
+    "id": 735,
+    "summary": "Kinesis는 샤드 내 순서를 보존하고 Lambda와 DynamoDB가 서버 운영을 줄인다.",
+    "options": {
+      "A": "순서 있는 스트림 처리와 관리형 저장을 결합한다.",
+      "B": "EC2와 Redshift는 운영 부담이 더 크다.",
+      "C": "일반 SNS는 엄격한 수신 순서를 보장하지 않는다.",
+      "D": "일반 SQS는 순서를 보장하지 않고 EC2 관리도 남는다."
+    },
+    "references": [
+      {
+        "title": "AWS streams 공식 문서",
+        "url": "https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html"
+      }
+    ],
+    "reviewNote": "Kinesis 순서 보장은 샤드·파티션 키 범위이며 전체 스트림의 전역 순서를 뜻하지 않는다."
+  },
+  {
+    "id": 736,
+    "summary": "동일 리전 복제로 여러 계정 로그를 같은 리전의 중앙 버킷에 자동 집계한다.",
+    "options": {
+      "A": "수명 주기는 다른 버킷으로 객체를 복사하지 않는다.",
+      "B": "리전 이동 없이 관리형 복제를 수행한다.",
+      "C": "매일 전체 복사는 중복 전송과 스크립트 운영을 만든다.",
+      "D": "이벤트별 Lambda 복사 코드를 유지해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html"
+      }
+    ]
+  },
+  {
+    "id": 737,
+    "summary": "양방향 복제와 다중 리전 액세스 포인트로 가까운 버킷에서 업로드·조회한다.",
+    "options": {
+      "A": "단방향이면 다른 리전의 새 업로드가 전체로 퍼지지 않는다.",
+      "B": "연쇄 단방향은 모든 위치의 쓰기를 동기화하지 못한다.",
+      "C": "각 리전의 쓰기를 상호 복제한다.",
+      "D": "업로드 경로를 그대로 두면 개발자 지연은 개선되지 않는다.",
+      "E": "하나의 글로벌 주소로 읽기와 쓰기를 가속한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPoints.html"
+      }
+    ]
+  },
+  {
+    "id": 738,
+    "summary": "Transfer Acceleration은 가까운 엣지에서 AWS 네트워크로 업로드를 전달한다.",
+    "options": {
+      "A": "CloudFront만 지정했다고 S3 업로드 가속이 설정되지는 않는다.",
+      "B": "원거리 S3 업로드를 엣지 경유로 가속한다.",
+      "C": "EC2 수신 후 복사는 중간 처리 단계를 늘린다.",
+      "D": "지역 버킷도 유리하지만 CloudFront 배포 수는 업로드 지연과 무관하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html"
+      }
+    ],
+    "reviewNote": "90%가 업로드 리전에서 소비된다는 조건은 가까운 리전 저장 D도 뒷받침한다. B는 원거리 단일 버킷 업로드 가속에 적합하지만 지역별 저장 대비 최저 지연을 단정할 수 없다."
+  },
+  {
+    "id": 739,
+    "summary": "SNS 구독 필터와 소비자별 SQS로 필요한 메시지만 각 Lambda에 전달한다.",
+    "options": {
+      "A": "구독별 필터와 독립 큐를 구성할 수 있다.",
+      "B": "EventBridge도 필터 팬아웃이 가능해 문항이 모호하다.",
+      "C": "Kafka 브로커 운영은 단순 팬아웃에 과하다.",
+      "D": "큐 여러 개로 직접 보내면 발행자 결합이 증가한다."
+    },
+    "references": [
+      {
+        "title": "AWS sns 공식 문서",
+        "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-message-filtering.html"
+      }
+    ],
+    "reviewNote": "B의 EventBridge도 규칙 필터와 Lambda 팬아웃을 지원하며 큐 없이 더 적은 구성으로 구현할 수 있다. A를 단독 정답으로 고정할 근거가 부족하다."
+  },
+  {
+    "id": 740,
+    "summary": "SSE-C는 매 요청에 고객 키를 제공하는 방식이며 버킷 기본 암호화 방식으로 지정할 수 없다.",
+    "options": {
+      "A": "SSE-C 기본 암호화와 Batch Copy 전제가 잘못됐다.",
+      "B": "기존 객체를 재암호화하지 않고 SSE-C도 아니다.",
+      "C": "사용량 보고서는 객체별 암호화 목록이 아니다.",
+      "D": "기본 암호화로 SSE-C를 자동 적용할 수 없다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html"
+      }
+    ],
+    "reviewNote": "모든 선택지에 오류가 있다. SSE-C는 기본 암호화로 설정할 수 없으며 S3 Batch Operations Copy는 SSE-C 암호화를 지원하지 않는다. 고객 키를 요청마다 제공하는 별도 재복사 로직 또는 고객 관리 KMS 키 요구로 문제를 수정해야 한다."
+  },
+  {
+    "id": 741,
+    "summary": "공개 호스팅 영역에 기존 zone 파일을 가져오고 등록기관의 NS 위임을 변경한다.",
+    "options": {
+      "A": "공개 DNS 레코드를 빠르게 이전한다.",
+      "B": "프라이빗 존은 인터넷 사용자에게 응답하지 않는다.",
+      "C": "Simple AD는 공개 권한 DNS 대체재가 아니다.",
+      "D": "인바운드 Resolver는 기존 공개 DNS 장애를 제거하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS Route53 공식 문서",
+        "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating-import.html"
+      }
+    ]
+  },
+  {
+    "id": 742,
+    "summary": "AppConfig로 설정 배포를 관리하고 Secrets Manager로 자격 증명을 안전하게 보관한다.",
+    "options": {
+      "A": "설정 수명 주기와 비밀 저장 역할을 분리한다.",
+      "B": "Lambda 자체는 설정 저장소가 아니다.",
+      "C": "파일 암호화와 비밀 갱신을 직접 구현해야 한다.",
+      "D": "DB에 비밀을 두면 접근·회전을 직접 관리해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS appconfig 공식 문서",
+        "url": "https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html"
+      }
+    ]
+  },
+  {
+    "id": 743,
+    "summary": "RDS CA 인증서로 서버를 검증하고 TLS 연결을 사용해야 전송 데이터가 암호화된다.",
+    "options": {
+      "A": "IAM 인증 활성화만으로 모든 연결의 TLS를 강제하지 않는다.",
+      "B": "RDS 서버 인증서는 AWS CA 체계를 사용한다.",
+      "C": "스냅샷 암호화는 저장 데이터만 보호한다.",
+      "D": "AWS CA를 신뢰하고 TLS 연결을 구성한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html"
+      }
+    ]
+  },
+  {
+    "id": 744,
+    "summary": "NLB는 AZ별 고정 IP와 Elastic IP를 제공해 고객 방화벽 허용 목록에 적합하다.",
+    "options": {
+      "A": "고정 Elastic IP를 지정할 수 있다.",
+      "B": "ALB에는 Elastic IP를 직접 연결하지 못한다.",
+      "C": "DNS 레코드만으로 EIP를 로드 밸런서에 연결하지 못한다.",
+      "D": "프록시 서버 운영과 단일 장애 지점이 생긴다."
+    },
+    "references": [
+      {
+        "title": "Network Load Balancer",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 745,
+    "summary": "루트에는 MFA를 적용하고 일상 작업에는 별도 최소 권한 신원을 사용한다.",
+    "options": {
+      "A": "일반 루트 사용자를 IAM 사용자처럼 비활성화하지 못한다.",
+      "B": "루트 인증을 보호하고 사용 빈도를 줄인다.",
+      "C": "루트 액세스 키는 장기 고권한 위험을 만든다.",
+      "D": "공유 루트의 일상 사용은 감사와 보안에 불리하다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html"
+      }
+    ]
+  },
+  {
+    "id": 746,
+    "summary": "클러스터 배치 그룹과 향상된 네트워킹으로 노드 간 지연과 네트워크 오버헤드를 줄인다.",
+    "options": {
+      "A": "SR-IOV 기반 네트워킹 성능을 활용한다.",
+      "B": "계정 분리는 물리적 네트워크 근접성을 보장하지 않는다.",
+      "C": "같은 AZ에서 가까운 하드웨어에 배치한다.",
+      "D": "ENI 수 증가는 그 자체로 노드 간 지연을 줄이지 않는다.",
+      "E": "EBS 최적화는 스토리지 I/O 경로에 관한 기능이다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-strategies.html"
+      }
+    ]
+  },
+  {
+    "id": 747,
+    "summary": "DataSync로 SMB 데이터를 FSx for Windows에 복사하면 기존 파일 접근 방식을 유지한다.",
+    "options": {
+      "A": "S3 객체 API로 접근 방식 변경이 필요하다.",
+      "B": "Lustre는 기존 SMB 공유를 직접 대체하지 않는다.",
+      "C": "관리형 SMB와 대용량 증분 이관을 결합한다.",
+      "D": "볼륨 게이트웨이는 SMB 파일 서버 자체가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS fsx 공식 문서",
+        "url": "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 748,
+    "summary": "CloudWatch 교차 계정 관측성의 모니터링 계정과 소스 링크로 지표·로그를 통합한다.",
+    "options": {
+      "A": "제공 템플릿으로 소스 계정 공유를 구성한다.",
+      "B": "SCP는 권한을 부여하지 않는다.",
+      "C": "IAM 사용자 정책만으로 관측성 링크가 생성되지 않는다.",
+      "D": "교차 계정 사용자 정책은 통합 관측성 설정을 대신하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonCloudWatch 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html"
+      }
+    ]
+  },
+  {
+    "id": 749,
+    "summary": "WAF IP 집합 차단 규칙은 전달된 HTTP 요청의 악성 원본 IP를 필터링한다.",
+    "options": {
+      "A": "CloudFront 배포에는 NACL을 연결하지 않는다.",
+      "B": "WAF에서 악성 IP 요청을 차단한다.",
+      "C": "EC2에서는 프록시인 ALB의 연결을 받는다.",
+      "D": "보안 그룹은 명시적 거부 규칙을 지원하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS waf 공식 문서",
+        "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-ip-set-managing.html"
+      }
+    ]
+  },
+  {
+    "id": 750,
+    "summary": "Identity Center를 기존 IdP와 연동하면 다계정 접근과 사용자·그룹 프로비저닝을 중앙 관리한다.",
+    "options": {
+      "A": "연합 사용자를 계정마다 IAM 사용자로 만들 필요가 없다.",
+      "B": "루트 계정은 직원 연합 로그인 수단이 아니다.",
+      "C": "기존 신원을 사용해 다계정 SSO를 구성한다.",
+      "D": "RAM은 신원 연합 서비스가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS singlesignon 공식 문서",
+        "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-idp.html"
+      }
+    ]
+  },
+  {
+    "id": 751,
+    "summary": "AdministratorAccess는 전체 AWS 서비스·리소스 접근을 부여하는 자격 증명 정책이다.",
+    "options": {
+      "A": "IAM 그룹에 리소스 정책을 붙이는 구조가 아니다.",
+      "B": "SystemAdministrator는 전체 관리자와 권한 범위가 다르다.",
+      "C": "그룹에 관리자 정책을 붙여 다섯 사용자에게 상속한다.",
+      "D": "그룹은 리소스 기반 정책의 부착 대상이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html"
+      }
+    ]
+  },
+  {
+    "id": 752,
+    "summary": "Lambda와 SQS FIFO로 서버 관리와 중복 전송을 줄인다. 소비자 재실행에는 멱등성이 필요하다.",
+    "options": {
+      "A": "서버리스로 처리 계층을 실행한다.",
+      "B": "EC2 패치와 용량 운영이 남는다.",
+      "C": "일반 SNS는 중복 제거를 보장하지 않는다.",
+      "D": "FIFO 중복 제거와 순서 보존을 활용한다.",
+      "E": "EKS 클러스터 운영은 이 요구에 과하다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html"
+      }
+    ],
+    "reviewNote": "FIFO의 중복 제거는 무제한 exactly-once 업무 처리를 보장하지 않는다. Lambda 재시도에 대비해 결제 소비자를 멱등하게 설계해야 한다."
+  },
+  {
+    "id": 753,
+    "summary": "Transfer Family와 EFS로 기존 파일 기반 배치를 유지하고 예약 EC2 실행으로 운영을 줄인다.",
+    "options": {
+      "A": "관리형 SFTP와 공유 파일 경로를 제공한다.",
+      "B": "자가 SFTP와 EBS는 서버·복구 운영이 필요하다.",
+      "C": "공유 파일은 개선되지만 SFTP 패치가 남는다.",
+      "D": "S3 다운로드를 위한 배치 코드 변경이 추가된다."
+    },
+    "references": [
+      {
+        "title": "AWS transfer 공식 문서",
+        "url": "https://docs.aws.amazon.com/transfer/latest/userguide/create-server-sftp.html"
+      }
+    ]
+  },
+  {
+    "id": 754,
+    "summary": "Global Accelerator 고정 IP와 리전별 ALB·WAF로 글로벌 성능 및 웹 공격 방어를 결합한다.",
+    "options": {
+      "A": "WAF는 NLB에 직접 연결하지 못한다.",
+      "B": "고정 IP, HTTP 로드 밸런싱, WAF를 모두 제공한다.",
+      "C": "NLB WAF 연결이 불가능하다.",
+      "D": "일반 CloudFront 배포 IP는 고객 전용 고정 IP가 아니다."
+    },
+    "references": [
+      {
+        "title": "Global Accelerator 개요",
+        "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+      }
+    ]
+  },
+  {
+    "id": 755,
+    "summary": "RDS Proxy는 DB 연결 풀링과 장애 전환 시 연결 재사용으로 연결 폭증과 복구 지연을 줄인다.",
+    "options": {
+      "A": "DB 엔진 배포 전환은 연결 풀링을 제공하지 않는다.",
+      "B": "연결을 통합하고 장애 전환 영향을 줄인다.",
+      "C": "DynamoDB 전환은 대규모 데이터 모델 변경이다.",
+      "D": "Redshift는 트랜잭션 DB의 대체재가 아니다."
+    },
+    "references": [
+      {
+        "title": "Amazon RDS Proxy",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html"
+      }
+    ]
+  },
+  {
+    "id": 756,
+    "summary": "S3 Object Lambda는 객체를 읽을 때 PII를 제거해 원본을 복제하지 않고 최신 파일을 제공한다.",
+    "options": {
+      "A": "읽기 경로에서 Lambda로 PII를 지운다.",
+      "B": "EC2 웹 서버와 확장 정책을 운영해야 한다.",
+      "D": "별도 DynamoDB 사본과 동기화 처리가 필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html"
+      }
+    ],
+    "reviewNote": "원문 선택지 C가 누락됐다. Object Lambda는 신규 고객 이용 제한이 있으므로 기존 고객 전제로 해석해야 한다."
+  },
+  {
+    "id": 757,
+    "summary": "CloudWatch 복구 작업은 지원 인스턴스의 시스템 장애 시 같은 신원으로 인스턴스를 복구한다.",
+    "options": {
+      "A": "종료 방지는 하드웨어 장애 복구가 아니다.",
+      "B": "EC2 단일 인스턴스에 Multi-AZ 설정은 없다.",
+      "C": "시스템 상태 검사 실패를 감지해 자동 복구한다.",
+      "D": "RAID는 호스트 장애를 복구하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html"
+      }
+    ]
+  },
+  {
+    "id": 758,
+    "summary": "ECS 서비스를 AZ별로 분산하고 최소 태스크 수를 유지하면 컨테이너 수정 없이 가용성을 높인다.",
+    "options": {
+      "A": "AZ spread와 자동 확장을 결합한다.",
+      "B": "자가 관리 노드와 Kubernetes 운영이 남는다.",
+      "C": "EC2 직접 운영은 컨테이너 스케줄링을 추가 구현해야 한다.",
+      "D": "임의 컨테이너를 Lambda로 바꾸면 코드 제약이 생긴다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/strategy-spread.html"
+      }
+    ]
+  },
+  {
+    "id": 759,
+    "summary": "오래된 영화도 즉시 스트리밍해야 하므로 S3 Standard-IA처럼 복원 없는 계층이 안전하다.",
+    "options": {
+      "A": "수명 주기는 수요 자체를 감지해 전환하지 않는다.",
+      "B": "낮은 저장료와 즉시 조회를 함께 제공한다.",
+      "C": "1~10GB 객체의 신속 복원은 5분을 보장하지 않는다.",
+      "D": "일괄 복원은 수 시간 걸린다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+      }
+    ],
+    "reviewNote": "S3 Glacier 신속 복원은 큰 객체에서 5분 내 제공이 보장되지 않으므로 즉시 액세스인 Standard-IA가 안전하다."
+  },
+  {
+    "id": 760,
+    "summary": "Fargate와 EFS는 서버 운영 없이 50GB 이상의 파일 공간을 제공한다.",
+    "options": {
+      "A": "Lambda 실행 규약과 50GB 파일 공간 구성을 별도 검토해야 한다.",
+      "B": "Lambda에는 EBS를 연결하지 못한다.",
+      "C": "Fargate가 EFS 파일 공간을 사용한다.",
+      "D": "EC2 시작 유형은 서버리스가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-storage.html"
+      }
+    ],
+    "reviewNote": "최근 Lambda의 S3 Files 지원 등 파일 마운트 기능이 확장됐다. 출제 당시 A는 지원되지 않는 마운트를 가정했으며, 일반 Docker 컨테이너를 그대로 실행하는 서버리스 해법은 C다."
+  },
+  {
+    "id": 761,
+    "summary": "비SAML LDAP는 사용자 인증 후 STS 임시 자격 증명을 발급하는 사용자 지정 브로커로 연계한다.",
+    "options": {
+      "A": "Identity Center에 임의 LDAP를 직접 연결할 수 없다.",
+      "B": "IAM 정책은 LDAP 인증 프로토콜 변환기가 아니다.",
+      "C": "자격 증명 동기화는 연합 인증을 만들지 않는다.",
+      "D": "LDAP 인증 결과를 STS 세션으로 교환한다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html"
+      }
+    ]
+  },
+  {
+    "id": 762,
+    "summary": "Recycle Bin 보존 규칙으로 삭제 등록된 EBS 기반 AMI를 보존 기간 내 복구한다.",
+    "options": {
+      "A": "사전 스냅샷 사본을 직접 관리해야 한다.",
+      "B": "주기적 복사는 누락과 복구 운영이 남는다.",
+      "C": "삭제 AMI를 복원하는 관리형 보존 기능이다.",
+      "D": "일반 AMI를 S3 객체처럼 업로드할 수 없다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html"
+      }
+    ]
+  },
+  {
+    "id": 763,
+    "summary": "150TB는 야간 100Mbps 링크로 한 달 내 전송하기 어려워 물리 장치 반입이 적합하다.",
+    "options": {
+      "A": "Snowmobile 규모는 이 데이터량에 과하다.",
+      "B": "여러 Snowball에 병렬 적재해 운송한다.",
+      "C": "가속도 로컬 100Mbps 병목을 제거하지 못한다.",
+      "D": "VPN과 엔드포인트는 업링크 용량을 늘리지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS snowball 공식 문서",
+        "url": "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatissnowball.html"
+      }
+    ],
+    "reviewNote": "Snowball 신규 고객 제공 종료 등 현행 서비스 가용성은 별도 확인해야 한다. 선택지는 출제 당시 오프라인 전송 방식을 묻는다."
+  },
+  {
+    "id": 764,
+    "summary": "웹·앱은 EC2로 유지하고 관리형 MySQL 계열 DB의 PITR을 활용한다.",
+    "options": {
+      "A": "외부 진입 ALB 없이 웹을 프라이빗에 두면 접속 경로가 없다.",
+      "B": "Aurora MySQL은 자동 백업과 PITR을 제공한다.",
+      "C": "RDS MySQL도 PITR을 제공하므로 유효한 대안이다.",
+      "D": "앱과 DB의 퍼블릭 배치는 불필요한 노출이다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html"
+      }
+    ],
+    "reviewNote": "B와 C 모두 MySQL 호환 관리형 DB와 PITR을 제공한다. 원문 조건만으로 Aurora가 RDS MySQL보다 변경이 적거나 운영 부담이 작다고 단정하기 어렵다."
+  },
+  {
+    "id": 765,
+    "summary": "SQS 리소스 정책으로 다른 계정의 역할에 접근을 허용하면 기존 계정 신원을 유지한다.",
+    "options": {
+      "A": "인스턴스 프로파일은 외부 계정 권한 위임 자체가 아니다.",
+      "B": "외부 신원 정책만으로 소유 계정 허용이 생기지 않는다.",
+      "C": "큐 정책에 외부 계정을 허용한다.",
+      "D": "SNS 정책은 SQS 큐 접근을 제어하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-using-identity-based-policies.html"
+      }
+    ]
+  },
+  {
+    "id": 766,
+    "summary": "Session Manager는 인바운드 SSH나 배스천 없이 기존 NAT 경로로 관리 세션을 연다.",
+    "options": {
+      "A": "프라이빗 배스천은 원격 사용자의 진입 경로가 없다.",
+      "B": "VPN 비용과 원격 접속 구성이 추가된다.",
+      "C": "배스천 EC2와 SSH 키를 운영해야 한다.",
+      "D": "인스턴스 관리 역할과 IAM 사용자 권한으로 접속한다."
+    },
+    "references": [
+      {
+        "title": "AWS systems-manager 공식 문서",
+        "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html"
+      }
+    ]
+  },
+  {
+    "id": 767,
+    "summary": "캐시 볼륨으로 전체 데이터는 AWS에 두고 자주 쓰는 블록만 로컬에 유지한다.",
+    "options": {
+      "A": "일괄 복사는 로컬 저지연 접근 계층을 제공하지 않는다.",
+      "B": "파일 게이트웨이도 캐시하지만 블록 배열 대체에는 볼륨이 적합하다.",
+      "C": "로컬 캐시와 클라우드 용량 확장을 결합한다.",
+      "D": "VPN으로 EFS를 직접 읽으면 네트워크 지연이 발생한다."
+    },
+    "references": [
+      {
+        "title": "AWS storagegateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/storagegateway/latest/vgw/StorageGatewayConcepts.html"
+      }
+    ],
+    "reviewNote": "파일/블록 프로토콜이 명시되지 않아 파일 게이트웨이 B도 상당 부분 요구를 만족한다. C는 기존 저장 배열을 블록 볼륨으로 대체한다는 해석이다."
+  },
+  {
+    "id": 768,
+    "summary": "DynamoDB PITR은 최근 복구 구간의 초 단위 시점으로 새 테이블을 복원한다.",
+    "options": {
+      "A": "최근 24시간의 임의 시점 복구를 지원한다.",
+      "B": "일반 예약 백업만으로 임의 초를 지정하지 못한다.",
+      "C": "시간별 백업 사이 변경은 복원할 수 없다.",
+      "D": "Streams로 자체 복원 시스템을 만들어야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS amazondynamodb 공식 문서",
+        "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html"
+      }
+    ]
+  },
+  {
+    "id": 769,
+    "summary": "S3 생성 이벤트가 짧은 Lambda 작업을 호출하면 유휴 서버 비용 없이 업로드 급증에 대응한다.",
+    "options": {
+      "A": "CloudTrail과 AppSync는 파일 처리 연결이 부자연스럽다.",
+      "B": "객체 생성마다 관리형 함수를 실행한다.",
+      "C": "Kinesis는 기존 S3 업로드에 불필요한 중간 계층이다.",
+      "D": "SNS 자체는 파일을 처리하지 않으며 직접 호출보다 단계가 많다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html"
+      }
+    ]
+  },
+  {
+    "id": 770,
+    "summary": "상시 운영은 Compute Savings Plans, 간헐적 개발은 중지 가능한 온디맨드가 경제적이다.",
+    "options": {
+      "A": "운영 상시 사용의 할인 기회를 놓친다.",
+      "B": "중지해도 예약 약정 비용은 계속 발생한다.",
+      "C": "안정 부하는 약정하고 개발 유휴 시간은 과금을 줄인다.",
+      "D": "Dedicated Hosts는 일반 비용 최적화 선택이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS savingsplans 공식 문서",
+        "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+      }
+    ]
+  },
+  {
+    "id": 771,
+    "summary": "Oracle에서 PostgreSQL로 스키마를 변환하고 DMS 전체 적재와 CDC로 변경을 이어간다.",
+    "options": {
+      "A": "전체 적재만으로 마이그레이션 중 변경을 반영하지 못한다.",
+      "B": "파일 복사는 DB 트랜잭션 변경을 추적하지 않는다.",
+      "C": "스키마 변환과 지속 복제를 결합한다.",
+      "D": "오프라인 파일 반입은 이후 DB 변경을 반영하지 못한다."
+    },
+    "references": [
+      {
+        "title": "AWS DMS 개요",
+        "url": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 772,
+    "summary": "Fargate를 사용하면 ECS 또는 EKS에서 EC2 노드 관리 없이 컨테이너를 실행한다.",
+    "options": {
+      "A": "서비스별 태스크 자동 확장을 지원한다.",
+      "B": "Pod 자동 확장과 서버리스 실행을 결합한다.",
+      "C": "일반 Docker 앱은 Lambda 실행 규약 변경이 필요하다.",
+      "D": "EC2 작업 노드 패치와 용량 관리가 남는다.",
+      "E": "EC2 Kubernetes 노드 운영이 남는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+      }
+    ]
+  },
+  {
+    "id": 773,
+    "summary": "미리 구성한 AMI로 신속히 시작하고 수요에 따라 ASG를 확장해 상시 과잉 용량을 줄인다.",
+    "options": {
+      "A": "중지 인스턴스를 일반 확장 대상으로 자동 재사용하지 않는다.",
+      "B": "최대 부하 용량 상시는 비용이 크다.",
+      "C": "ASG는 CloudFront에 직접 지정하는 원본이 아니다.",
+      "D": "사전 준비한 AMI와 자동 확장을 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-templates.html"
+      }
+    ]
+  },
+  {
+    "id": 774,
+    "summary": "Config restricted-ssh 규칙으로 공개 SSH를 탐지하고 준수 변경을 SNS로 알린다.",
+    "options": {
+      "A": "기본 제공 검사 대신 코드를 유지해야 한다.",
+      "B": "관리형 준수 검사와 알림을 결합한다.",
+      "C": "역할 사용은 실제 공개 SSH 생성 여부와 다르다.",
+      "D": "광범위 권한 차단은 요구된 세부 검사를 대신하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS config 공식 문서",
+        "url": "https://docs.aws.amazon.com/config/latest/developerguide/restricted-ssh.html"
+      }
+    ]
+  },
+  {
+    "id": 775,
+    "summary": "VPC Lattice 서비스 네트워크는 다계정 서비스 검색과 HTTPS 통신을 중앙 관리한다.",
+    "options": {
+      "A": "방화벽은 서비스 레지스트리를 제공하지 않는다.",
+      "B": "리스너·대상·서비스 검색을 통합한다.",
+      "C": "NLB에는 HTTPS 리스너가 없고 엔드포인트가 급증한다.",
+      "D": "피어링과 수동 경로는 서비스 검색을 제공하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS vpc-lattice 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpc-lattice/latest/ug/what-is-vpc-lattice.html"
+      }
+    ],
+    "reviewNote": "문항 맨 앞의 EKS EC2 문장은 이전 선택지로 보이는 편집 잔여물이다."
+  },
+  {
+    "id": 776,
+    "summary": "Redis는 메모리 응답 속도와 복제·스냅샷을 함께 제공한다.",
+    "options": {
+      "A": "Aurora 읽기는 인메모리 캐시만큼 빠르지 않다.",
+      "B": "DynamoDB 단독으로 서브밀리초 읽기를 보장하지 않는다.",
+      "C": "캐시와 복제 및 백업 기능을 모두 제공한다.",
+      "D": "Memcached에는 기본 복제·스냅샷 기능이 없다."
+    },
+    "references": [
+      {
+        "title": "ElastiCache 활용 사례",
+        "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/elasticache-use-cases.html"
+      }
+    ]
+  },
+  {
+    "id": 777,
+    "summary": "AMI 실행 권한과 암호화 스냅샷 KMS 사용 권한을 개발 OU에 함께 허용해야 한다.",
+    "options": {
+      "A": "개발 OU에만 AMI 실행을 허용한다.",
+      "B": "조직 루트 공유는 필요한 범위를 넘는다.",
+      "C": "키 정책 조건으로 개발 OU 소속 역할을 허용한다.",
+      "D": "계정 ARN보다 지정 OU 공유가 조직 변화에 대응한다.",
+      "E": "키 재생성은 필요 없고 루트 공유는 과도하다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/allow-org-ou-to-use-key.html"
+      }
+    ],
+    "reviewNote": "OU ARN은 KMS 정책 Principal로 직접 넣지 못한다. C는 aws:PrincipalOrgPaths 조건과 적절한 계정·역할 주체로 OU 범위를 표현해야 한다."
+  },
+  {
+    "id": 778,
+    "summary": "각 사무실 1PB를 제한된 링크로 4주 안에 옮기려면 병렬 물리 전송이 적합하다.",
+    "options": {
+      "A": "80개 전용선 개통은 비용과 시간이 크다.",
+      "B": "여러 장치에 분산 적재해 대역폭 병목을 피한다.",
+      "C": "분산 사무실마다 초대형 운송 장비를 쓰기 어렵다.",
+      "D": "게이트웨이는 기존 인터넷 전송 속도를 넘지 못한다."
+    },
+    "references": [
+      {
+        "title": "AWS snowball 공식 문서",
+        "url": "https://docs.aws.amazon.com/snowball/latest/developer-guide/whatissnowball.html"
+      }
+    ]
+  },
+  {
+    "id": 779,
+    "summary": "EFS 리소스 정책에서 ClientWrite를 거부하면 해당 역할의 쓰기를 IAM 수준에서 차단한다.",
+    "options": {
+      "A": "로컬 마운트 옵션은 IAM 통제가 아니다.",
+      "B": "파일 시스템 정책으로 쓰기 권한을 명시적으로 거부한다.",
+      "C": "신원 정책은 파일 시스템이 아니라 역할에 부착한다.",
+      "D": "POSIX 권한은 IAM 접근 제어 요구와 다르다."
+    },
+    "references": [
+      {
+        "title": "AWS efs 공식 문서",
+        "url": "https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html"
+      }
+    ]
+  },
+  {
+    "id": 780,
+    "summary": "외부 계정 역할이 AssumeRole하도록 위임하면 장기 키 공유 없이 임시 권한을 제공한다.",
+    "options": {
+      "A": "신뢰 정책과 최소 권한으로 교차 계정 역할을 위임한다.",
+      "B": "장기 사용자 자격 증명을 따로 관리해야 한다.",
+      "C": "IAM 그룹에 다른 계정 사용자를 넣을 수 없다.",
+      "D": "권한 경계는 계정 신뢰를 부여하는 기능이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html"
+      }
+    ]
+  },
+  {
+    "id": 781,
+    "summary": "소유 부서 태그로 비용을 배분하고 비용 예산 60% 경보를 구성한다.",
+    "options": {
+      "A": "태그 기반 부서 추적과 임계값 알림이 가능하다.",
+      "B": "비용 예측은 자원 소유자를 찾아주지 않는다.",
+      "C": "Trusted Advisor는 부서 예산 경보 서비스가 아니다.",
+      "D": "예측만으로 소유 부서를 식별하지 못한다."
+    },
+    "references": [
+      {
+        "title": "AWS Budgets 예산 유형",
+        "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html"
+      }
+    ],
+    "reviewNote": "금액 지출 경보에는 usage budget이 아니라 cost budget을 써야 한다. A의 태그와 AWS Budgets 방향은 맞지만 예산 유형 표현은 잘못됐다."
+  },
+  {
+    "id": 782,
+    "summary": "내부 ALB와 프라이빗 EC2를 VPN으로 접근시키고 NAT로 패치 다운로드만 허용한다.",
+    "options": {
+      "A": "공개 ALB의 전체 인터넷 허용은 사무실 전용 조건을 어긴다.",
+      "B": "사무실 CIDR 제한과 아웃바운드 NAT를 결합한다.",
+      "C": "NAT를 프라이빗 서브넷에 두면 인터넷 경로가 없다.",
+      "D": "공개 ALB의 송신 제한은 외부 접근을 막지 못한다."
+    },
+    "references": [
+      {
+        "title": "Application Load Balancer",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 783,
+    "summary": "출제 당시 QLDB는 변경 불가능한 저널과 암호학적 검증을 제공하는 관리형 원장이었다.",
+    "options": {
+      "A": "Redshift는 분석 창고이며 검증 가능한 원장이 아니다.",
+      "B": "Neptune은 그래프 관계 저장에 특화됐다.",
+      "C": "Timestream은 시계열 저장소다.",
+      "D": "불변 저널과 변경 이력 검증을 제공한다."
+    },
+    "references": [
+      {
+        "title": "AWS qldb 공식 문서",
+        "url": "https://docs.aws.amazon.com/qldb/latest/developerguide/what-is.html"
+      }
+    ],
+    "reviewNote": "Amazon QLDB는 지원이 종료된 서비스다. D는 출제 당시 기능 기준이며 신규 설계에는 사용할 수 없다."
+  },
+  {
+    "id": 784,
+    "summary": "Step Functions가 DataBrew 작업의 병렬·순차 흐름과 재시도·상태를 관리한다.",
+    "options": {
+      "A": "Lambda 연쇄 호출에는 상태와 재시도 코드가 남는다.",
+      "B": "Athena 스케줄링만으로 의존 작업 흐름을 관리하지 않는다.",
+      "C": "데이터 준비와 관리형 오케스트레이션을 결합한다.",
+      "D": "하루 한 번 예약은 병렬·순차 요구를 충분히 표현하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS step-functions 공식 문서",
+        "url": "https://docs.aws.amazon.com/step-functions/latest/dg/use-cases.html"
+      }
+    ]
+  },
+  {
+    "id": 785,
+    "summary": "SQS FIFO가 중복 전송을 제거하지만 실제 결제 중복 방지에는 소비자의 멱등성도 필요하다.",
+    "options": {
+      "A": "S3 이벤트는 중복 전달될 수 있다.",
+      "B": "표준 큐는 적어도 한 번 전달이다.",
+      "C": "FIFO 중복 제거를 활용하는 가장 가까운 선택지다.",
+      "D": "Streams와 Lambda도 재처리 가능성이 있다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html"
+      }
+    ],
+    "reviewNote": "SQS FIFO와 Lambda만으로 결제의 정확히 한 번 실행은 보장되지 않는다. 결제 ID 기반 조건부 기록 등 멱등 처리 설계가 필수다."
+  },
+  {
+    "id": 786,
+    "summary": "Application Discovery Service가 서버 구성·사용률을 수집하고 Migration Hub에서 이관 계획에 활용한다.",
+    "options": {
+      "A": "Systems Manager보다 발견 서비스가 이관 인벤토리에 적합하다.",
+      "B": "사내 서버 조사와 Migration Hub 집계를 결합한다.",
+      "C": "SCT는 스키마 변환용이다.",
+      "D": "DMS는 데이터베이스 이관용이다."
+    },
+    "references": [
+      {
+        "title": "AWS application-discovery 공식 문서",
+        "url": "https://docs.aws.amazon.com/application-discovery/latest/userguide/what-is-appdiscovery.html"
+      }
+    ]
+  },
+  {
+    "id": 787,
+    "summary": "관리 계정의 Control Tower로 계정 감사를 표준화하고 Security Hub로 FSBP 준수를 확인한다.",
+    "options": {
+      "A": "다계정 거버넌스와 보안 표준 평가를 결합한다.",
+      "B": "Control Tower 랜딩 존은 관리 계정에서 설정한다.",
+      "C": "GuardDuty 탐지는 FSBP 준수 평가가 아니다.",
+      "D": "AMS 도입은 기존 조직의 직접 관리보다 무겁다."
+    },
+    "references": [
+      {
+        "title": "AWS controltower 공식 문서",
+        "url": "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
+      }
+    ]
+  },
+  {
+    "id": 788,
+    "summary": "Glue 카탈로그와 Athena는 S3 Parquet를 복사 없이 SQL로 조회해 간헐 분석 비용을 줄인다.",
+    "options": {
+      "A": "상시 DB로 적재하는 비용이 추가된다.",
+      "B": "Redshift 클러스터는 간헐 조회에 고정비가 생긴다.",
+      "C": "스캔한 데이터에 따라 지불하는 서버리스 SQL이다.",
+      "D": "EMR 클러스터 운영이 필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS athena 공식 문서",
+        "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 789,
+    "summary": "사전 예방 컨트롤은 CloudFormation 배포 전에 리소스 속성을 검사해 비준수 생성을 막는다.",
+    "options": {
+      "A": "배포 전 평가로 잘못된 리소스를 차단한다.",
+      "B": "탐지 컨트롤은 생성 후 상태를 평가한다.",
+      "C": "삭제 후 교정은 비준수 배포 자체를 막지 못한다.",
+      "D": "SCP로 임의 인라인 정책 내용을 검사하기 어렵다."
+    },
+    "references": [
+      {
+        "title": "AWS controltower 공식 문서",
+        "url": "https://docs.aws.amazon.com/controltower/latest/userguide/proactive-controls.html"
+      }
+    ]
+  },
+  {
+    "id": 790,
+    "summary": "퍼블릭 ALB 뒤의 다중 AZ ASG가 기존 앱을 수평 확장하고 장애를 분산한다.",
+    "options": {
+      "A": "단일 인스턴스 증설은 장애 지점을 유지한다.",
+      "B": "여러 AZ에 동적으로 컴퓨팅을 늘린다.",
+      "C": "NAT는 인바운드 웹 요청을 받지 않는다.",
+      "D": "메모리 증설만으로 다중 AZ 가용성을 만들지 않는다.",
+      "E": "공개 진입점에서 정상 인스턴스로 분산한다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+      }
+    ]
+  },
+  {
+    "id": 791,
+    "summary": "KMS 암호화 도우미로 환경 변수 값을 클라이언트 측 암호화하고 개발자 Decrypt 권한을 제한한다.",
+    "options": {
+      "A": "EC2 이전만으로 비밀 노출이 해결되지 않는다.",
+      "B": "CloudHSM과 SSL은 Lambda 환경 변수 설정 방식이 아니다.",
+      "C": "ACM 인증서는 환경 변수 암호화 키가 아니다.",
+      "D": "암호화된 값과 제한된 키 권한을 사용한다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars-encryption.html"
+      }
+    ]
+  },
+  {
+    "id": 792,
+    "summary": "Cognito 사용자 풀이 고객 인증을 맡고 API Gateway 권한 부여자가 JWT를 검증한다.",
+    "options": {
+      "A": "관리형 사용자 인증과 REST API 보호를 결합한다.",
+      "B": "자격 증명 풀은 주로 AWS 임시 권한을 발급한다.",
+      "C": "인증 로직을 직접 개발·운영해야 한다.",
+      "D": "수백만 고객을 IAM 사용자로 관리하기 어렵다."
+    },
+    "references": [
+      {
+        "title": "AWS apigateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html"
+      }
+    ]
+  },
+  {
+    "id": 793,
+    "summary": "KMS 예약 삭제 이벤트를 감지해 취소 런북과 SNS 알림을 실행한다.",
+    "options": {
+      "A": "Config 규칙을 EventBridge 대상으로 직접 실행하는 구조가 아니다.",
+      "B": "실제 API 이름은 DeleteKey가 아니다.",
+      "C": "관리형 Automation으로 예약 삭제를 취소할 수 있다.",
+      "D": "알림만 있고 삭제 취소가 없다."
+    },
+    "references": [
+      {
+        "title": "AWS kms 공식 문서",
+        "url": "https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html"
+      }
+    ],
+    "reviewNote": "KMS에는 DeleteKey API가 없다. ScheduleKeyDeletion을 감지하고 CancelKeyDeletion을 실행해야 C의 의도가 구현된다."
+  },
+  {
+    "id": 794,
+    "summary": "10분 미만의 간헐 보고서 작업은 Lambda 실행 시간 범위에 들어가 요청 시에만 과금된다.",
+    "options": {
+      "A": "월말 상시 EC2는 유휴 과금이 발생한다.",
+      "B": "보고서 요청마다 자동 확장해 실행한다.",
+      "C": "ECS보다 Lambda가 짧은 작업 실행을 단순화한다.",
+      "D": "Spot 중단과 인스턴스 시작 지연이 생긴다."
+    },
+    "references": [
+      {
+        "title": "AWS Lambda 개요",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 795,
+    "summary": "FSx for Lustre는 병렬 파일 I/O를, EFA는 긴밀한 노드 통신을 최적화한다.",
+    "options": {
+      "A": "Global Accelerator는 글로벌 인터넷 진입점용이다.",
+      "B": "고속 병렬 스크래치 파일 저장소를 제공한다.",
+      "C": "CloudFront는 HPC 내부 파일·메시지 경로가 아니다.",
+      "D": "낮은 지연의 노드 간 통신을 제공한다.",
+      "E": "Beanstalk는 HPC 네트워크·스토리지 최적화가 아니다."
+    },
+    "references": [
+      {
+        "title": "FSx for Lustre 개요",
+        "url": "https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 796,
+    "summary": "Rekognition의 사전 학습된 이미지 조정 API로 부적절한 사진을 탐지한다.",
+    "options": {
+      "A": "Autopilot 모델 학습이 필요하다.",
+      "B": "Lambda에서 관리형 이미지 조정 API를 호출한다.",
+      "C": "Comprehend는 텍스트 분석이며 엣지 함수도 제약이 크다.",
+      "D": "Rekognition Video는 사진 분석 대상과 다르다."
+    },
+    "references": [
+      {
+        "title": "AWS rekognition 공식 문서",
+        "url": "https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html"
+      }
+    ]
+  },
+  {
+    "id": 797,
+    "summary": "루트에 여러 MFA 장치를 등록하면 한 장치를 잃어도 다른 장치로 인증한다.",
+    "options": {
+      "A": "관리자 IAM 사용자는 루트 로그인 자체를 대신하지 못한다.",
+      "B": "예비 MFA 장치로 루트 접근을 유지한다.",
+      "C": "새 관리자 생성은 루트 MFA 손실을 복구하지 않는다.",
+      "D": "다른 사용자 관리자 권한은 루트 인증 복구가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html"
+      }
+    ]
+  },
+  {
+    "id": 798,
+    "summary": "SNS HTTP/S 구독으로 파트너를 추가하면 발행 코드를 바꾸지 않고 알림을 팬아웃한다.",
+    "options": {
+      "A": "파트너 목록과 전송 코드를 직접 관리해야 한다.",
+      "B": "구독 추가만으로 파트너 통지를 확장한다.",
+      "C": "파트너마다 상태 머신을 수정해야 한다.",
+      "D": "Kinesis 소비자 구현은 단순 HTTP 통지에 과하다."
+    },
+    "references": [
+      {
+        "title": "AWS sns 공식 문서",
+        "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-http-https-endpoint-as-subscriber.html"
+      }
+    ]
+  },
+  {
+    "id": 799,
+    "summary": "Comprehend의 관리형 텍스트 분석으로 레시피 핵심 구를 추출하고 재료를 영양 데이터와 매칭한다.",
+    "options": {
+      "A": "학습 없이 텍스트에서 후보 구를 추출한다.",
+      "B": "Forecast는 시계열 예측용이다.",
+      "C": "음성 변환과 수동 청취는 비용·확장성이 나쁘다.",
+      "D": "SageMaker 모델 개발에는 ML 역량이 필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS comprehend 공식 문서",
+        "url": "https://docs.aws.amazon.com/comprehend/latest/dg/how-key-phrases.html"
+      }
+    ],
+    "reviewNote": "Comprehend 기본 분석은 재료 전용 추출기가 아니므로 핵심 구에서 식재료 사전과 매칭하는 후처리가 필요하다."
+  },
+  {
+    "id": 800,
+    "summary": "VPC 피어링으로 다른 계정 EFS의 마운트 대상에 사설 연결하고 접근 정책을 허용한다.",
+    "options": {
+      "A": "파일 복제 저장 비용과 동기화 지연이 생긴다.",
+      "B": "기존 EFS를 네트워크로 직접 사용한다.",
+      "C": "함수 중계는 추가 호출과 구현이 필요하다.",
+      "D": "Lambda 계층은 대용량 가변 파일 저장소가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html"
+      }
+    ]
+  },
+  {
+    "id": 801,
+    "summary": "사내에서 암호화하고 키를 외부에 보관하면 AWS에는 암호문만 저장된다. 전송에는 HTTPS도 사용한다.",
+    "options": {
+      "A": "일반 KMS 고객 관리 키는 AWS 외부 키 관리 조건과 다르다.",
+      "B": "AWS 관리 키는 회사가 외부 관리하지 못한다.",
+      "C": "기본 SSE는 외부 키 관리가 아니다.",
+      "D": "사내 암호화로 키를 AWS에 보내지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html"
+      }
+    ]
+  },
+  {
+    "id": 802,
+    "summary": "API Gateway와 짧은 Lambda 검증 뒤 긴 처리는 자원 조정 가능한 Fargate에서 실행한다.",
+    "options": {
+      "A": "EKS Anywhere는 사내 클러스터 운영이 필요하다.",
+      "B": "자가 관리 노드의 인프라 운영이 남는다.",
+      "C": "Spot 중단과 EC2 운영을 처리해야 한다.",
+      "D": "짧은 검증과 장기 컨테이너 실행을 분리한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+      }
+    ]
+  },
+  {
+    "id": 803,
+    "summary": "Cognito 적응형 인증은 위치·기기 등 위험 신호에 따라 MFA를 요구한다.",
+    "options": {
+      "A": "위험 기반 MFA를 대규모 고객에게 적용한다.",
+      "B": "자격 증명 풀은 고객 로그인 위험 평가 기능이 아니다.",
+      "C": "IAM 사용자는 대규모 앱 고객 인증에 부적합하다.",
+      "D": "직원 SSO용 권한 세트는 앱 위험 기반 MFA가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS cognito 공식 문서",
+        "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-adaptive-authentication.html"
+      }
+    ]
+  },
+  {
+    "id": 804,
+    "summary": "Glue ETL과 Redshift Serverless를 결합하면 서버리스 MPP 분석과 SQL 기반 ML을 제공한다.",
+    "options": {
+      "A": "일반 EMR 클러스터는 서버 관리가 추가된다.",
+      "B": "Aurora는 MPP 분석 창고가 아니다.",
+      "C": "서버리스 ETL·웨어하우스·SQL ML을 결합한다.",
+      "D": "선택지의 Athena ML 모델 학습 기능은 없다."
+    },
+    "references": [
+      {
+        "title": "AWS redshift 공식 문서",
+        "url": "https://docs.aws.amazon.com/redshift/latest/dg/machine_learning.html"
+      }
+    ]
+  },
+  {
+    "id": 805,
+    "summary": "Outposts 랙에서 EKS와 지원 AWS 서비스를 실행하면 데이터 처리를 사내에 유지할 수 있다.",
+    "options": {
+      "A": "Local Zones는 고객 데이터센터에 설치하지 않는다.",
+      "B": "Snowmobile은 데이터 운송 수단이다.",
+      "C": "사내 AWS 인프라에서 워크로드를 실행한다.",
+      "D": "Snowball은 장기 관리형 EKS 환경의 대체재가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS outposts 공식 문서",
+        "url": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
+      }
+    ]
+  },
+  {
+    "id": 806,
+    "summary": "S3 File Gateway는 기존 NFS 접근을 유지하면서 저장 용량을 S3로 확장한다.",
+    "options": {
+      "A": "Volume Gateway는 NFS가 아닌 블록 인터페이스다.",
+      "B": "NFS 파일 접근과 S3 수명 주기를 결합한다.",
+      "C": "EFS는 가능하지만 사내 연결과 접근 설계가 필요하다.",
+      "D": "단일 AZ 저장은 내구성·가용성 범위를 줄인다."
+    },
+    "references": [
+      {
+        "title": "AWS storagegateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/storagegateway/latest/ug/WhatIsStorageGateway.html"
+      }
+    ]
+  },
+  {
+    "id": 807,
+    "summary": "CPU 집약 Lambda는 메모리를 늘려 CPU도 확보하고 프로비저닝 동시성으로 초기화 지연을 줄일 수 있다.",
+    "options": {
+      "A": "메모리 축소는 CPU와 처리 속도를 낮춘다.",
+      "B": "메모리 최적화는 가능하지만 콜드 스타트는 남는다.",
+      "C": "CPU를 줄이면서 유료 상시 초기화 비용이 든다.",
+      "D": "CPU 최적화와 초기화 지연 방지를 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html"
+      }
+    ],
+    "reviewNote": "프로비저닝 동시성은 콜드 스타트를 줄이지만 추가 과금이 있다. CPU 메모리 최적화로 절약되는 금액을 측정해야 D가 비용까지 줄인다고 결론 낼 수 있다."
+  },
+  {
+    "id": 808,
+    "summary": "ECR 기본 스캔의 push 시 검사로 새 이미지의 운영체제 취약점을 탐지한다.",
+    "options": {
+      "A": "ECS를 유지하며 이미지 업로드 시 검사한다.",
+      "B": "Macie는 이미지 CVE 스캐너가 아니다.",
+      "C": "이미지 스캔에 EKS 이전은 불필요하다.",
+      "D": "S3 객체는 ECR 이미지 스캔 대상으로 직접 연결되지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECR 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html"
+      }
+    ]
+  },
+  {
+    "id": 809,
+    "summary": "Batch 성공 이벤트를 EventBridge 규칙으로 잡고 Basic 인증 API destination을 호출한다.",
+    "options": {
+      "A": "이벤트 패턴과 관리형 HTTP 인증을 결합한다.",
+      "B": "Scheduler는 수신 이벤트 패턴 매칭 서비스가 아니다.",
+      "C": "Batch에서 API 발행 코드를 추가해야 한다.",
+      "D": "Lambda 중계 코드를 불필요하게 추가한다."
+    },
+    "references": [
+      {
+        "title": "AWS eventbridge 공식 문서",
+        "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html"
+      }
+    ]
+  },
+  {
+    "id": 810,
+    "summary": "공급자 NLB 기반 PrivateLink 서비스로 인터넷 연결 없이 RDS 접근을 노출한다.",
+    "options": {
+      "A": "전용선 가입은 계정 간 사설 연결에 불필요하다.",
+      "B": "Client VPN은 VPC 간 관리형 서비스 공유 방식이 아니다.",
+      "C": "인터페이스 엔드포인트로 공급자 서비스에 연결한다.",
+      "D": "TGW와 피어링 동시 도입은 불필요하게 복잡하다."
+    },
+    "references": [
+      {
+        "title": "AWS vpc 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html"
+      }
+    ],
+    "reviewNote": "RDS는 NLB에 DB IP 대상을 등록하고 장애 조치 때 IP 변화를 추적하는 자동화가 추가로 필요하다. RDS 인스턴스를 NLB 대상 유형으로 직접 등록하지 못한다."
+  },
+  {
+    "id": 811,
+    "summary": "Managed Grafana의 VPC 연결로 비공개 RDS 주소에 접근해 인터넷 노출을 피한다.",
+    "options": {
+      "A": "공개 RDS 엔드포인트를 노출한다.",
+      "B": "워크스페이스 VPC 연결과 DB 보안 그룹을 구성한다.",
+      "C": "RDS 제어 API 엔드포인트는 SQL 데이터 경로가 아니다.",
+      "D": "공개 DB 주소가 불필요하게 노출된다."
+    },
+    "references": [
+      {
+        "title": "AWS grafana 공식 문서",
+        "url": "https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-vpc.html"
+      }
+    ]
+  },
+  {
+    "id": 812,
+    "summary": "DataBrew는 코드 없는 데이터 프로파일링·변환을 레시피로 저장하고 공유한다.",
+    "options": {
+      "A": "Glue Studio보다 DataBrew가 프로파일링·레시피 요구에 맞다.",
+      "B": "EMR Serverless는 변환 코드를 작성해야 한다.",
+      "C": "시각적 정제와 재사용 가능한 레시피를 제공한다.",
+      "D": "SQL 작성이 필요해 코드 없는 요구와 다르다."
+    },
+    "references": [
+      {
+        "title": "AWS databrew 공식 문서",
+        "url": "https://docs.aws.amazon.com/databrew/latest/dg/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 813,
+    "summary": "개발 호스트명을 ALB에 연결하고 호스트 헤더 규칙으로 개발 대상 그룹에만 전달한다.",
+    "options": {
+      "A": "인스턴스 교체 시 대상 등록만 갱신한다.",
+      "B": "공개 IP가 바뀌면 DNS 갱신이 필요하다.",
+      "C": "리디렉션은 새 인스턴스 IP를 자동 추적하지 못한다.",
+      "D": "공유 대상 그룹은 개발 인스턴스만 선택하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS elasticloadbalancing 공식 문서",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/rule-condition-types.html"
+      }
+    ]
+  },
+  {
+    "id": 814,
+    "summary": "EKS로 Kubernetes를 유지하고 Amazon MQ로 AMQP 호환성을 유지한다.",
+    "options": {
+      "A": "SQS는 AMQP 프로토콜을 직접 지원하지 않는다.",
+      "B": "컨테이너와 메시징 프로토콜 변경을 줄인다.",
+      "C": "EC2 직접 관리가 남는다.",
+      "D": "Lambda 전환과 SQS 프로토콜 변경이 필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS amazon-mq 공식 문서",
+        "url": "https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 815,
+    "summary": "기존 다중 리전 NLB를 Global Accelerator에 등록하면 글로벌 네트워크로 사용자 경로를 최적화한다.",
+    "options": {
+      "A": "ALB 교체만으로 글로벌 네트워크 경로가 개선되지 않는다.",
+      "B": "균등 분산은 가까운 정상 리전을 고르지 않는다.",
+      "C": "서버 증설은 비용과 배포 범위를 늘린다.",
+      "D": "기존 NLB를 유지하며 글로벌 경로를 가속한다."
+    },
+    "references": [
+      {
+        "title": "Global Accelerator 개요",
+        "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+      }
+    ]
+  },
+  {
+    "id": 816,
+    "summary": "Transfer Family가 SFTP 요청을 받아 S3에 저장해 기존 공급자 도구를 유지한다.",
+    "options": {
+      "A": "DMS는 범용 SFTP 업로드 서버가 아니다.",
+      "B": "관리형 SFTP 엔드포인트로 레거시 클라이언트를 수용한다.",
+      "C": "SFTP 서버 패치와 확장을 직접 운영해야 한다.",
+      "D": "SMB는 공급자가 요구한 SFTP가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS transfer 공식 문서",
+        "url": "https://docs.aws.amazon.com/transfer/latest/userguide/create-server-sftp.html"
+      }
+    ]
+  },
+  {
+    "id": 817,
+    "summary": "Textract로 PDF 텍스트를 추출한 뒤 Comprehend로 감정과 주제를 분석한다.",
+    "options": {
+      "A": "Athena SQL은 사전 학습 감정 분석기가 아니다.",
+      "B": "SageMaker 모델을 직접 개발해야 한다.",
+      "C": "관리형 언어 분석 후 S3에 결과를 보관한다.",
+      "D": "시각화만으로 텍스트 감정을 추출하지 못한다."
+    },
+    "references": [
+      {
+        "title": "AWS comprehend 공식 문서",
+        "url": "https://docs.aws.amazon.com/comprehend/latest/dg/how-sentiment.html"
+      }
+    ]
+  },
+  {
+    "id": 818,
+    "summary": "Kinesis Data Streams가 실시간 수집을 받고 Firehose가 버퍼링해 S3에 전달한다.",
+    "options": {
+      "A": "관리형 스트림 수집과 S3 적재를 결합한다.",
+      "B": "DMS 소스는 임의 EC2 스트리밍 앱이 아니다.",
+      "C": "DataSync는 파일 배치 이동용이다.",
+      "D": "Direct Connect는 외부 애플리케이션 스트림 수집에 필수가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS firehose 공식 문서",
+        "url": "https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html"
+      }
+    ]
+  },
+  {
+    "id": 819,
+    "summary": "DynamoDB 항목은 400KB 한도이므로 큰 본문은 S3에 두고 참조만 저장한다.",
+    "options": {
+      "A": "DocumentDB 추가는 데이터 저장 계층을 늘린다.",
+      "B": "크기 증가를 S3에 맡기고 DynamoDB는 메타데이터를 유지한다.",
+      "C": "분할 항목의 조립과 일관성 처리가 필요하다.",
+      "D": "압축률에 따라 400KB 초과가 여전히 발생한다."
+    },
+    "references": [
+      {
+        "title": "AWS amazondynamodb 공식 문서",
+        "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-use-s3-too.html"
+      }
+    ]
+  },
+  {
+    "id": 820,
+    "summary": "컨테이너화한 기존 cron을 Scheduler가 Fargate 태스크로 시작하면 20분 작업도 실행 가능하다.",
+    "options": {
+      "A": "Lambda의 15분 제한을 초과한다.",
+      "B": "Batch 스케줄링 정책은 반복 시각 스케줄러가 아니다.",
+      "C": "반복 예약과 이벤트 기반 실행을 모두 지원한다.",
+      "D": "Wait 상태 수백 개는 예약 관리가 복잡하다."
+    },
+    "references": [
+      {
+        "title": "AWS scheduler 공식 문서",
+        "url": "https://docs.aws.amazon.com/scheduler/latest/UserGuide/managing-targets-templated.html"
+      }
+    ]
+  },
+  {
+    "id": 821,
+    "summary": "AppFlow와 Salesforce PrivateLink 연결로 사설 경로에서 Redshift로 관리형 데이터를 전송한다.",
+    "options": {
+      "A": "DataBrew는 Salesforce 증분 이관 커넥터가 아니다.",
+      "B": "전용선은 이 SaaS 통합에 불필요한 부담이다.",
+      "C": "SaaS 커넥터와 사설 연결을 함께 제공한다.",
+      "D": "SaaS 서비스에 일반 VPC 피어링을 설정하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS appflow 공식 문서",
+        "url": "https://docs.aws.amazon.com/appflow/latest/userguide/private-flows.html"
+      }
+    ]
+  },
+  {
+    "id": 822,
+    "summary": "파일을 객체 API로 이전할 수 있다면 S3 Intelligent-Tiering이 가변 접근 비용을 자동 최적화한다.",
+    "options": {
+      "A": "저비용 객체 저장과 자동 계층화를 결합한다.",
+      "B": "Linux 앱을 SMB로 바꿔도 최저 저장 비용이 아니다.",
+      "C": "파일 시스템 운영 비용이 계속 든다.",
+      "D": "Glacier 표준 복원은 즉시 파일 접근을 제공하지 않는다."
+    },
+    "references": [
+      {
+        "title": "S3 Intelligent-Tiering",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+      }
+    ]
+  },
+  {
+    "id": 823,
+    "summary": "ALB HTTPS 리스너는 ACM 인증서를 사용하고 쿼리 문자열 조건으로 대상 그룹을 선택한다.",
+    "options": {
+      "A": "NLB는 HTTP 쿼리를 해석하지 않는다.",
+      "B": "GWLB는 HTTP 쿼리 기반 웹 라우터가 아니다.",
+      "C": "계층 7 조건 라우팅과 TLS 종료를 제공한다.",
+      "D": "인증서를 바꿔도 NLB에 쿼리 라우팅이 생기지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS elasticloadbalancing 공식 문서",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/rule-condition-types.html"
+      }
+    ]
+  },
+  {
+    "id": 824,
+    "summary": "EC2 ASG가 앱을 늘리고 Aurora Serverless가 MySQL DB 용량을 수요에 맞춰 조절한다.",
+    "options": {
+      "A": "Redshift는 MySQL 호환 트랜잭션 DB가 아니다.",
+      "B": "대상 그룹만으로 EC2 수가 자동 증가하지 않는다.",
+      "C": "앱과 DB 계층을 독립 자동 확장한다.",
+      "D": "Redis는 MySQL 데이터베이스가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html"
+      }
+    ]
+  },
+  {
+    "id": 825,
+    "summary": "고객 관리 KMS 키의 자동 회전을 활성화하고 S3 기본 SSE-KMS로 지정한다.",
+    "options": {
+      "A": "SSE-S3의 내부 회전 주기를 고객이 연간으로 지정하지 못한다.",
+      "B": "연간 키 재료 회전을 관리형으로 수행한다.",
+      "C": "수동 회전은 운영 부담이 남는다.",
+      "D": "외부 키 재료는 지원되는 회전 방식을 별도로 검토해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS kms 공식 문서",
+        "url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotating-keys-enable.html"
+      }
+    ]
+  },
+  {
+    "id": 826,
+    "summary": "Managed Microsoft AD와 사내 AD의 신뢰 관계를 Identity Center에 연결하면 사내 신원을 유지한다.",
+    "options": {
+      "A": "새 디렉터리만 만들면 사내 사용자 신뢰가 없다.",
+      "B": "사내 AD와 다계정 SSO를 연계한다.",
+      "C": "AD 신뢰만으로 AWS 계정 SSO가 구성되지 않는다.",
+      "D": "자가 IdP 서버를 추가로 운영해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS singlesignon 공식 문서",
+        "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/connectonpremad.html"
+      }
+    ]
+  },
+  {
+    "id": 827,
+    "summary": "Aurora I/O-Optimized는 I/O가 많은 워크로드에서 요청별 I/O 비용을 제거한다.",
+    "options": {
+      "A": "I/O 비중이 큰 부하에서는 요청 과금이 커진다.",
+      "B": "Aurora는 RDS식 Provisioned IOPS 선택을 쓰지 않는다.",
+      "C": "Aurora는 RDS식 General Purpose 볼륨을 고르지 않는다.",
+      "D": "높은 I/O 비용 비중에서 총비용을 낮출 수 있다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-storage-type.html"
+      }
+    ],
+    "reviewNote": "트래픽 증가만으로 I/O-Optimized가 더 저렴하다고 단정할 수 없다. 실제 I/O 요금 비중이 대략 25% 이상인지를 비교해야 한다."
+  },
+  {
+    "id": 828,
+    "summary": "Security Hub 조직 관리자에서 보안 표준을 켜면 다계정 통제 상태를 집계한다.",
+    "options": {
+      "A": "Inspector는 NIST·PCI 표준 준수 대시보드가 아니다.",
+      "B": "GuardDuty는 위협 탐지이며 준수 통제 평가가 아니다.",
+      "C": "CloudTrail에는 표준 활성화 기능이 없다.",
+      "D": "조직 단위 표준 검사 결과를 중앙 확인한다."
+    },
+    "references": [
+      {
+        "title": "AWS securityhub 공식 문서",
+        "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/standards-reference.html"
+      }
+    ]
+  },
+  {
+    "id": 829,
+    "summary": "불규칙한 접근 패턴은 Intelligent-Tiering이 자동 추적해 즉시 접근 계층 사이 비용을 최적화한다.",
+    "options": {
+      "A": "수동 접근 분석 없이 객체를 자동 계층화한다.",
+      "B": "Glacier는 복원 지연과 조회 방식 제약이 있다.",
+      "C": "분석 결과와 수명 주기를 계속 관리해야 한다.",
+      "D": "접근마다 Lambda 전환하는 코드를 유지해야 한다."
+    },
+    "references": [
+      {
+        "title": "S3 Intelligent-Tiering",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+      }
+    ]
+  },
+  {
+    "id": 830,
+    "summary": "Neptune의 정점·간선 모델은 다대다 관계의 다단계 연결 탐색에 적합하다.",
+    "options": {
+      "A": "여러 JOIN으로 탐색하면 중간 결과가 커진다.",
+      "B": "그래프 순회로 여러 단계의 공통 연결을 찾는다.",
+      "C": "QuickSight는 관계 탐색용 저장 엔진이 아니다.",
+      "D": "5단계 다대다 JOIN은 비용이 커진다."
+    },
+    "references": [
+      {
+        "title": "AWS neptune 공식 문서",
+        "url": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+      }
+    ]
+  },
+  {
+    "id": 831,
+    "summary": "Site-to-Site VPN은 기존 인터넷에서 사내망과 VPC를 빠르고 저렴하게 암호화 연결한다.",
+    "options": {
+      "A": "Client VPN은 개별 사용자 접속용이다.",
+      "B": "전용선은 설치 시간과 고정 비용이 크다.",
+      "C": "배스천은 네트워크 간 암호화 터널이 아니다.",
+      "D": "작은 트래픽의 사내망 연결에 적합하다."
+    },
+    "references": [
+      {
+        "title": "AWS vpn 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html"
+      }
+    ]
+  },
+  {
+    "id": 832,
+    "summary": "Transfer Family SFTP와 Directory Service·AD Connector 연계를 통해 기존 AD 신원과 SFTP 접근을 유지한다.",
+    "options": {
+      "A": "SMB로 바뀌므로 기존 SFTP를 유지하지 못한다.",
+      "B": "EC2 SFTP 운영과 인증 통합을 직접 해야 한다.",
+      "C": "AD Connector로 사내 AD 인증을 연결한다.",
+      "D": "사내 AD 연결을 위한 디렉터리 연계 단계가 빠졌다."
+    },
+    "references": [
+      {
+        "title": "AWS transfer 공식 문서",
+        "url": "https://docs.aws.amazon.com/transfer/latest/userguide/directory-services-users.html"
+      }
+    ]
+  },
+  {
+    "id": 833,
+    "summary": "EventBridge 규칙별 입력 변환기로 각 Lambda에 필요한 필드만 전달한다.",
+    "options": {
+      "A": "별도 변환 Lambda 코드를 관리해야 한다.",
+      "B": "SNS 필터는 메시지 필드를 삭제하지 않는다.",
+      "C": "느슨한 결합과 대상별 최소 데이터 전달을 결합한다.",
+      "D": "동기 중계 함수에 처리 흐름이 결합된다."
+    },
+    "references": [
+      {
+        "title": "AWS eventbridge 공식 문서",
+        "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-transform-target-input.html"
+      }
+    ]
+  },
+  {
+    "id": 834,
+    "summary": "보고서 쿼리를 Aurora reader endpoint로 보내 쓰기 노드의 리소스 경합을 줄인다.",
+    "options": {
+      "A": "DynamoDB 전환은 관계형 보고서 재설계가 크다.",
+      "B": "단일 EC2 증설은 읽기·쓰기 경합을 분리하지 않는다.",
+      "C": "여러 읽기 복제본으로 보고서를 분산한다.",
+      "D": "백업 인스턴스라는 임의 읽기 주소는 없다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html"
+      }
+    ]
+  },
+  {
+    "id": 835,
+    "summary": "Direct Connect의 public VIF로 S3 공개 서비스 주소에 인터넷 없이 접근할 수 있다.",
+    "options": {
+      "A": "추가 엔드포인트 시간 요금 없이 AWS 공개 주소로 연결한다.",
+      "B": "NAT는 인터넷 게이트웨이 경로를 요구한다.",
+      "C": "사설 주소가 필수라면 가능하지만 엔드포인트 비용이 추가된다.",
+      "D": "온프레미스 네트워크와 VPC 피어링은 불가능하다."
+    },
+    "references": [
+      {
+        "title": "AWS directconnect 공식 문서",
+        "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/WorkingWithVirtualInterfaces.html"
+      }
+    ],
+    "reviewNote": "인터넷 비경유 조건만으로는 S3 사설 주소가 필수가 아니다. public VIF도 전용선을 사용하며 비용이 더 낮으므로 A가 더 타당하다. C는 private VIF와 사설 IP 요구가 추가될 때 적합하다.",
+    "suggestedAnswer": [
+      "A"
+    ]
+  },
+  {
+    "id": 836,
+    "summary": "다중 값 응답과 상태 확인을 결합해 두 리전 중 정상 웹 엔드포인트를 반환한다.",
+    "options": {
+      "A": "단순 라우팅은 레코드별 건강 상태 선택을 제공하지 않는다.",
+      "B": "여러 정상 엔드포인트를 반환한다.",
+      "C": "다른 리전 인스턴스 ID를 같은 대상 그룹에 등록하지 못한다.",
+      "D": "교차 리전 IP 등록도 사설 연결과 별도 구성 전제가 있다."
+    },
+    "references": [
+      {
+        "title": "AWS Route53 공식 문서",
+        "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-multivalue.html"
+      }
+    ]
+  },
+  {
+    "id": 837,
+    "summary": "EFS를 모든 EC2에 마운트하면 여러 AZ에서 같은 대용량 파일을 복사 없이 공유한다.",
+    "options": {
+      "A": "S3 직접 접근은 기존 파일 시스템 사용 방식을 바꾼다.",
+      "B": "EBS는 여러 AZ에 하나의 볼륨을 마운트하지 못한다.",
+      "C": "다중 AZ 공유 파일 시스템을 제공한다.",
+      "D": "인스턴스 스토어는 호스트별 임시 저장소다."
+    },
+    "references": [
+      {
+        "title": "Amazon EFS 개요",
+        "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+      }
+    ]
+  },
+  {
+    "id": 838,
+    "summary": "EBS와 RDS의 KMS 통합 암호화로 앱 디스크와 DB의 저장 데이터를 보호한다.",
+    "options": {
+      "A": "ACM 인증서는 볼륨 암호화 수단이 아니다.",
+      "B": "CloudHSM 직접 통합은 추가 운영이 크다.",
+      "C": "SSL은 전송 암호화이며 볼륨 암호화가 아니다.",
+      "D": "네이티브 저장 암호화 기능을 사용한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html"
+      }
+    ],
+    "reviewNote": "이미 생성된 미암호화 EBS/RDS는 단순 토글이 아니라 암호화 스냅샷 복사·복원 등 전환 절차가 필요하다."
+  },
+  {
+    "id": 839,
+    "summary": "S3 게이트웨이 엔드포인트로 NAT 병목과 인터넷 경로를 함께 제거한다.",
+    "options": {
+      "A": "NAT gateway로 바꿔도 S3 인터넷 경로가 남는다.",
+      "B": "NAT 증설은 병목을 완화할 뿐 사설 경로가 아니다.",
+      "C": "S3 prefix 경로를 엔드포인트로 보낸다.",
+      "D": "TGW만으로 S3 서비스 접근 경로가 생기지 않는다."
+    },
+    "references": [
+      {
+        "title": "S3 게이트웨이 엔드포인트",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+      }
+    ]
+  },
+  {
+    "id": 840,
+    "summary": "Global Accelerator는 일반 TCP 기반 RTMP 업로드를 AWS 글로벌 네트워크로 가속한다.",
+    "options": {
+      "A": "CloudFront는 일반 RTMP 수집 TCP 프록시가 아니다.",
+      "B": "엣지 진입 후 최적 AWS 경로로 전달한다.",
+      "C": "VPN은 글로벌 업로드 가속 서비스가 아니다.",
+      "D": "Elastic IP만으로 장거리 네트워크 경로가 개선되지 않는다."
+    },
+    "references": [
+      {
+        "title": "Global Accelerator 개요",
+        "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+      }
+    ]
+  },
+  {
+    "id": 841,
+    "summary": "일별 스냅샷은 표준 계층에 유지하고 장기 월별 보존본을 EBS Snapshots Archive로 옮긴다.",
+    "options": {
+      "A": "EBS 스냅샷을 Glacier로 직접 복사하지 못한다.",
+      "B": "관리형 아카이브로 장기 저장 단가를 낮춘다.",
+      "C": "표준 계층 장기 보관은 비용이 높을 수 있다.",
+      "D": "직접 API 기반 백업 시스템을 개발해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS ebs 공식 문서",
+        "url": "https://docs.aws.amazon.com/ebs/latest/userguide/snapshot-archive.html"
+      }
+    ],
+    "reviewNote": "아카이브 시 증분 스냅샷은 전체 스냅샷으로 전환된다. 5% 변경률과 전체 스냅샷 크기에 따라 실제 비용을 비교해야 하며 B의 최저 비용은 일률 보장되지 않는다."
+  },
+  {
+    "id": 842,
+    "summary": "AWS Backup의 예약 EFS 백업과 리전 간 복사로 스크립트 없이 원격 복구 지점을 만든다.",
+    "options": {
+      "A": "별도 솔루션 배포보다 기본 Backup 통합이 단순하다.",
+      "B": "파일 복사 스크립트와 S3 경로를 운영해야 한다.",
+      "C": "rsync·피어링 운영이 추가된다.",
+      "D": "EFS 백업 계획에 교차 리전 복사를 설정한다."
+    },
+    "references": [
+      {
+        "title": "AWS aws-backup 공식 문서",
+        "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/recov-point-create-a-cross-region-copy.html"
+      }
+    ]
+  },
+  {
+    "id": 843,
+    "summary": "다중 AZ ASG와 ALB로 앱을 확장하고 RDS Multi-AZ로 DB 장애 조치를 관리한다.",
+    "options": {
+      "A": "고정 두 EC2는 자동 확장이 없다.",
+      "B": "자가 SQL 복제와 리전 간 운영이 필요하다.",
+      "C": "관리형 DB 가용성과 앱 탄력성을 결합한다.",
+      "D": "EC2 DB 세 대의 복제를 직접 운영해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+      }
+    ]
+  },
+  {
+    "id": 844,
+    "summary": "S3 File Gateway의 SMB 공유와 로컬 캐시로 기존 앱을 유지하며 파일을 AWS에 저장한다.",
+    "options": {
+      "A": "EFS는 SMB 공유를 직접 제공하지 않는다.",
+      "B": "원격 FSx 직접 접근은 로컬 캐시 지연 이점이 없다.",
+      "C": "Snowball은 지속적 일일 복사 게이트웨이가 아니다.",
+      "D": "SMB와 로컬 저지연 캐시를 제공한다."
+    },
+    "references": [
+      {
+        "title": "AWS storagegateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/storagegateway/latest/ug/WhatIsStorageGateway.html"
+      }
+    ]
+  },
+  {
+    "id": 845,
+    "summary": "하루 한 번 Lambda가 작은 테이블을 검사하고 SNS 이메일을 보내면 상시 서버가 필요 없다.",
+    "options": {
+      "A": "매일 짧은 작업에 EC2 상시 운영이 불필요하다.",
+      "B": "SQS는 이메일 발송 서비스가 아니다.",
+      "C": "예약 함수와 이메일 구독을 결합한다.",
+      "D": "SQS만으로 직원에게 이메일이 전달되지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/services-cloudwatchevents.html"
+      }
+    ]
+  },
+  {
+    "id": 846,
+    "summary": "시각이 알려진 연례 급증은 예약 작업으로 트래픽 전에 용량을 확보한다.",
+    "options": {
+      "A": "90% CPU 경보는 부하 발생 뒤 반응한다.",
+      "B": "피크 전에 목표 용량을 자동 변경한다.",
+      "C": "수동 용량 증가는 반복 운영이 필요하다.",
+      "D": "시작 알림은 용량을 미리 늘리지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html"
+      }
+    ]
+  },
+  {
+    "id": 847,
+    "summary": "Secrets Manager의 RDS 회전 통합으로 비밀번호 변경과 저장값 갱신을 자동화한다.",
+    "options": {
+      "A": "지원 DB용 관리형 회전 절차를 사용한다.",
+      "B": "Parameter Store에는 동일한 자동 암호 회전 기능이 없다.",
+      "C": "사용자 지정 회전 코드를 운영해야 한다.",
+      "D": "KMS 키 회전은 DB 비밀번호 회전이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS secretsmanager 공식 문서",
+        "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html"
+      }
+    ]
+  },
+  {
+    "id": 848,
+    "summary": "RDS Custom for Oracle은 관리형 운영과 필요한 OS·DB 권한 조정을 함께 제공한다.",
+    "options": {
+      "A": "일반 RDS는 필요한 고권한 접근을 제한한다.",
+      "B": "BYOL과 DB 사용자 지정을 지원한다.",
+      "C": "DynamoDB는 Oracle 플러그인을 실행하지 못한다.",
+      "D": "엔진·앱 재작성 비용이 크다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-custom.html"
+      }
+    ]
+  },
+  {
+    "id": 849,
+    "summary": "AWS Backup은 EC2·RDS·DynamoDB 백업 정책과 상태를 중앙 관리한다.",
+    "options": {
+      "A": "타사 소프트웨어 운영이 추가된다.",
+      "B": "네이티브 서비스 백업을 계획으로 통합한다.",
+      "C": "Config는 통합 백업 실행 서비스가 아니다.",
+      "D": "State Manager로 백업 오케스트레이션을 직접 만들어야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS aws-backup 공식 문서",
+        "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html"
+      }
+    ]
+  },
+  {
+    "id": 850,
+    "summary": "IT 자원과 연결을 그래프로 저장하면 여러 관계를 따라 보안 위험 경로를 탐색하기 쉽다.",
+    "options": {
+      "A": "관계가 깊어지면 SQL JOIN 관리가 복잡하다.",
+      "B": "정점·간선 관계를 SPARQL로 탐색한다.",
+      "C": "분석 창고는 관계 순회에 최적화되지 않았다.",
+      "D": "키 기반 테이블은 다단계 관계 조회 설계가 복잡하다."
+    },
+    "references": [
+      {
+        "title": "AWS neptune 공식 문서",
+        "url": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+      }
+    ]
+  },
+  {
+    "id": 851,
+    "summary": "Service Catalog로 개발 DB 생성을 표준화하고 Serverless로 낮고 가변적인 수요에 대응한다.",
+    "options": {
+      "A": "고정 인스턴스와 시차별 시작 일정을 관리해야 한다.",
+      "B": "생성 제한만 있고 유휴 컴퓨팅 자동 축소가 없다.",
+      "C": "표준화된 주문형 DB와 탄력 용량을 결합한다.",
+      "D": "유휴 DB 종료는 개발 데이터를 잃을 위험이 있다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html"
+      }
+    ],
+    "reviewNote": "Serverless v2는 지원 버전과 최소 용량 0 설정에서만 자동 일시 중지된다. 기본 용량 설정만으로 모든 유휴 비용이 사라지지는 않는다."
+  },
+  {
+    "id": 852,
+    "summary": "EFS 공유 경로를 모든 앱 인스턴스가 직접 사용하면 최신 웹 자산을 복사 없이 읽는다.",
+    "options": {
+      "A": "최신 인스턴스 중심 동기화는 다른 쓰기와 경합한다.",
+      "B": "공통 파일 저장소에 변경을 즉시 반영한다.",
+      "C": "시간별 동기화는 최대 한 시간 지연된다.",
+      "D": "스냅샷은 생성 이후 변경을 반영하지 않는다."
+    },
+    "references": [
+      {
+        "title": "Amazon EFS 개요",
+        "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+      }
+    ]
+  },
+  {
+    "id": 853,
+    "summary": "GuardDuty 탐지 결과를 EventBridge로 받아 Lambda가 WAF 차단 규칙을 갱신한다.",
+    "options": {
+      "A": "위협 탐지와 자동 대응 경로를 구성한다.",
+      "B": "Firewall Manager는 정책 중앙 관리용이다.",
+      "C": "Inspector는 주로 취약점 스캔용이다.",
+      "D": "Macie는 S3 민감 데이터 탐지용이다."
+    },
+    "references": [
+      {
+        "title": "AWS guardduty 공식 문서",
+        "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html"
+      }
+    ]
+  },
+  {
+    "id": 854,
+    "summary": "EC2 역할의 임시 신원으로 DB 인증 토큰을 생성하면 정적 비밀번호 관리가 필요 없다.",
+    "options": {
+      "A": "템플릿 매개변수로 비밀번호를 계속 관리해야 한다.",
+      "B": "안전한 저장소여도 비밀번호 회전 운영이 남는다.",
+      "C": "IAM 역할과 IAM DB 인증을 연결한다.",
+      "D": "EC2에는 IAM 사용자를 직접 연결하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"
+      }
+    ]
+  },
+  {
+    "id": 855,
+    "summary": "CloudFront 사용자 지정 도메인에는 us-east-1의 ACM 공개 인증서를 사용한다.",
+    "options": {
+      "A": "사설 인증서는 일반 브라우저 신뢰와 무료 조건에 맞지 않는다.",
+      "B": "사설 인증서이며 리전도 틀리다.",
+      "C": "통합 서비스용 비내보내기 공개 인증서를 사용한다.",
+      "D": "CloudFront 인증서는 us-east-1에서 요청해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonCloudFront 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html"
+      }
+    ]
+  },
+  {
+    "id": 856,
+    "summary": "객체 하나의 presigned URL을 발급하면 별도 사용자 없이 제한된 기간 동안 다운로드를 허용한다.",
+    "options": {
+      "A": "보고서 외 데이터까지 공개할 위험이 있다.",
+      "B": "버킷 전체 공개는 최소 권한에 어긋난다.",
+      "C": "사용자·키 생성과 회수 운영이 추가된다.",
+      "D": "해당 보고서만 시간 제한으로 공유한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html"
+      }
+    ],
+    "reviewNote": "7일 URL은 CLI/SDK와 유효한 장기 자격 증명 조건이다. 임시 자격 증명으로 서명하면 자격 증명 만료 시 URL도 먼저 만료된다."
+  },
+  {
+    "id": 857,
+    "summary": "클러스터 배치 그룹은 같은 AZ에서 인스턴스를 가까이 배치해 긴밀한 통신을 최적화한다.",
+    "options": {
+      "A": "노드 간 낮은 지연과 높은 처리량에 적합하다.",
+      "B": "전용 테넌시는 인스턴스 간 근접성을 보장하지 않는다.",
+      "C": "Spot은 구매 방식이며 네트워크 배치가 아니다.",
+      "D": "용량 예약은 배치 최적화를 보장하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-strategies.html"
+      }
+    ]
+  },
+  {
+    "id": 858,
+    "summary": "각 데이터센터에서 서로 다른 두 DX 위치·장비로 연결하면 사이트와 경로 장애를 모두 분산한다.",
+    "options": {
+      "A": "보조 데이터센터의 독립 경로가 없다.",
+      "B": "하나의 위치·장비 장애로 둘 다 끊어진다.",
+      "C": "사이트·DX 위치·장비를 모두 이중화한다.",
+      "D": "한 DX 위치 장애를 견디지 못한다."
+    },
+    "references": [
+      {
+        "title": "AWS directconnect 공식 문서",
+        "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/resiliency_toolkit.html"
+      }
+    ],
+    "reviewNote": "Direct Connect는 기본적으로 종단 간 암호화를 제공하지 않는다. 보안 요구가 암호화를 뜻하면 MACsec 또는 IPsec을 별도로 구성해야 한다."
+  },
+  {
+    "id": 859,
+    "summary": "상시 고사용 RDS는 예약 인스턴스 최적화 검사로 약정 할인 기회를 찾는다.",
+    "options": {
+      "A": "조직 집계에서 RI 구매 권고를 확인한다.",
+      "B": "계정별 조회보다 조직 집계가 전체 구매 판단에 유리하다.",
+      "C": "높은 상시 사용에 맞는 RI 할인 권고다.",
+      "D": "이미 높은 사용량이므로 유휴 검사와 다르다.",
+      "E": "Compute Optimizer는 Oracle RDS RI 구매 검사 대체재가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS awssupport 공식 문서",
+        "url": "https://docs.aws.amazon.com/awssupport/latest/user/cost-optimization-checks.html"
+      }
+    ],
+    "reviewNote": "조직 단위 Trusted Advisor 조회와 예약 구매 권고의 집계 범위는 지원 플랜 및 기능별로 다르므로 관리 계정의 조직 보기 설정을 확인해야 한다."
+  },
+  {
+    "id": 860,
+    "summary": "무료 S3 게이트웨이 엔드포인트로 NAT 처리 요금과 교차 AZ NAT 경로를 제거한다.",
+    "options": {
+      "A": "S3 전용 라우트로 직접 접근한다.",
+      "B": "NAT 데이터 처리와 교차 AZ 비용이 생긴다.",
+      "C": "인터페이스 엔드포인트는 시간·데이터 처리 요금이 든다.",
+      "D": "AZ별 NAT도 S3 전송 처리 요금이 남는다."
+    },
+    "references": [
+      {
+        "title": "S3 게이트웨이 엔드포인트",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+      }
+    ]
+  },
+  {
+    "id": 861,
+    "summary": "지속적 대량 쓰기는 Provisioned IOPS로 예측 가능한 DB 디스크 성능을 확보한다.",
+    "options": {
+      "A": "쓰기 지표를 관찰하며 IOPS를 조절한다.",
+      "B": "읽기 캐시는 대량 쓰기 I/O를 해결하지 않는다.",
+      "C": "DocumentDB는 MySQL 호환 DB가 아니다.",
+      "D": "EFS는 MySQL 관리형 DB가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html"
+      }
+    ]
+  },
+  {
+    "id": 862,
+    "summary": "클라이언트에서 암호화한 뒤 업로드하면 AWS 저장 경로에 암호문만 전송된다.",
+    "options": {
+      "A": "버킷에 S3 관리 키 기반 클라이언트 암호화를 설정하지 못한다.",
+      "B": "SSE는 AWS 도착 후 암호화한다.",
+      "C": "이중 SSE도 서버 도착 후 암호화한다.",
+      "D": "앱에서 KMS 보호 데이터 키로 먼저 암호화한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html"
+      }
+    ]
+  },
+  {
+    "id": 863,
+    "summary": "RDS 자동 백업 보존을 30일로 바꾸면 일일 백업과 만료 삭제를 관리형으로 처리한다.",
+    "options": {
+      "A": "백업 생성·만료용 코드를 운영해야 한다.",
+      "B": "기본 백업 기능의 보존 기간만 조정한다.",
+      "C": "단순 설정 변경에 Maintenance Windows가 불필요하다.",
+      "D": "매일 수동 스냅샷과 삭제를 관리해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html"
+      }
+    ]
+  },
+  {
+    "id": 864,
+    "summary": "Aurora 복제본으로 읽기를 분리하면 작성 노드의 쓰기 리소스를 확보한다.",
+    "options": {
+      "A": "두 번째 클러스터와 복사 파이프라인이 필요하다.",
+      "B": "DAX는 Aurora를 지원하지 않는다.",
+      "C": "읽기는 복제본, 쓰기는 클러스터 엔드포인트로 보낸다.",
+      "D": "Redshift 적재와 별도 분석 인프라가 과하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html"
+      }
+    ]
+  },
+  {
+    "id": 865,
+    "summary": "Firehose로 스트림을 적재하고 Fargate로 30분 처리 작업을 실행하면 서버 운영이 필요 없다.",
+    "options": {
+      "A": "관리형 스트림 적재를 제공한다.",
+      "B": "단일 Lambda 실행은 15분 제한이 있다.",
+      "C": "DMS는 일반 실시간 스트림 수집기가 아니다.",
+      "D": "EC2는 서버리스 조건에 맞지 않는다.",
+      "E": "시간 제한 없는 관리형 컨테이너 실행을 제공한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+      }
+    ],
+    "reviewNote": "Step Functions로 작업을 여러 Lambda로 분해하면 B도 가능하지만 기존 30분 작업을 그대로 실행하는 조건에서는 Fargate가 직접적이다."
+  },
+  {
+    "id": 866,
+    "summary": "S3 게이트웨이 엔드포인트를 사용하면 VPC에서 S3로 인터넷 없이 쓸 수 있다.",
+    "options": {
+      "A": "라우트 테이블에 S3 엔드포인트 경로를 추가한다.",
+      "B": "S3 버킷은 내부 NLB 대상으로 등록하지 못한다.",
+      "C": "S3 버킷을 고객 VPC 안에 배치하지 않는다.",
+      "D": "DX는 VPC와 S3 사이 전용선 서비스가 아니다."
+    },
+    "references": [
+      {
+        "title": "S3 게이트웨이 엔드포인트",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+      }
+    ]
+  },
+  {
+    "id": 867,
+    "summary": "Compute Optimizer가 EBS 사용 지표를 분석해 볼륨 권고와 월별 절약 예상치를 제공한다.",
+    "options": {
+      "A": "Inspector는 취약점 스캐너다.",
+      "B": "Systems Manager는 EBS 비용 권고 도구가 아니다.",
+      "C": "CloudWatch 원시 지표만으로 비용 권고가 나오지 않는다.",
+      "D": "사용량 기반 EBS 구성과 절약액을 제안한다."
+    },
+    "references": [
+      {
+        "title": "AWS compute-optimizer 공식 문서",
+        "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/ebs-volume-recommendations.html"
+      }
+    ]
+  },
+  {
+    "id": 868,
+    "summary": "Storage Lens의 데이터 보호 지표로 여러 리전 버킷의 버전 관리 상태를 집계한다.",
+    "options": {
+      "B": "조직·계정 단위에서 버전 관리 미설정 버킷을 식별한다.",
+      "C": "Access Analyzer는 주로 접근 정책을 분석한다.",
+      "D": "다중 리전 액세스 포인트는 요청 라우팅용이다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html"
+      }
+    ],
+    "reviewNote": "원문 선택지 A가 누락됐다. 제시된 B·C·D 중 Storage Lens가 버전 관리 지표를 제공한다."
+  },
+  {
+    "id": 869,
+    "summary": "FIFO 큐로 주문 급증을 버퍼링하고 중복 제거를 활용한다. 실제 주문 처리는 멱등하게 구현해야 한다.",
+    "options": {
+      "A": "Lambda와 FIFO로 탄력 처리와 순서를 결합한다.",
+      "B": "일반 SNS는 중복 전달될 수 있다.",
+      "C": "AppFlow는 주문 처리 메시지 큐가 아니다.",
+      "D": "X-Ray와 CloudWatch는 주문 버퍼가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html"
+      }
+    ],
+    "reviewNote": "FIFO는 중복 전송 제거를 제공하지만 Lambda 소비자는 재실행될 수 있다. 주문 ID에 대한 조건부 쓰기 등 멱등성이 필요하다."
+  },
+  {
+    "id": 870,
+    "summary": "접근 대상인 Production에 신뢰 역할을 만들고 개발자에게 AssumeRole 권한을 단계적으로 허용한다.",
+    "options": {
+      "A": "정책 문서만으로 교차 계정 신뢰가 생성되지 않는다.",
+      "B": "대상 계정에 위임 역할이 필요하다.",
+      "C": "Production 역할의 신뢰와 개발자 정책을 결합한다.",
+      "D": "IAM 그룹은 신뢰 정책 Principal이 될 수 없다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html"
+      }
+    ]
+  },
+  {
+    "id": 871,
+    "summary": "Cognito로 인증하고 Lambda@Edge에서 토큰을 검증하면 글로벌 콘텐츠 접근을 엣지에서 통제한다.",
+    "options": {
+      "A": "서버리스 인증과 엣지 권한 검사를 결합한다.",
+      "B": "AD·리전 ALB는 요구된 서버리스 글로벌 배포와 다르다.",
+      "C": "Transfer Acceleration은 웹 콘텐츠 배포 서비스가 아니다.",
+      "D": "AD와 Beanstalk 운영이 추가된다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonCloudFront 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html"
+      }
+    ]
+  },
+  {
+    "id": 872,
+    "summary": "SCP를 조직 계정에 적용하면 사용자별 정책 변경 없이 금지 인스턴스 유형을 중앙 차단한다.",
+    "options": {
+      "A": "사용자마다 정책을 배포·갱신해야 한다.",
+      "B": "RAM은 인스턴스 유형 금지 정책이 아니다.",
+      "C": "개발자가 다른 신원을 사용하면 역할 제한을 우회할 수 있다.",
+      "D": "계정 전체에 허용 권한의 상한을 적용한다."
+    },
+    "references": [
+      {
+        "title": "서비스 제어 정책",
+        "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+      }
+    ]
+  },
+  {
+    "id": 873,
+    "summary": "Patch Manager로 OS 패치를 자동화하고 Inspector로 인스턴스 취약점을 지속 평가한다.",
+    "options": {
+      "A": "Security Hub는 자체 취약점 스캔 엔진이 아니다.",
+      "B": "패치 운영과 CVE 평가를 결합한다.",
+      "C": "Shield는 DDoS 방어이며 Config는 패치 설치기가 아니다.",
+      "D": "GuardDuty 위협 탐지는 OS 패치 평가와 다르다."
+    },
+    "references": [
+      {
+        "title": "AWS inspector 공식 문서",
+        "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+      }
+    ]
+  },
+  {
+    "id": 874,
+    "summary": "DR 리전의 준비된 앱과 DynamoDB 글로벌 테이블에 DNS 장애 조치를 연결하면 복구 시작 지연을 줄인다.",
+    "options": {
+      "A": "컴퓨팅과 데이터가 장애 전에 준비된다.",
+      "B": "장애 후 모든 자원을 생성하면 시간이 걸린다.",
+      "C": "데이터는 준비되지만 앱 프로비저닝을 기다린다.",
+      "D": "10분 평가 기간이 불필요하게 전환을 지연한다."
+    },
+    "references": [
+      {
+        "title": "AWS amazondynamodb 공식 문서",
+        "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html"
+      }
+    ]
+  },
+  {
+    "id": 875,
+    "summary": "S3 게이트웨이 엔드포인트는 인터넷 없이 S3에 접근하며 별도 엔드포인트 요금이 없다.",
+    "options": {
+      "A": "NAT는 공개 서비스 경로와 처리 요금이 남는다.",
+      "B": "게이트웨이 어플라이언스 운영이 불필요하다.",
+      "C": "인터페이스 엔드포인트는 시간·처리 요금이 있다.",
+      "D": "프라이빗 서브넷의 S3 경로를 직접 제공한다."
+    },
+    "references": [
+      {
+        "title": "S3 게이트웨이 엔드포인트",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+      }
+    ]
+  },
+  {
+    "id": 876,
+    "summary": "전송 계층 앱은 NLB로 분산하고 다중 AZ ASG로 인스턴스 장애와 AZ 장애에 대응한다.",
+    "options": {
+      "A": "DNS만으로 세밀한 연결 분산과 교체 관리를 제공하지 않는다.",
+      "B": "TCP·UDP 계층 4 트래픽을 분산한다.",
+      "C": "HTTP용 ALB를 추가할 근거가 없다.",
+      "D": "AZ 분산과 비정상 인스턴스 교체를 자동화한다.",
+      "E": "재시작만으로 AZ 장애에 대응하지 못한다."
+    },
+    "references": [
+      {
+        "title": "Network Load Balancer",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 877,
+    "summary": "방문이 적은 연락 양식은 API Gateway·Lambda·SNS로 요청 처리와 이메일 통지를 서버리스화한다.",
+    "options": {
+      "A": "상시 컨테이너는 저빈도 사용에 불필요한 비용이다.",
+      "B": "양식 제출 시에만 함수를 실행하고 메일을 보낸다.",
+      "C": "SQS는 이메일을 직접 보내지 않는다.",
+      "D": "Windows 서버 상시 운영이 과하다."
+    },
+    "references": [
+      {
+        "title": "AWS Lambda 개요",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 878,
+    "summary": "루트 이메일은 중앙 관리 별칭으로 보호하고 결제·운영·보안 대체 연락처를 팀 배포 목록으로 나눈다.",
+    "options": {
+      "A": "모든 계정에 같은 이메일 주소를 등록할 수 없다.",
+      "B": "부서별 루트 접근보다 중앙 루트 관리가 안전하다.",
+      "C": "개인 이메일은 퇴사·부재에 취약하다.",
+      "D": "중앙 루트 관리와 유형별 연락처를 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS accounts 공식 문서",
+        "url": "https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact-alternate.html"
+      }
+    ]
+  },
+  {
+    "id": 879,
+    "summary": "구매 요청을 SQS로 버퍼링해 처리 속도를 분리하고 캐시로 반복 DB 읽기를 줄인다.",
+    "options": {
+      "A": "즉시 반복 재시도는 DB 과부하를 키울 수 있다.",
+      "B": "반복 조회를 캐시해 DB 여유를 확보한다.",
+      "C": "큐 수요에 따라 작업자를 늘려 급증을 흡수한다.",
+      "D": "무한 재시도보다 큐와 백오프 관리가 필요하다.",
+      "E": "사용량 제한은 처리 확장 자체가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+      }
+    ],
+    "reviewNote": "B 캐시는 반복 읽기 부하를 줄이지만 구매 쓰기 병목 자체를 해결하지 않는다. C의 큐가 핵심이며 Proxy·백오프·멱등성 검토가 추가로 필요하다."
+  },
+  {
+    "id": 880,
+    "summary": "Athena로 CUR의 NAT 비용을 날짜별 집계하고 QuickSight로 공유 가능한 대시보드를 만든다.",
+    "options": {
+      "A": "DataSync는 SQL 질의 엔진이 아니다.",
+      "B": "S3 비용 데이터 SQL 분석과 시각화를 결합한다.",
+      "C": "CloudWatch와 DataSync는 CUR 분석 경로가 아니다.",
+      "D": "QuickSight가 비용 보고 테이블 시각화에 직접적이다."
+    },
+    "references": [
+      {
+        "title": "AWS cur 공식 문서",
+        "url": "https://docs.aws.amazon.com/cur/latest/userguide/cur-query-athena.html"
+      }
+    ]
+  },
+  {
+    "id": 881,
+    "summary": "짧은 기본 TTL을 사용하거나 장기 캐시와 배포 시 무효화를 결합해 캐시 효율과 최신성을 맞춘다.",
+    "options": {
+      "A": "헤더가 없는 객체를 2분 동안 캐시한다.",
+      "B": "S3 버킷에는 기본 TTL 속성이 없다.",
+      "C": "private 지시자는 공유 캐시 활용을 막는다.",
+      "D": "viewer response 수정은 이미 결정된 엣지 TTL을 바꾸지 않는다.",
+      "E": "변경 파일을 배포 시 무효화해 오래된 캐시를 제거한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonCloudFront 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html"
+      }
+    ],
+    "reviewNote": "max-age가 있으면 기본 TTL보다 우선한다. E는 배포 시 반드시 변경 객체를 무효화해야 하며 사용자 브라우저 캐시의 24시간 max-age는 CloudFront 무효화로 제거되지 않는다."
+  },
+  {
+    "id": 882,
+    "summary": "Compute Savings Plans는 EC2와 Lambda 모두를 포함하고 VPC 연결로 사설 EC2를 직접 호출한다.",
+    "options": {
+      "A": "EC2 전용 약정은 Lambda를 포함하지 않는다.",
+      "B": "공개 서브넷 선택은 Lambda 할인 범위를 넓히지 않는다.",
+      "C": "공통 할인 약정과 사설 네트워크 연결을 결합한다.",
+      "D": "기본 Lambda 네트워크에는 해당 VPC 사설 경로가 없다."
+    },
+    "references": [
+      {
+        "title": "AWS savingsplans 공식 문서",
+        "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html"
+      }
+    ]
+  },
+  {
+    "id": 883,
+    "summary": "계정별 AWS Budgets 경보와 예산 작업으로 임계 지출 시 개발자 권한을 제한한다.",
+    "options": {
+      "A": "태그 누락 자원 삭제는 예산 한도 통제가 아니다.",
+      "B": "실제·예상 비용 알림과 자동 권한 제한을 제공한다.",
+      "C": "모니터링만으로 추가 자원 생성을 막지 않는다.",
+      "D": "계정마다 자체 시작·중지 함수를 운영해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS cost-management 공식 문서",
+        "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-controls.html"
+      }
+    ],
+    "reviewNote": "예산 평가는 실시간 하드 한도가 아니다. DenyAll 적용 이후에도 기존 자원 요금과 반영 지연으로 예산을 넘을 수 있다."
+  },
+  {
+    "id": 884,
+    "summary": "각 계층은 바로 앞 계층의 보안 그룹만 인바운드 소스로 허용해 불필요한 접근을 줄인다.",
+    "options": {
+      "A": "웹은 ALB에서 오는 HTTPS만 받는다.",
+      "B": "전체 인터넷 송신은 계층 간 최소 허용이 아니다.",
+      "C": "DB는 앱 계층에서 오는 SQL Server 연결만 받는다.",
+      "D": "응답은 상태 기반 허용이므로 웹으로 새 DB 연결이 불필요하다.",
+      "E": "앱은 웹 계층의 HTTPS만 받는다.",
+      "F": "DB 연결 대상이 웹 계층으로 잘못 지정됐다."
+    },
+    "references": [
+      {
+        "title": "AWS vpc 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpc/latest/userguide/security-group-rules.html"
+      }
+    ]
+  },
+  {
+    "id": 885,
+    "summary": "Compute Savings Plans로 EC2·Fargate·Lambda를 묶고 SageMaker에는 전용 Savings Plans를 사용한다.",
+    "options": {
+      "A": "EC2 전용 약정은 SageMaker를 포함하지 않는다.",
+      "B": "Compute 약정은 SageMaker를 포함하지 않는다.",
+      "C": "SageMaker 사용량을 전용 계획으로 할인한다.",
+      "D": "세 컴퓨팅 서비스를 하나의 약정으로 커버한다.",
+      "E": "EC2 전용 약정은 Fargate를 포함하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS savingsplans 공식 문서",
+        "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html"
+      }
+    ]
+  },
+  {
+    "id": 886,
+    "summary": "SCT·DMS로 데이터와 스키마를 이전하고 Babelfish로 SQL Server 프로토콜·T-SQL 변경을 줄인다.",
+    "options": {
+      "A": "전체 쿼리 재작성보다 Babelfish가 변경을 줄인다.",
+      "B": "기존 SQL Server 클라이언트 호환 계층을 제공한다.",
+      "C": "스키마 변환과 데이터 이전을 수행한다.",
+      "D": "RDS Proxy는 SQL 방언을 변환하지 않는다.",
+      "E": "DMS는 앱 쿼리 재작성 도구가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/babelfish.html"
+      }
+    ]
+  },
+  {
+    "id": 887,
+    "summary": "계정·리전별 EBS 기본 암호화를 켜면 새 볼륨과 스냅샷 복사가 암호화된다.",
+    "options": {
+      "A": "새 EBS 볼륨의 암호화를 기본 강제한다.",
+      "B": "Config는 사후 검사이며 생성 차단이 아니다.",
+      "C": "생성 후 복사는 암호화 기본값 요구와 다르다.",
+      "D": "Migration Hub 키 설정은 모든 EBS 생성에 적용되지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS ebs 공식 문서",
+        "url": "https://docs.aws.amazon.com/ebs/latest/userguide/encryption-by-default.html"
+      }
+    ]
+  },
+  {
+    "id": 888,
+    "summary": "Kinesis 온디맨드가 변동 수집량에 맞춰 확장하고 Lambda가 스트림을 처리한다.",
+    "options": {
+      "A": "자동 스트림 용량과 이벤트 처리를 결합한다.",
+      "B": "Firehose·Glue는 즉시 스트림 처리보다 배치 적재에 가깝다.",
+      "C": "Video Streams는 클릭 이벤트에 맞지 않는다.",
+      "D": "Flink는 분석 처리기이며 기본 이벤트 수집 저장소와 다르다."
+    },
+    "references": [
+      {
+        "title": "AWS streams 공식 문서",
+        "url": "https://docs.aws.amazon.com/streams/latest/dev/how-do-i-size-a-stream.html"
+      }
+    ]
+  },
+  {
+    "id": 889,
+    "summary": "Storage Lens는 여러 리전 버킷의 버전 관리 등 데이터 보호 상태를 집계한다.",
+    "options": {
+      "A": "CloudTrail 이벤트만으로 모든 현재 설정을 식별하지 못한다.",
+      "B": "버전 관리 미설정 버킷 지표를 확인한다.",
+      "C": "Access Analyzer는 외부 접근 분석에 초점이 있다.",
+      "D": "MRAP는 버킷 설정 감사 도구가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html"
+      }
+    ]
+  },
+  {
+    "id": 890,
+    "summary": "30일 이후 드문 접근에는 Glacier Instant Retrieval로 즉시 읽기와 장기 저비용을 결합한다.",
+    "options": {
+      "A": "4년 보존 뒤 삭제하고 그전에는 즉시 접근한다.",
+      "B": "재생성 불가 데이터에 단일 AZ는 위험하다.",
+      "C": "즉시 접근은 되지만 극저빈도 저장료가 더 높다.",
+      "D": "4년 후에도 삭제하지 않아 보존 비용이 계속 든다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+      }
+    ]
+  },
+  {
+    "id": 891,
+    "summary": "MRAP 단일 글로벌 주소와 양방향 데이터 복제로 가까운 리전 접근과 장애 전환을 단순화한다.",
+    "options": {
+      "A": "애플리케이션이 가까운 엔드포인트를 직접 판단해야 한다.",
+      "B": "리전마다 글로벌 주소를 만드는 개념이 아니다.",
+      "C": "지역 선택과 장애 전환을 앱이 직접 관리한다.",
+      "D": "글로벌 라우팅과 리전 간 데이터 동기화를 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPoints.html"
+      }
+    ]
+  },
+  {
+    "id": 892,
+    "summary": "단일 인스턴스 제약이 있는 레거시는 ASG 용량을 1로 유지해 장애 인스턴스를 자동 교체한다.",
+    "options": {
+      "A": "AMI로 교체해 단일 실행 구조를 유지한다.",
+      "B": "백업 복원은 장애마다 복구 시간이 길다.",
+      "C": "동시 다중 실행이 가능한지 확인되지 않았다.",
+      "D": "앱 분해는 설계 변경 금지 조건을 어긴다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html"
+      }
+    ],
+    "reviewNote": "원문은 단일 인스턴스만 가능하다고 명시하지 않았다. A는 자동 복구지만 동시 내결함성은 없고 C는 앱이 다중 실행 가능할 때 더 높은 가용성을 제공하므로 조건이 부족하다."
+  },
+  {
+    "id": 893,
+    "summary": "Control Tower로 가드레일 있는 계정을 생성하고 RAM 서브넷 공유로 네트워크를 중앙 운영한다.",
+    "options": {
+      "A": "계정 표준화와 공유 VPC를 결합한다.",
+      "B": "Organizations만으로 Control Tower 가드레일이 배포되지 않는다.",
+      "C": "계정마다 VPC·TGW 연결을 관리해야 한다.",
+      "D": "계정 가드레일과 공유 네트워크 자동화가 부족하다."
+    },
+    "references": [
+      {
+        "title": "AWS ram 공식 문서",
+        "url": "https://docs.aws.amazon.com/ram/latest/userguide/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 894,
+    "summary": "정적 사이트는 S3에 저장하고 CloudFront에서 캐시하면 EC2·ALB 상시 비용을 제거한다.",
+    "options": {
+      "A": "관리형 저장·전송으로 정적 사이트를 제공한다.",
+      "B": "ElastiCache는 S3 정적 웹 배포 계층이 아니다.",
+      "C": "Amplify 앞에 ALB를 추가할 이유가 없다.",
+      "D": "EC2 캐시는 불필요한 서버 운영을 남긴다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html"
+      }
+    ]
+  },
+  {
+    "id": 895,
+    "summary": "FSx for Windows File Server가 관리형 SMB 파일 공유를 제공한다.",
+    "options": {
+      "A": "Volume Gateway는 iSCSI 블록 인터페이스다.",
+      "B": "Tape Gateway는 백업 테이프 인터페이스다.",
+      "C": "Windows 서버 패치·복제를 직접 운영해야 한다.",
+      "D": "서버 관리 없이 SMB 공유를 사용한다."
+    },
+    "references": [
+      {
+        "title": "AWS fsx 공식 문서",
+        "url": "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 896,
+    "summary": "Aurora Global Database는 저지연 리전 간 복제와 관리형 전환으로 낮은 RPO·RTO를 지원한다.",
+    "options": {
+      "A": "일반 리전 간 복제본은 전환 절차 관리가 더 필요하다.",
+      "B": "리전 간 복제와 전환을 일관되게 관리한다.",
+      "C": "복제 설정과 전환을 직접 관리해야 한다.",
+      "D": "DMS 이중 클러스터 운영이 추가된다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html"
+      }
+    ],
+    "reviewNote": "계획된 switchover는 무손실 전환이지만 리전 장애 시에는 global database failover를 사용한다. 실제 RPO·RTO는 복제 지연과 앱 전환을 함께 검증해야 한다."
+  },
+  {
+    "id": 897,
+    "summary": "1시간 작업은 일반 Fargate 태스크로 실행하고 EventBridge Scheduler로 주간 예약한다.",
+    "options": {
+      "A": "Lambda 시간 제한 없이 관리형 컨테이너를 실행한다.",
+      "B": "15분 최대 실행 시간을 초과한다.",
+      "C": "Spot은 중단 불허 조건과 충돌한다.",
+      "D": "DataSync는 임의 분석 코드를 실행하는 엔진이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS scheduler 공식 문서",
+        "url": "https://docs.aws.amazon.com/scheduler/latest/UserGuide/managing-targets-templated.html"
+      }
+    ]
+  },
+  {
+    "id": 898,
+    "summary": "Security Lake는 AWS 보안 데이터를 표준 형식으로 중앙 S3 데이터 레이크에 수집한다.",
+    "options": {
+      "A": "수집·정규화 파이프라인을 직접 설계해야 한다.",
+      "B": "수집 함수와 CSV 형식을 직접 유지해야 한다.",
+      "C": "관리형 보안 데이터 집계와 정규화를 제공한다.",
+      "D": "DMS와 관계형 DB는 보안 로그 레이크에 부적합하다."
+    },
+    "references": [
+      {
+        "title": "AWS security-lake 공식 문서",
+        "url": "https://docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html"
+      }
+    ]
+  },
+  {
+    "id": 899,
+    "summary": "TGW는 여러 VPC 간 전이 라우팅을 중앙화해 100개 이상 네트워크 연결을 단순화한다.",
+    "options": {
+      "A": "소프트웨어 VPN 터널 운영이 급증한다.",
+      "B": "피어링은 공유 VPC를 통한 전이를 지원하지 않는다.",
+      "C": "DX는 VPC 간 연결 서비스가 아니다.",
+      "D": "허브 연결과 경로 테이블로 다수 VPC를 통합한다."
+    },
+    "references": [
+      {
+        "title": "AWS vpc 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html"
+      }
+    ]
+  },
+  {
+    "id": 900,
+    "summary": "사내는 ECS Anywhere 외부 인스턴스, 클라우드는 Fargate로 관리하고 HTTP는 ALB로 분산한다.",
+    "options": {
+      "A": "같은 ECS 체계로 사내·클라우드를 관리한다.",
+      "B": "HTTP 계층 라우팅에 적합하다.",
+      "C": "가능하지만 HTTP 계층 기능은 ALB가 더 직접적이다.",
+      "D": "Fargate는 사내 서버에서 실행하지 못한다.",
+      "E": "ECS Anywhere는 external 시작 유형을 사용한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-anywhere.html"
+      }
+    ]
+  },
+  {
+    "id": 901,
+    "summary": "RDS SQL Server Multi-AZ와 KMS 암호화로 기존 DB 호환성을 유지하며 운영과 장애 조치를 줄인다.",
+    "options": {
+      "A": "자가 DB 패치와 장애 조치를 직접 운영해야 한다.",
+      "B": "관리형 가용성과 암호화된 관계형 저장을 제공한다.",
+      "C": "S3는 SQL Server 데이터베이스 실행 환경이 아니다.",
+      "D": "DynamoDB 이전은 관계형 앱 재설계가 필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html"
+      }
+    ]
+  },
+  {
+    "id": 902,
+    "summary": "다중 AZ ASG와 ALB로 가용성을 높이고 ALB에 WAF를 연결한다.",
+    "options": {
+      "A": "자동 교체·확장과 웹 방어를 결합한다.",
+      "B": "WAF를 배치 그룹에 직접 연결할 수 없다.",
+      "C": "정적 두 인스턴스보다 ASG 자동 복구가 부족하다.",
+      "D": "WAF를 ASG에 직접 연결하지 못한다."
+    },
+    "references": [
+      {
+        "title": "AWS waf 공식 문서",
+        "url": "https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works-resources.html"
+      }
+    ]
+  },
+  {
+    "id": 903,
+    "summary": "앱별 S3 액세스 포인트 정책에 고유 접두사 범위를 지정하면 공유 버킷 정책 관리를 분산한다.",
+    "options": {
+      "A": "앱마다 독립적인 최소 권한 경로를 제공한다.",
+      "B": "객체별 ACL 대량 변경은 복잡하고 정책 제어가 부족하다.",
+      "C": "데이터 복제는 불필요한 저장 비용을 만든다.",
+      "D": "새 버킷과 복제 없이 액세스 포인트만으로 가능하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html"
+      }
+    ]
+  },
+  {
+    "id": 904,
+    "summary": "S3 이벤트를 SQS에 버퍼링하고 Lambda가 2분 작업을 처리하면 업로드 즉시 탄력 처리한다.",
+    "options": {
+      "A": "큐 재시도와 요청 기반 서버리스 처리를 결합한다.",
+      "B": "상시 RI는 간헐 처리에 유휴 비용이 발생한다.",
+      "C": "컨테이너 서버 운영과 SNS 수신 처리가 필요하다.",
+      "D": "Beanstalk 상시 환경은 운영 부담이 더 크다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html"
+      }
+    ]
+  },
+  {
+    "id": 905,
+    "summary": "Global Accelerator와 NLB는 일반 TCP·UDP를 글로벌 경로로 가속하고 사내 IP 대상도 연결한다.",
+    "options": {
+      "A": "다중 리전 NLB 엔드포인트를 최적 경로로 연결한다.",
+      "B": "CloudFront는 일반 TCP·UDP 워크로드를 프록시하지 않는다.",
+      "C": "ALB는 일반 UDP를 지원하지 않는다.",
+      "D": "TCP·UDP와 사내 사설 IP 대상을 지원한다.",
+      "E": "UDP 사내 워크로드에 ALB를 사용할 수 없다."
+    },
+    "references": [
+      {
+        "title": "Global Accelerator 개요",
+        "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+      }
+    ]
+  },
+  {
+    "id": 906,
+    "summary": "Recycle Bin에서 삭제된 스냅샷을 7일 보존하면 정리 실수를 복구하면서 무기한 보존을 피한다.",
+    "options": {
+      "A": "모든 삭제 거부는 정상 만료 정리를 막는다.",
+      "B": "리전 복사만으로 잘못된 삭제 정책을 차단하지 못한다.",
+      "C": "삭제 후 관리형 복원 유예 기간을 제공한다.",
+      "D": "스냅샷을 S3 IA로 직접 복사할 수 없다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html"
+      }
+    ]
+  },
+  {
+    "id": 907,
+    "summary": "템플릿 객체의 presigned URL로 제한된 시간에만 CloudFormation 다운로드를 허용한다.",
+    "options": {
+      "A": "VPC 엔드포인트는 CloudFormation 서비스의 객체 권한을 부여하지 않는다.",
+      "B": "불필요한 API 중계 계층이 생긴다.",
+      "C": "버킷을 공개하지 않고 특정 객체를 임시 공유한다.",
+      "D": "공개 상태 동안 템플릿이 불필요하게 노출된다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html"
+      }
+    ]
+  },
+  {
+    "id": 908,
+    "summary": "Identity Center로 콘솔 신원을 관리하고 Session Manager로 인바운드 포트 없이 사설 EC2를 관리한다.",
+    "options": {
+      "A": "중앙 SSO와 IAM 기반 OS 세션을 결합한다.",
+      "B": "Session Manager는 콘솔용 IAM 사용자 자격 증명 발급기가 아니다.",
+      "C": "사설 인스턴스까지의 네트워크 진입 경로가 없다.",
+      "D": "배스천과 SSH 키를 추가 운영해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS systems-manager 공식 문서",
+        "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html"
+      }
+    ]
+  },
+  {
+    "id": 909,
+    "summary": "같은 리전 읽기 복제본으로 보고서를 분리하면 운영 DB 부하와 리전 간 비용을 줄인다.",
+    "options": {
+      "A": "원거리 복제는 추가 지연·전송 비용이 있다.",
+      "B": "Multi-AZ 대기는 일반 보고서 읽기 대상이 아니다.",
+      "C": "DMS 별도 복제보다 기본 읽기 복제본이 단순하다.",
+      "D": "운영 읽기·쓰기와 보고서 읽기를 분리한다."
+    },
+    "references": [
+      {
+        "title": "RDS 읽기 복제본",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
+      }
+    ]
+  },
+  {
+    "id": 910,
+    "summary": "EC2 상세 모니터링은 기본 5분 대신 1분 지표를 제공해 2분 이하 관측을 만족한다.",
+    "options": {
+      "A": "로그 적재 분석은 EC2 지표 수집 주기를 보장하지 않는다.",
+      "B": "1분 간격 성능 지표를 사용한다.",
+      "C": "로그 조회 함수는 상세 지표를 자동 생성하지 않는다.",
+      "D": "여러 데이터 적재 단계가 불필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html"
+      }
+    ]
+  },
+  {
+    "id": 911,
+    "summary": "객체 생성 이벤트로 Lambda 썸네일을 실행하면 하루 150건에 상시 서버가 필요 없다.",
+    "options": {
+      "A": "EMR 상시 클러스터는 과도한 비용이다.",
+      "B": "상시 메모리 최적화 EC2는 유휴 과금이 크다.",
+      "C": "업로드 이벤트마다 썸네일을 만들어 별도 버킷에 저장한다.",
+      "D": "Storage Lens는 실시간 객체 생성 트리거가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html"
+      }
+    ]
+  },
+  {
+    "id": 912,
+    "summary": "S3 Inventory를 Batch Operations의 입력으로 사용하고 Lambda가 보존 예외를 확인해 삭제한다.",
+    "options": {
+      "A": "EC2 스크립트는 서버리스가 아니다.",
+      "B": "삭제용 사용자 지정 Batch 코드를 추가 운영해야 한다.",
+      "C": "Glue crawler는 객체 보존 감사 목록용 도구가 아니다.",
+      "D": "대규모 객체 목록을 서버리스로 병렬 처리한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-invoke-lambda.html"
+      }
+    ]
+  },
+  {
+    "id": 913,
+    "summary": "함수별 실행 역할에 필요한 S3 작업·객체만 허용하면 함수 권한을 분리할 수 있다.",
+    "options": {
+      "A": "공유 전체 권한은 최소 권한에 어긋난다.",
+      "B": "엔드포인트 IP는 함수별 IAM 신원 구분이 아니다.",
+      "C": "함수마다 독립 실행 역할을 부여한다.",
+      "D": "S3 요청의 주체는 일반적으로 함수 ARN이 아닌 실행 역할이다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html"
+      }
+    ]
+  },
+  {
+    "id": 914,
+    "summary": "정적 프론트는 S3·CloudFront, 로직은 API Gateway·Lambda, DB는 RDS로 운영 부담을 줄인다.",
+    "options": {
+      "A": "EC2 DB는 패치와 백업 운영이 남는다.",
+      "B": "각 계층을 관리형 서비스로 이전한다.",
+      "C": "NLB는 Lambda를 직접 대상으로 지원하지 않는다.",
+      "D": "EC2 DB 운영과 글로벌 CDN 누락 문제가 남는다."
+    },
+    "references": [
+      {
+        "title": "AWS Lambda 개요",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 915,
+    "summary": "Redis 정렬 집합은 순위표를 빠르게 처리하며 복제·백업을 구성해 재시작 시 데이터를 복구한다.",
+    "options": {
+      "A": "S3·CDN은 빠르게 변하는 실시간 순위 연산에 맞지 않는다.",
+      "B": "다중 리전 서버와 복제를 직접 운영해야 한다.",
+      "C": "인메모리 순위 연산과 백업 기능을 제공한다.",
+      "D": "Memcached는 디스크 영속·스냅샷을 제공하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonElastiCache 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html"
+      }
+    ],
+    "reviewNote": "ElastiCache Redis는 스냅샷·복제로 복구할 수 있지만 모든 쓰기를 디스크에 동기 영속화하는 DB는 아니다. 강한 내구성이 필요하면 MemoryDB 등 별도 저장 설계를 검토해야 한다."
+  },
+  {
+    "id": 916,
+    "summary": "고객별 KMS 키를 사용하면 암호화 경계와 키 정책·감사를 개별 관리한다.",
+    "options": {
+      "A": "S3에 원시 키를 저장하는 자체 관리 부담이 생긴다.",
+      "B": "하드웨어 보안 장치 운영이 추가된다.",
+      "C": "단일 키는 고객별 키 분리를 제공하지 않는다.",
+      "D": "중앙 KMS에서 고객별 키와 권한을 관리한다."
+    },
+    "references": [
+      {
+        "title": "KMS 키 정책",
+        "url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"
+      }
+    ]
+  },
+  {
+    "id": 917,
+    "summary": "ALB·ASG가 요청을 받고 SQS가 주문 급증을 버퍼링하며 RDS Multi-AZ가 처리 결과를 보관한다.",
+    "options": {
+      "A": "NAT는 웹 진입점이 아니며 ASG는 주문 저장소가 아니다.",
+      "B": "Redshift는 주문 트랜잭션 저장에 적합하지 않다.",
+      "C": "GWLB는 주문을 저장하는 큐가 아니다.",
+      "D": "트래픽 분산·버퍼·내결함 DB를 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 918,
+    "summary": "작은 파일을 묶어 최소 객체 과금을 줄이고 첫해 즉시 조회 후 Deep Archive로 장기 보존한다.",
+    "options": {
+      "A": "파일 묶음과 즉시 조회·장기 아카이브를 결합한다.",
+      "B": "7년 동안 Instant Retrieval을 유지하면 저장료가 높다.",
+      "C": "작은 파일별 최소 과금과 메타데이터 비용이 커진다.",
+      "D": "개별 10KB 파일의 IA 최소 과금이 낭비된다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+      }
+    ]
+  },
+  {
+    "id": 919,
+    "summary": "여러 io1 볼륨을 스트라이핑하면 단일 볼륨 IOPS 한도를 넘어 병렬 I/O를 활용한다.",
+    "options": {
+      "A": "여러 볼륨의 처리량과 IOPS를 합친다.",
+      "B": "io1의 최대 IOPS는 64,000이다.",
+      "C": "같은 64,000 IOPS라면 용량 증가만으로 확장되지 않는다.",
+      "D": "볼륨 병목이 그대로 남는다."
+    },
+    "references": [
+      {
+        "title": "AWS ebs 공식 문서",
+        "url": "https://docs.aws.amazon.com/ebs/latest/userguide/raid-config.html"
+      }
+    ]
+  },
+  {
+    "id": 920,
+    "summary": "HTTP API·Lambda·SNS로 낮은 API 비용의 서버리스 발행·구독 구조를 만든다.",
+    "options": {
+      "A": "하나의 SQS 큐 소비자는 경쟁하며 전부 같은 메시지를 받지 않는다.",
+      "B": "가능하지만 REST API가 HTTP API보다 비용이 높다.",
+      "C": "단순 pub/sub에 Kinesis enhanced fan-out이 과하다.",
+      "D": "저렴한 HTTP API와 SNS 팬아웃을 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS sns 공식 문서",
+        "url": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html"
+      }
+    ]
+  },
+  {
+    "id": 921,
+    "summary": "단일 앱 실행 제약에는 EC2 수직 확장을 사용하고 RDS 읽기는 복제본으로 분리한다.",
+    "options": {
+      "A": "CPU를 늘리고 읽기 요청만 복제본으로 보낸다.",
+      "B": "읽기 복제본은 일반 쓰기 대상이 아니다.",
+      "C": "앱의 단일 인스턴스 제약을 위반한다.",
+      "D": "가능하지만 읽기·쓰기를 분리하는 확장성이 낮다."
+    },
+    "references": [
+      {
+        "title": "RDS 읽기 복제본",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
+      }
+    ]
+  },
+  {
+    "id": 922,
+    "summary": "세분화된 IAM 역할을 신뢰할 수 있는 개발자 신원에 연결해 임시 최소 권한을 부여한다.",
+    "options": {
+      "A": "자격 증명 공유는 추적성과 보안을 해친다.",
+      "B": "업무별 최소 권한 역할을 사용한다.",
+      "C": "장기 키만 강제해도 권한 과다가 해결되지 않는다.",
+      "D": "Cognito 사용자 풀만으로 AWS API 권한을 부여하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+      }
+    ]
+  },
+  {
+    "id": 923,
+    "summary": "적정 인스턴스 권고로 CPU 병목을 줄이고 ALB·ASG 수평 확장으로 부하와 장애를 분산한다.",
+    "options": {
+      "A": "사용 지표로 적정 인스턴스 유형을 제안한다.",
+      "B": "AMI만으로 실제 확장과 가용성이 만들어지지 않는다.",
+      "C": "ASG는 수직 확장이 아니라 수평 확장 도구다.",
+      "D": "Compute Optimizer는 일반적으로 인스턴스 권고를 제공한다.",
+      "E": "필요한 인스턴스 수를 늘리고 장애 대상을 교체한다."
+    },
+    "references": [
+      {
+        "title": "AWS compute-optimizer 공식 문서",
+        "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/view-ec2-recommendations.html"
+      }
+    ],
+    "reviewNote": "B의 AMI·시작 템플릿도 ASG 생성의 일반 준비 단계다. A는 수직 적정화 권고, E는 수평 확장으로 해석되지만 문항이 두 단계만 강제해 구현 선행 조건이 생략됐다."
+  },
+  {
+    "id": 924,
+    "summary": "IAM Access Analyzer의 미사용 접근 분석으로 사용하지 않는 권한을 찾아 최소 권한 검토를 돕는다.",
+    "options": {
+      "A": "Network Access Analyzer는 네트워크 경로를 평가한다.",
+      "B": "변경 경보만으로 실제 필요한 권한을 판단하지 못한다.",
+      "C": "접근 및 미사용 권한 분석을 활용한다.",
+      "D": "Inspector는 IAM 정책 최소 권한 분석기가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      }
+    ]
+  },
+  {
+    "id": 925,
+    "summary": "Object Lock 준수 모드는 보존 기간 중 루트도 객체 버전을 삭제·변경하지 못하게 한다.",
+    "options": {
+      "A": "거버넌스 모드는 우회 권한으로 해제할 수 있다.",
+      "B": "고정 보존을 강제하는 WORM을 제공한다.",
+      "C": "버전 관리는 권한 있는 버전 삭제를 막지 않는다.",
+      "D": "Glacier 전환은 삭제 방지 기능이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html"
+      }
+    ]
+  },
+  {
+    "id": 926,
+    "summary": "중단 불허 상시 Fargate 서비스는 Compute Optimizer로 CPU·메모리를 적정화해 비용을 줄인다.",
+    "options": {
+      "A": "수동 부하 분석보다 기본 권고가 운영 부담이 작다.",
+      "B": "버스트에 Spot을 쓰면 용량 회수에 영향을 받을 수 있다.",
+      "C": "기본 용량을 Spot에 두면 상시 가용성이 약해진다.",
+      "D": "온디맨드 가용성을 유지하며 낭비 자원을 줄인다."
+    },
+    "references": [
+      {
+        "title": "AWS compute-optimizer 공식 문서",
+        "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/ecs-fargate-service-recommendations.html"
+      }
+    ]
+  },
+  {
+    "id": 927,
+    "summary": "Shield Advanced의 사전 대응 지원과 보호 리소스 등록으로 DDoS 탐지·전문 대응을 제공한다.",
+    "options": {
+      "A": "Config는 DDoS 공격 탐지기가 아니다.",
+      "B": "WAF만으로 전문 대응팀 사전 지원이 제공되지 않는다.",
+      "C": "GuardDuty가 ALB 로그로 DDoS 대응을 자동 수행하지 않는다.",
+      "D": "Shield 보호와 사전 대응 기능을 구성한다."
+    },
+    "references": [
+      {
+        "title": "AWS waf 공식 문서",
+        "url": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-srt-proactive-engagement.html"
+      }
+    ]
+  },
+  {
+    "id": 928,
+    "summary": "NLB 보안 그룹에 신뢰 IP만 허용하면 기존 계층 4 구조를 유지하며 접근을 제한한다.",
+    "options": {
+      "A": "WAF를 NLB에 직접 연결하지 못한다.",
+      "B": "생성 시 보안 그룹을 지정해 IP 접근을 제한한다.",
+      "C": "추가 NLB만으로 기존 엔드포인트 접근이 막히지 않는다.",
+      "D": "Shield는 임의 비인가 사용자의 접근 제어 수단이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS elasticloadbalancing 공식 문서",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-security-groups.html"
+      }
+    ],
+    "reviewNote": "접근 통제가 목적이면 B가 직접적인 해법이다. Shield Advanced는 DDoS 방어이며 허용 IP 인증·인가를 대신하지 않는다. 보안 그룹 없이 만든 NLB에는 나중에 그룹을 추가할 수 없어 재생성이 필요하다.",
+    "suggestedAnswer": [
+      "B"
+    ]
+  },
+  {
+    "id": 929,
+    "summary": "암호화 SNS 발행에는 SNS 권한과 실행 역할의 KMS 권한, 키 정책 허용을 함께 맞춘다.",
+    "options": {
+      "A": "토픽 정책에 실행 역할의 발행 접근을 허용한다.",
+      "B": "고객 관리 키도 SSE-KMS 방식이다.",
+      "C": "키 정책에서 필요한 키 사용을 허용한다.",
+      "D": "함수 ARN은 일반적으로 발행 IAM 주체가 아니다.",
+      "E": "API Gateway 중계는 필수가 아니다.",
+      "F": "역할에 GenerateDataKey·Decrypt 등 키 권한을 준다."
+    },
+    "references": [
+      {
+        "title": "AWS sns 공식 문서",
+        "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-key-management.html"
+      }
+    ],
+    "reviewNote": "A의 정책 주체는 Lambda 함수 ARN이 아니라 실행 역할로 표현해야 한다. 동일 계정에서는 실행 역할의 sns:Publish 권한만으로 토픽 정책의 별도 Allow가 필수는 아닐 수 있다."
+  },
+  {
+    "id": 930,
+    "summary": "상시 포털은 온디맨드 ASG로 유지하고 간헐 문서 추출만 Lambda로 실행한다.",
+    "options": {
+      "A": "상시 서비스와 간헐 처리를 분리한다.",
+      "B": "중단 가능한 Spot은 상시 포털에 불리하다.",
+      "C": "간헐 문서 추출까지 장기 약정할 이유가 약하다.",
+      "D": "포털의 서버리스 재작성은 코드 변경이 크다."
+    },
+    "references": [
+      {
+        "title": "AWS Lambda 개요",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+      }
+    ],
+    "reviewNote": "어떤 구성도 100% 무중단을 절대 보장하지 않는다. 또한 기존 추출 프로그램의 Lambda 실행 규약·시간 제한 적합성을 검증해야 한다."
+  },
+  {
+    "id": 931,
+    "summary": "Lambda 리소스 정책의 SNS 호출 허용과 SNS 구독 권한을 함께 구성해야 교차 계정 연결이 된다.",
+    "options": {
+      "A": "함수 정책에서 해당 SNS 토픽의 호출을 허용한다.",
+      "B": "메시지 버퍼가 필요 없다면 추가 큐는 불필요하다.",
+      "C": "토픽 정책으로 구독 생성 주체를 허용한다.",
+      "D": "SNS 알림이 자동 EventBridge 이벤트로 나타나지 않는다.",
+      "E": "S3·Athena는 실시간 Lambda 알림 경로가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS sns 공식 문서",
+        "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-lambda-as-subscriber.html"
+      }
+    ],
+    "reviewNote": "SNS 구독 권한은 함수를 실행하는 주체가 아니라 구독을 생성하는 IAM 주체에 부여한다. C의 함수가 구독한다는 표현은 부정확하다."
+  },
+  {
+    "id": 932,
+    "summary": "VPC CNI 사용자 지정 네트워킹의 ENIConfig로 Pod에 별도 서브넷·보안 그룹을 할당한다.",
+    "options": {
+      "A": "TGW는 Pod IP 할당을 관리하지 않는다.",
+      "B": "DX는 Pod 서브넷 선택 기능이 아니다.",
+      "C": "Pod 주소를 지정한 VPC 서브넷에서 할당한다.",
+      "D": "anti-affinity는 Pod IP 대역을 선택하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS eks 공식 문서",
+        "url": "https://docs.aws.amazon.com/eks/latest/userguide/cni-custom-network.html"
+      }
+    ]
+  },
+  {
+    "id": 933,
+    "summary": "기존 RDS를 Multi-AZ로 수정하면 최소 변경으로 동기 대기와 자동 장애 조치를 추가한다.",
+    "options": {
+      "A": "기존 인스턴스 구성을 직접 변경한다.",
+      "B": "DynamoDB 이관은 데이터 모델·앱 변경이 크다.",
+      "C": "새 DB 복원·전환 절차가 불필요하다.",
+      "D": "RDS를 EC2 ASG에 넣을 수 없다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+      }
+    ]
+  },
+  {
+    "id": 934,
+    "summary": "FSx for ONTAP Multi-AZ의 동일 볼륨에 NFS·SMB 접근을 제공해 프로토콜 간 파일을 공유한다.",
+    "options": {
+      "A": "관리형 멀티프로토콜과 AZ 장애 내성을 제공한다.",
+      "B": "두 파일 서버 운영과 동기화를 직접 해야 한다.",
+      "C": "Lustre는 NFS 공유 서버가 아니며 저장소도 분리된다.",
+      "D": "게이트웨이 캐시와 객체 저장은 네이티브 다중 AZ 파일 서버와 다르다."
+    },
+    "references": [
+      {
+        "title": "FSx for ONTAP 개요",
+        "url": "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html"
+      }
+    ]
+  },
+  {
+    "id": 935,
+    "summary": "다중 AZ 앱 ASG와 Aurora 작성자·리더 분리로 확장·가용성·읽기 지연을 개선한다.",
+    "options": {
+      "A": "수동 EC2 두 대는 DB와 앱 확장이 부족하다.",
+      "B": "다중 AZ 앱 확장과 ALB 진입점을 구성한다.",
+      "C": "같은 리전 리더로 읽기를 분산하고 장애 조치한다.",
+      "D": "ASG와 ALB 대상 그룹은 리전별 자원이다.",
+      "E": "원거리 복제본은 로컬 읽기보다 네트워크 지연이 크다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html"
+      }
+    ]
+  },
+  {
+    "id": 936,
+    "summary": "Secrets Manager로 회전을 관리하고 공통 Lambda 계층·확장으로 검색 코드를 재사용한다.",
+    "options": {
+      "A": "HTTP 보안 헤더는 비밀 저장·회전 기능이 아니다.",
+      "B": "공통 검색·캐시 로직을 함수들이 공유한다.",
+      "C": "관리형 비밀 저장과 자동 회전을 제공한다.",
+      "D": "Parameter Store는 기본 자동 비밀번호 회전이 없다.",
+      "E": "전용 처리량 소비자는 비밀 저장 패턴이 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS secretsmanager 공식 문서",
+        "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieving-secrets_lambda.html"
+      }
+    ]
+  },
+  {
+    "id": 937,
+    "summary": "Compute Optimizer는 EC2·ASG·EBS의 사용 데이터를 분석해 적정 용량을 권고한다.",
+    "options": {
+      "A": "CUR는 사용 비용 원장이지 적정화 권고가 아니다.",
+      "B": "과금 경보는 권장 구성을 계산하지 않는다.",
+      "C": "세 자원 유형의 권고를 중앙 제공한다.",
+      "D": "CUR에서 ASG·EBS 권고를 찾을 수 없다."
+    },
+    "references": [
+      {
+        "title": "AWS compute-optimizer 공식 문서",
+        "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html"
+      }
+    ]
+  },
+  {
+    "id": 938,
+    "summary": "EFS를 각 AZ의 마운트 대상으로 연결해 여러 EC2가 같은 파일을 사설 경로로 사용한다.",
+    "options": {
+      "A": "객체 API 변경이 필요하며 파일 공유 마운트가 아니다.",
+      "B": "S3는 일반 네이티브 POSIX 볼륨이 아니다.",
+      "C": "EBS는 여러 AZ에 동시에 공유할 수 없다.",
+      "D": "다중 AZ 공유 파일 시스템을 마운트한다."
+    },
+    "references": [
+      {
+        "title": "Amazon EFS 개요",
+        "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+      }
+    ]
+  },
+  {
+    "id": 939,
+    "summary": "낮은 사용률의 읽기 복제본만 축소하면 현재 읽기 분리와 작성자의 성장 여력을 유지한다.",
+    "options": {
+      "A": "읽기가 주 DB로 돌아가 기존 부하를 높인다.",
+      "B": "여유 복제본 용량만 줄인다.",
+      "C": "저사용 복제본을 키우고 고사용 주 DB를 줄이는 방향이 반대다.",
+      "D": "복제본을 없애고 주 DB를 키우면 비용 절감이 약하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ModifyInstance.html"
+      }
+    ]
+  },
+  {
+    "id": 940,
+    "summary": "장기 고정 사용을 확신하면 3년 전체 선납 RI와 EC2 Savings Plans가 가장 높은 할인 폭을 제공한다.",
+    "options": {
+      "A": "상시 RDS를 온디맨드로 두면 할인 기회를 놓친다.",
+      "B": "1년 무선납은 할인 폭이 작다.",
+      "C": "1년 부분 선납보다 장기 전체 선납 할인이 크다.",
+      "D": "지속 사용 전제로 가장 긴 약정과 선납을 선택한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html"
+      }
+    ]
+  },
+  {
+    "id": 941,
+    "summary": "IRSA는 OIDC 신뢰와 서비스 계정의 역할 ARN 연결로 Pod별 AWS 권한을 분리한다.",
+    "options": {
+      "A": "노드 역할 공유는 Pod별 최소 권한을 무너뜨린다.",
+      "B": "네트워크 정책은 IAM 역할 발급을 대신하지 않는다.",
+      "C": "클러스터 역할은 Pod 서비스 계정 신원이 아니다.",
+      "D": "서비스 계정에 필요한 IAM 역할을 연결한다.",
+      "E": "OIDC 발급 토큰을 역할 신뢰 정책에서 검증한다."
+    },
+    "references": [
+      {
+        "title": "AWS eks 공식 문서",
+        "url": "https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html"
+      }
+    ]
+  },
+  {
+    "id": 942,
+    "summary": "AWS 관리 KMS 키는 연간 자동 회전과 CloudTrail 기록을 제공하며 고객 관리 키의 월별 저장 비용이 없다.",
+    "options": {
+      "A": "SSE-C 회전은 직접 구현해야 한다.",
+      "B": "SSE-S3 내부 키 회전은 KMS CloudTrail 추적과 다르다.",
+      "C": "AWS 관리 키를 사용하면 연간 회전과 낮은 키 관리비를 얻는다.",
+      "D": "가능하지만 고객 관리 키 월별 비용이 추가된다."
+    },
+    "references": [
+      {
+        "title": "AWS kms 공식 문서",
+        "url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html"
+      }
+    ],
+    "reviewNote": "C를 AWS 관리 KMS 키 기반 SSE-KMS로 해석해야 D와 구분된다. C의 표현만으로 고객 관리 키가 배제되는 것은 아니어서 선택지 분류가 모호하다."
+  },
+  {
+    "id": 943,
+    "summary": "애플리케이션 비용 할당 태그를 활성화하면 Cost Explorer에서 앱별 지출을 그룹화한다.",
+    "options": {
+      "A": "예산 CSV 수작업은 앱별 자원 매핑을 제공하지 않는다.",
+      "B": "분석용 RDS 상시 운영은 불필요하다.",
+      "C": "태그별 비용 조회·보고를 기본 도구로 제공한다.",
+      "D": "청구서를 매번 수작업으로 분류해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS billing 공식 문서",
+        "url": "https://docs.aws.amazon.com/billing/latest/userguide/cost-alloc-tags.html"
+      }
+    ],
+    "reviewNote": "태그 활성화 이전 비용은 자동으로 과거 전체에 소급 분류되지 않는다. 가능한 기간의 태그 백필 지원과 기존 태그 이력을 확인해야 한다."
+  },
+  {
+    "id": 944,
+    "summary": "앱과 DB를 다중 AZ로 분산하고 CloudFront로 정적 자산 부하를 분리한다.",
+    "options": {
+      "A": "앱·DB가 동일 AZ 장애에 함께 영향을 받는다.",
+      "B": "AZ 장애 대응과 탄력 확장·캐시를 결합한다.",
+      "C": "앱이 여전히 단일 AZ이며 DB도 단일 인스턴스다.",
+      "D": "EFS One Zone은 AZ 손실에 취약하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+      }
+    ]
+  },
+  {
+    "id": 945,
+    "summary": "GWLB와 소비자 계정의 GWLB 엔드포인트로 보안 어플라이언스 검사를 투명하게 삽입한다.",
+    "options": {
+      "A": "NLB는 투명 GENEVE 검사 경로를 제공하지 않는다.",
+      "B": "ALB는 모든 계층의 네트워크 검사 프록시가 아니다.",
+      "C": "중앙 어플라이언스 풀로 트래픽을 전달한다.",
+      "D": "엔드포인트에는 게시된 서비스 연결이 필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS elasticloadbalancing 공식 문서",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 946,
+    "summary": "Aurora 사용자 지정 엔드포인트에 지정한 세 리더만 포함하면 해당 집합으로 연결을 분산한다.",
+    "options": {
+      "A": "일부 DB 인스턴스만 묶는 엔드포인트다.",
+      "B": "별도 복제 클러스터는 데이터 동기화·운영이 늘어난다.",
+      "C": "인스턴스 주소 하나는 세 노드에 자동 분산하지 않는다.",
+      "D": "기본 reader는 여섯 리더 전체를 포함한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html"
+      }
+    ]
+  },
+  {
+    "id": 947,
+    "summary": "Secrets Manager로 RDS 자격 증명을 조회하고 30일 자동 회전을 구성한다.",
+    "options": {
+      "A": "Parameter Store에는 동일한 기본 자동 비밀 회전이 없다.",
+      "B": "저장·검색·회전을 관리형으로 처리한다.",
+      "C": "사용자 지정 회전 코드와 환경값 갱신이 필요하다.",
+      "D": "KMS 키는 비밀번호 저장 레코드가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS secretsmanager 공식 문서",
+        "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html"
+      }
+    ]
+  },
+  {
+    "id": 948,
+    "summary": "DMS Serverless는 복제 부하에 맞춰 용량을 자동 조정하며 전체 적재와 CDC를 수행한다.",
+    "options": {
+      "A": "Multi-AZ는 가용성이며 자동 크기 조절이 아니다.",
+      "B": "관리형 용량 확장으로 필요한 복제 자원을 할당한다.",
+      "C": "DMS 인스턴스를 EC2 ASG로 확장하지 못한다.",
+      "D": "DMS를 Fargate 서비스로 실행하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS dms 공식 문서",
+        "url": "https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Serverless.html"
+      }
+    ]
+  },
+  {
+    "id": 949,
+    "summary": "PrivateLink 인터페이스 엔드포인트로 SaaS 서비스에 사설 연결해 인터넷 노출을 줄인다.",
+    "options": {
+      "A": "SaaS 제공자 VPN 구성·운영이 필요하다.",
+      "B": "TGW만으로 게시된 SaaS 서비스에 연결되지 않는다.",
+      "C": "제공자 발신 차단 설명은 맞지만 선택지 문장이 잘렸다.",
+      "D": "서비스 공급자가 게시한 사설 엔드포인트에 연결한다."
+    },
+    "references": [
+      {
+        "title": "AWS vpc 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-access-saas.html"
+      }
+    ],
+    "reviewNote": "선택지 C가 문장 중간에서 잘렸다. 완전한 D가 사설 SaaS 접근을 명확히 설명한다."
+  },
+  {
+    "id": 950,
+    "summary": "Site-to-Site VPN의 IPsec과 SG·NACL을 결합해 암호화된 사내 연결과 최소 네트워크 허용을 만든다.",
+    "options": {
+      "A": "DX는 기본 암호화를 제공하지 않으며 라우트는 방화벽이 아니다.",
+      "B": "콘솔 IAM 제한은 네트워크 트래픽 암호화가 아니다.",
+      "C": "암호화 터널과 세부 접근 제어를 결합한다.",
+      "D": "TGW 자체는 사내 연결의 암호화를 제공하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS vpn 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html"
+      }
+    ],
+    "reviewNote": "Site-to-Site VPN은 네트워크 계층 IPsec 암호화를 제공한다. 별도의 세션 계층 암호화도 요구한다면 TLS 같은 추가 설정이 필요하며 C만으로 해당 문구 전부를 보장하지 않는다."
+  },
+  {
+    "id": 951,
+    "summary": "Secrets Manager로 하드코딩된 비밀번호를 외부화하고 지원 회전 함수를 사용한다.",
+    "options": {
+      "A": "KMS는 비밀값을 보관·조회하는 저장소가 아니다.",
+      "B": "로컬 저장과 cron 회전을 직접 운영해야 한다.",
+      "C": "DB 자격 증명 저장·조회·회전을 통합한다.",
+      "D": "Parameter Store 자체가 RDS 비밀번호를 회전하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS secretsmanager 공식 문서",
+        "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html"
+      }
+    ]
+  },
+  {
+    "id": 952,
+    "summary": "기존 S3의 SSE-S3·리전 간 복제와 Athena를 사용하면 서버 없이 암호화 데이터에 SQL을 실행한다.",
+    "options": {
+      "A": "새 버킷과 다중 리전 키는 필수가 아니다.",
+      "B": "RDS는 서버리스 S3 SQL 질의 엔진이 아니다.",
+      "C": "기존 저장소에 관리형 복제와 서버리스 질의를 더한다.",
+      "D": "RDS 적재와 별도 DB 운영이 필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS athena 공식 문서",
+        "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+      }
+    ],
+    "reviewNote": "새 CRR 규칙은 기존 객체를 자동 복제하지 않는다. 기존 데이터까지 복제하려면 S3 Batch Replication 등을 추가해야 한다."
+  },
+  {
+    "id": 953,
+    "summary": "학습용 원본은 연 2회 복원 가능한 Deep Archive, 생성 결과는 즉시 접근 계층에 저장한다.",
+    "options": {
+      "A": "원본의 장기 저빈도 보관과 결과 즉시 다운로드를 나눈다.",
+      "B": "Flexible Retrieval은 프리미엄 즉시 다운로드에 맞지 않는다.",
+      "C": "One Zone IA는 장기 원본 저장료와 AZ 손실 위험이 있다.",
+      "D": "생성 이미지 복원 대기는 즉시 접근을 막는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+      }
+    ]
+  },
+  {
+    "id": 954,
+    "summary": "SQS가 비동기 요청을 보관하고 큐 길이에 따라 ECS 작업자와 클러스터 용량을 늘린다.",
+    "options": {
+      "A": "NLB는 Lambda를 직접 호출 대상으로 지원하지 않는다.",
+      "B": "HTTP 부하 기반은 비동기 적체량과 다르며 유휴 용량이 남는다.",
+      "C": "Lambda vCPU를 큐 길이에 따라 자동 변경하지 않는다.",
+      "D": "큐 기반 탄력 컨테이너로 대형 모델을 처리한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html"
+      }
+    ]
+  },
+  {
+    "id": 955,
+    "summary": "축소된 DR 앱과 Aurora 글로벌 복제를 준비하고 장애 때 수동·자동 전환해 30분 복구를 목표로 한다.",
+    "options": {
+      "A": "평소 최소 용량을 유지하는 active-passive 구성이다.",
+      "B": "ASG는 여러 리전을 포함하지 못한다.",
+      "C": "교차 리전 ASG와 active-active 설정이 잘못됐다.",
+      "D": "AWS Backup은 일반 인프라 설정 백업 도구가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html"
+      }
+    ],
+    "reviewNote": "A의 ASG 최대 용량을 최소값으로 고정하면 장애 때 필요한 용량으로 확장할 수 없다. DR 전환 시 최대·희망 용량을 올리는 절차가 필요하다."
+  },
+  {
+    "id": 956,
+    "summary": "중단 불허 작업은 온디맨드로 실행하고 30일 후 Deep Archive로 보내 2년 뒤 삭제한다.",
+    "options": {
+      "A": "Spot 중단은 작업 조건에 어긋난다.",
+      "B": "초기 빈번 접근을 GIR로 두면 조회료가 늘 수 있다.",
+      "C": "Spot이 중단될 수 있다.",
+      "D": "실행 안정성과 저비용 장기 아카이브를 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-transition-general-considerations.html"
+      }
+    ]
+  },
+  {
+    "id": 957,
+    "summary": "DX transit VIF를 DX gateway에 연결하고 TGW와 연계해 여러 VPC의 사내 경로를 통합한다.",
+    "options": {
+      "A": "VPC마다 VPN을 만들면 운영이 늘고 지연 변동이 있다.",
+      "B": "DX gateway를 기존 TGW와 연결한다.",
+      "C": "Site-to-Site VPN을 DX gateway에 연결하지 않는다.",
+      "D": "전용선과 transit VIF로 사설 연결을 구성한다.",
+      "E": "VPN은 전용선 대비 지연 변동을 줄이기 어렵다."
+    },
+    "references": [
+      {
+        "title": "Transit Gateway와 Direct Connect",
+        "url": "https://docs.aws.amazon.com/vpc/latest/tgw/tgw-dcg-attachments.html"
+      }
+    ],
+    "reviewNote": "전용선도 리전과 사내 물리적 거리에 따라 한 자릿수 ms를 보장하지 못한다. 거리와 실제 회선 지연을 확인해야 한다."
+  },
+  {
+    "id": 958,
+    "summary": "RDS Proxy가 연결을 풀링하고 DB 장애 조치 후 연결 대상을 갱신해 앱 중단을 줄인다.",
+    "options": {
+      "A": "장애 조치 시 연결 관리 영향을 완화한다.",
+      "B": "읽기 복제본은 앱 연결 복구를 대신하지 않는다.",
+      "C": "성능 관측만으로 장애 조치 시간이 줄지 않는다.",
+      "D": "백업 복사는 즉시 연결 복구 수단이 아니다."
+    },
+    "references": [
+      {
+        "title": "Amazon RDS Proxy",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html"
+      }
+    ]
+  },
+  {
+    "id": 959,
+    "summary": "예약 EventBridge가 태그를 조회하는 Lambda를 호출해 개발 DB를 업무 시간에만 켠다.",
+    "options": {
+      "A": "성능 경보는 업무 시간 예약 기능이 아니다.",
+      "B": "Trusted Advisor 보고서는 예약 실행 트리거가 아니다.",
+      "C": "State Manager보다 예약 함수가 RDS API 호출에 직접적이다.",
+      "D": "기존 개발 태그로 대상 DB를 골라 예약 실행한다."
+    },
+    "references": [
+      {
+        "title": "AWS lambda 공식 문서",
+        "url": "https://docs.aws.amazon.com/lambda/latest/dg/services-cloudwatchevents.html"
+      }
+    ]
+  },
+  {
+    "id": 960,
+    "summary": "Requester Pays로 인증된 외부 요청자가 데이터 요청·송신 비용을 부담하도록 바꾼다.",
+    "options": {
+      "A": "버킷 소유자의 외부 제공 비용을 줄인다.",
+      "B": "복제 저장과 리전 전송 비용을 먼저 부담해야 한다.",
+      "C": "RAM 공유는 S3 송신 비용 부담을 바꾸지 않는다.",
+      "D": "저장 계층 변경은 외부 데이터 송신 과금과 다르다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html"
+      }
+    ],
+    "reviewNote": "Requester Pays는 총 전송 비용을 줄이는 기능이 아니라 요청자에게 비용을 이전한다. 사용자 관점의 절감과 전체 비용 절감을 구분해야 한다."
+  },
+  {
+    "id": 961,
+    "summary": "WAF를 ALB에 연결하고 속도 기반 규칙으로 과도한 HTTP 요청을 제한한다.",
+    "options": {
+      "A": "WAF는 Global Accelerator에 직접 연결하지 못한다.",
+      "B": "NACL 자동 수정 코드를 추가 운영해야 한다.",
+      "C": "기존 ALB에서 관리형 요청 속도 제한을 적용한다.",
+      "D": "CloudFront 앞뒤 구성 변경보다 WAF 연결이 단순하다."
+    },
+    "references": [
+      {
+        "title": "AWS waf 공식 문서",
+        "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-rate-based.html"
+      }
+    ]
+  },
+  {
+    "id": 962,
+    "summary": "DynamoDB 내보내기는 읽기 용량을 사용하지 않으며 Glue export connector로 S3 사본을 분석한다.",
+    "options": {
+      "A": "DynamoDB 직접 스캔은 읽기 용량을 사용한다.",
+      "B": "PITR 기반 S3 내보내기로 운영 테이블 부하를 피한다.",
+      "C": "Redshift 직접 COPY는 DynamoDB 읽기 리소스를 쓸 수 있다.",
+      "D": "Hive 직접 읽기는 테이블 용량을 소비한다."
+    },
+    "references": [
+      {
+        "title": "AWS glue 공식 문서",
+        "url": "https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-connect-dynamodb-home.html"
+      }
+    ]
+  },
+  {
+    "id": 963,
+    "summary": "SQS에 작업을 내구 보관하고 대기 작업 수에 맞춰 ASG 작업자를 확장한다.",
+    "options": {
+      "A": "SNS는 작업자 대기 큐를 제공하지 않는다.",
+      "B": "네트워크 사용량은 적체 작업 수와 일치하지 않는다.",
+      "C": "큐 적체를 직접 기준으로 병렬 처리 용량을 조절한다.",
+      "D": "SNS 발행량은 처리하지 못한 작업 수를 나타내지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html"
+      }
+    ]
+  },
+  {
+    "id": 964,
+    "summary": "ECS Fargate로 모듈을 실행하고 RDS로 관계 스키마, S3로 이미지를 각각 저장한다.",
+    "options": {
+      "A": "DB에 이미지까지 넣으면 저장·조회 비용이 커진다.",
+      "B": "DynamoDB는 기존 관계 스키마를 그대로 유지하지 않는다.",
+      "C": "Deep Archive 이미지는 웹에서 즉시 제공하기 어렵다.",
+      "D": "관리형 컨테이너·관계형 DB·객체 저장을 결합한다."
+    },
+    "references": [
+      {
+        "title": "ECS Fargate 개요",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+      },
+      {
+        "title": "RDS Multi-AZ 배포",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+      }
+    ]
+  },
+  {
+    "id": 965,
+    "summary": "클라이언트 측 암호화는 데이터가 S3에 도착하기 전에 암호문으로 바꾼다.",
+    "options": {
+      "A": "고객 키로 업로드 전에 암호화한다.",
+      "B": "SSE-KMS는 AWS 서버에서 암호화한다.",
+      "C": "SSE-C도 서버 측에서 암호화한다.",
+      "D": "S3 관리 키는 클라이언트에 제공되지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html"
+      }
+    ]
+  },
+  {
+    "id": 966,
+    "summary": "EMR runtime role로 작업별 AWS 권한을 분리하고 애플리케이션 범위 역할 사용을 활성화한다.",
+    "options": {
+      "A": "엔드포인트는 작업별 IAM 신원을 분리하지 않는다.",
+      "B": "팀별 작업이 필요한 권한만 사용한다.",
+      "C": "인스턴스 프로파일은 노드 전체가 공유한다.",
+      "D": "false는 애플리케이션 범위 역할을 비활성화한다."
+    },
+    "references": [
+      {
+        "title": "AWS emr 공식 문서",
+        "url": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-steps-runtime-roles.html"
+      }
+    ]
+  },
+  {
+    "id": 967,
+    "summary": "FIFO 큐로 폼을 내구 보관하고 중복 전송을 줄이되 소비자는 폼 ID로 멱등 처리해야 한다.",
+    "options": {
+      "A": "계층을 분리하고 순서·중복 제거를 제공한다.",
+      "B": "HTTP API만으로 내구 버퍼링이 제공되지 않는다.",
+      "C": "표준 큐는 중복 전달이 가능하다.",
+      "D": "동기 호출은 작업자 장애 시 결합이 강하다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html"
+      }
+    ],
+    "reviewNote": "SQS FIFO만으로 작업자의 정확히 한 번 처리는 보장되지 않는다. 폼 ID 기반 중복 방지와 성공 후 메시지 삭제가 필요하다."
+  },
+  {
+    "id": 968,
+    "summary": "Kinesis로 수집한 스트림을 OpenSearch에 색인하면 실시간 검색과 시각화 기반을 제공한다.",
+    "options": {
+      "A": "S3·Athena는 지속적인 즉시 검색 갱신에 덜 적합하다.",
+      "B": "Redshift 적재는 검색 색인 요구와 다르다.",
+      "C": "DynamoDB와 CloudWatch만으로 본문 검색이 구현되지 않는다.",
+      "D": "관리형 수집·검색·시각화 서비스를 연결한다."
+    },
+    "references": [
+      {
+        "title": "AWS opensearch-service 공식 문서",
+        "url": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html"
+      }
+    ]
+  },
+  {
+    "id": 969,
+    "summary": "App2Container로 앱을 컨테이너화하고 ECS Fargate에 배포해 서버 유지보수를 줄인다.",
+    "options": {
+      "A": "컨테이너 생성과 서버리스 배포를 연결한다.",
+      "B": "EC2 노드 운영이 남는다.",
+      "C": "App Runner는 App2Container 같은 변환·ECS 배포 도구가 아니다.",
+      "D": "App Runner가 EKS 배포를 생성하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS app2container 공식 문서",
+        "url": "https://docs.aws.amazon.com/app2container/latest/UserGuide/what-is-app2container.html"
+      }
+    ],
+    "reviewNote": "App2Container는 컨테이너화를 돕지만 ASP.NET 코드를 현대 .NET으로 자동 재작성하는 도구는 아니다. 지원 런타임과 앱 플랫폼을 별도로 확인해야 한다."
+  },
+  {
+    "id": 970,
+    "summary": "Secrets Manager BatchGetSecretValue로 여러 비밀을 한 요청에서 안전하게 검색한다.",
+    "options": {
+      "A": "해당 API는 Parameter Store API가 아니다.",
+      "B": "비밀 검색을 위해 AWS Batch 작업은 필요 없다.",
+      "C": "저장소와 API가 서로 맞지 않는다.",
+      "D": "Secrets Manager의 일괄 조회 API를 사용한다."
+    },
+    "references": [
+      {
+        "title": "AWS secretsmanager 공식 문서",
+        "url": "https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_BatchGetSecretValue.html"
+      }
+    ],
+    "reviewNote": "CloudFormation은 비밀 저장소 리소스 배포 도구이며 런타임 일괄 조회는 애플리케이션 SDK가 BatchGetSecretValue를 호출해야 한다."
+  },
+  {
+    "id": 971,
+    "summary": "CloudFront가 버전 파일을 글로벌 엣지에 캐시하고 서명 URL로 허가된 서버 다운로드를 허용한다.",
+    "options": {
+      "A": "캐시 비활성화는 반복 파일 배포 가속 이점을 줄인다.",
+      "B": "두 번째 리전 복제는 기본 CDN에 불필요하다.",
+      "C": "전송 가속은 반복 다운로드 엣지 캐시를 제공하지 않는다.",
+      "D": "가까운 캐시에서 같은 소프트웨어 파일을 배포한다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonCloudFront 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html"
+      }
+    ]
+  },
+  {
+    "id": 972,
+    "summary": "FSx for ONTAP Multi-AZ의 iSCSI LUN은 AZ 간 장애 조치를 지원하는 공유 블록 저장소다.",
+    "options": {
+      "A": "FSx Windows는 SMB 파일 저장이며 블록 요구와 다르다.",
+      "B": "애플리케이션 복제를 직접 구현해야 한다.",
+      "C": "관리형 다중 AZ 블록 스토리지에 iSCSI로 접근한다.",
+      "D": "EBS에는 직접적인 교차 AZ 실시간 볼륨 복제 설정이 없다."
+    },
+    "references": [
+      {
+        "title": "FSx for ONTAP 개요",
+        "url": "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html"
+      }
+    ]
+  },
+  {
+    "id": 973,
+    "summary": "ALB는 공개 443을 받고 앱 443·상태 확인 8443으로만 송신하면 된다. 응답은 상태 기반으로 허용된다.",
+    "options": {
+      "A": "공개 HTTPS 요청을 수신한다.",
+      "B": "전체 인터넷 대상 송신은 최소 범위를 넘는다.",
+      "C": "앱의 HTTPS 대상으로만 송신한다.",
+      "D": "앱에서 ALB로 새 인바운드 연결은 필요 없다.",
+      "E": "별도 HTTPS 상태 확인 포트를 허용한다.",
+      "F": "상태 확인은 ALB가 시작하는 아웃바운드 연결이다."
+    },
+    "references": [
+      {
+        "title": "AWS elasticloadbalancing 공식 문서",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html"
+      }
+    ]
+  },
+  {
+    "id": 974,
+    "summary": "CloudFront의 us-east-1 ACM 인증서와 S3 OAC 쓰기 권한으로 사용자 지정 도메인 업로드를 제공한다.",
+    "options": {
+      "A": "CloudFront 인증서 리전 조건에 맞다.",
+      "B": "원본 리전과 무관하게 인증서는 us-east-1이어야 한다.",
+      "C": "OAC 업로드에 Transfer Acceleration은 필수가 아니다.",
+      "D": "S3 정책에서 배포 OAC의 PutObject를 허용한다.",
+      "E": "웹사이트 엔드포인트는 OAC를 지원하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonCloudFront 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html"
+      }
+    ],
+    "reviewNote": "CloudFront의 허용 HTTP 메서드에 PUT·POST 등을 포함하고 OAC 서명 및 S3 객체 쓰기 권한을 별도로 구성해야 한다."
+  },
+  {
+    "id": 975,
+    "summary": "Athena는 지원 CSE-KMS 암호화 Parquet를 S3에서 직접 SQL 분석해 간헐 조회 비용을 줄인다.",
+    "options": {
+      "A": "지원 클라이언트 암호화 형식이면 직접 분석한다.",
+      "B": "S3 Select는 클라이언트 측 암호화를 지원하지 않는다.",
+      "C": "Spectrum보다 Athena가 간헐 조회에 서버 운영이 적다.",
+      "D": "Spark 구성·복호화 코드를 더 관리해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS athena 공식 문서",
+        "url": "https://docs.aws.amazon.com/athena/latest/ug/encryption.html"
+      }
+    ]
+  },
+  {
+    "id": 976,
+    "summary": "지리적 근접성 라우팅은 자원과 사용자의 위치를 이용해 가까운 리전을 선택한다.",
+    "options": {
+      "A": "geolocation은 국가·대륙별 규칙이며 자동 최단 거리와 다르다.",
+      "B": "거리 기반 리전 선택과 지역 NLB 분산을 결합한다.",
+      "C": "다중 값 응답은 거리 기반 선택이 아니다.",
+      "D": "가중치는 사용자 위치를 고려하지 않는다."
+    },
+    "references": [
+      {
+        "title": "Route 53 라우팅 정책",
+        "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html"
+      }
+    ]
+  },
+  {
+    "id": 977,
+    "summary": "RDS의 KMS 저장 암호화와 DB 클라이언트 TLS를 함께 사용해 저장·전송 데이터를 보호한다.",
+    "options": {
+      "A": "저장 암호화와 TLS라는 방향은 맞지만 RDS 인증서 관리 설명이 틀리다.",
+      "B": "DB 연결마다 IPsec을 구축하는 운영이 과하다.",
+      "C": "앱 수준 암호화와 인증서 관리가 추가된다.",
+      "D": "VPN은 동일 VPC의 모든 DB 연결 TLS를 대신하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html"
+      }
+    ],
+    "reviewNote": "RDS DB 서버 인증서는 ACM 사용자가 발급해 설치하는 인증서가 아니라 RDS CA가 관리한다. 실제 구성은 RDS CA 번들로 서버를 검증하는 TLS 연결과 KMS 저장 암호화다. 모든 선택지의 ACM 설명에는 오류가 있다."
+  },
+  {
+    "id": 978,
+    "summary": "AWS Backup으로 장기 스냅샷 90일과 연속 백업 14일을 함께 설계하면 규정 보존과 PITR을 나눈다.",
+    "options": {
+      "A": "RDS 자동 백업 보존은 최대 35일이다.",
+      "B": "수동 스냅샷만으로 임의 시점 복구를 제공하지 않는다.",
+      "C": "Aurora에는 Oracle 호환 클론 기능이 없다.",
+      "D": "관리형 장기 보존과 별도 연속 복구 규칙을 구성한다."
+    },
+    "references": [
+      {
+        "title": "AWS aws-backup 공식 문서",
+        "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/point-in-time-recovery.html"
+      }
+    ],
+    "reviewNote": "90일 보존 하나의 연속 백업 규칙은 불가능하다. RDS 연속 PITR 보존 최대 35일과 90일 스냅샷 규칙을 분리해야 하므로 D는 두 규칙 구성을 전제한다."
+  },
+  {
+    "id": 979,
+    "summary": "Aurora Serverless로 관계 스키마를 유지하면서 가변 DB 부하에 맞춰 용량을 조정한다.",
+    "options": {
+      "A": "고정 IOPS 사전 확보는 가변 사용에서 낭비할 수 있다.",
+      "B": "관계형 관리 DB의 자동 용량 조절을 제공한다.",
+      "C": "DynamoDB는 관계형 DB 요구와 다르다.",
+      "D": "마그네틱 저장은 읽기 집약 현대 DB에 부적합하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html"
+      }
+    ]
+  },
+  {
+    "id": 980,
+    "summary": "계정 소유 버킷만 허용하려면 aws:ResourceAccount 같은 소유 계정 조건으로 외부 자원을 거부한다.",
+    "options": {
+      "A": "버킷이 추가될 때마다 목록 정책을 갱신해야 한다.",
+      "B": "NAT에는 보안 그룹을 연결하지 못한다.",
+      "C": "엔드포인트와 계정 소유 조건의 명시적 거부를 결합한다.",
+      "D": "모든 버킷 정책을 관리해야 하며 NAT도 불필요하다."
+    },
+    "references": [
+      {
+        "title": "AWS IAM 공식 문서",
+        "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html"
+      }
+    ],
+    "reviewNote": "C와 D에서 조건 키 본문이 누락됐다. C는 aws:ResourceAccount가 소유 계정과 다르면 거부하는 조건을 전제하며 원문만으로 정책을 확정할 수 없다."
+  },
+  {
+    "id": 981,
+    "summary": "기존 Identity Center의 팀 그룹에 세분화된 권한 세트를 할당하면 개인 사용자 관리 없이 최소 권한을 적용한다.",
+    "options": {
+      "A": "역할 직접 관리보다 기존 SSO 권한 세트가 단순하다.",
+      "B": "그룹별 권한을 중앙 관리한다.",
+      "C": "개인 IAM 사용자는 기존 통합 신원을 중복한다.",
+      "D": "계정 분리는 필요한 접근 권한 설정을 더 복잡하게 한다."
+    },
+    "references": [
+      {
+        "title": "IAM Identity Center 권한 세트",
+        "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/permissionsetsconcept.html"
+      }
+    ]
+  },
+  {
+    "id": 982,
+    "summary": "IAM Roles Anywhere가 사내 VM의 X.509 신원을 검증해 S3 접근용 임시 역할 자격 증명을 발급한다.",
+    "options": {
+      "A": "IP 주소만으로 워크로드 신원을 인증하지 못한다.",
+      "B": "외부 워크로드에 장기 IAM 키 없이 임시 자격 증명을 제공한다.",
+      "C": "장기 액세스 키를 VM에 배포해야 한다.",
+      "D": "비밀 검색을 위한 초기 인증과 키 회전 관리가 남는다."
+    },
+    "references": [
+      {
+        "title": "AWS rolesanywhere 공식 문서",
+        "url": "https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html"
+      }
+    ],
+    "reviewNote": "IAM Roles Anywhere는 IAM 역할의 STS 임시 자격 증명을 발급한다. IAM Identity Center에서 자격 증명을 받는다는 B의 표현은 부정확하다."
+  },
+  {
+    "id": 983,
+    "summary": "공유 TGW와 DX gateway 경로를 사용하면 새 계정 VPC도 기존 사내 서비스를 재사용한다.",
+    "options": {
+      "A": "새 계정마다 전용선을 개통할 필요가 없다.",
+      "B": "일반 사내 DNS·디렉터리는 AWS 서비스 엔드포인트가 아니다.",
+      "C": "계정마다 VPN 터널 관리가 늘어난다.",
+      "D": "중앙 라우팅으로 계정 추가 연결을 단순화한다."
+    },
+    "references": [
+      {
+        "title": "Transit Gateway와 Direct Connect",
+        "url": "https://docs.aws.amazon.com/vpc/latest/tgw/tgw-dcg-attachments.html"
+      }
+    ]
+  },
+  {
+    "id": 984,
+    "summary": "기존 ALB를 CloudFront 원본으로 사용하면 동적 요청도 엣지에서 AWS 네트워크로 전달한다.",
+    "options": {
+      "A": "기존 앱을 유지하며 글로벌 전달 성능을 개선한다.",
+      "B": "단일 리전에서 위치별 DNS만 바꿔도 거리가 줄지 않는다.",
+      "C": "S3는 동적 서버 애플리케이션을 실행하지 않는다.",
+      "D": "고객마다 전용선을 연결하는 구조가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonCloudFront 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistS3AndCustomOrigins.html"
+      }
+    ]
+  },
+  {
+    "id": 985,
+    "summary": "접근이 불규칙한 데이터는 Intelligent-Tiering으로 다중 AZ 내구성을 유지하며 비활성 저장료를 줄인다.",
+    "options": {
+      "A": "모든 데이터를 상시 표준 요금으로 보관한다.",
+      "B": "접근 패턴에 따라 자동 계층화한다.",
+      "C": "Deep Archive는 즉시 고가용 접근 요구와 다르다.",
+      "D": "단일 AZ는 재해 시 내구성 범위가 작다."
+    },
+    "references": [
+      {
+        "title": "S3 Intelligent-Tiering",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+      }
+    ]
+  },
+  {
+    "id": 986,
+    "summary": "EFS는 Linux의 기존 파일 경로를 유지하면서 ASG 여러 인스턴스가 공유하는 다중 AZ 저장소다.",
+    "options": {
+      "A": "단일 NFS EC2가 새 장애 지점이 된다.",
+      "B": "단일 AZ SMB는 Linux 공유·고가용 요구와 다르다.",
+      "C": "로컬 EBS 두 개로 다중 인스턴스 공유가 되지 않는다.",
+      "D": "관리형 NFS를 모든 인스턴스에 마운트한다."
+    },
+    "references": [
+      {
+        "title": "Amazon EFS 개요",
+        "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+      }
+    ]
+  },
+  {
+    "id": 987,
+    "summary": "TCP용 NLB와 다중 AZ ASG로 정상 인스턴스 분산·용량 확장을 자동화한다.",
+    "options": {
+      "A": "계층 4 TCP 트래픽을 분산한다.",
+      "B": "사용자 증가에 따라 인스턴스를 늘린다.",
+      "C": "ALB는 일반 TCP 리스너가 아니다.",
+      "D": "수동 증설은 자동 확장 조건에 맞지 않는다.",
+      "E": "GWLB는 보안 장비 트래픽 검사에 쓰인다."
+    },
+    "references": [
+      {
+        "title": "Network Load Balancer",
+        "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html"
+      }
+    ]
+  },
+  {
+    "id": 988,
+    "summary": "태그 정책은 값 표준을, SCP는 누락 생성과 태그 삭제 차단을 맡는다.",
+    "options": {
+      "A": "민감도 태그의 허용 값을 표준화한다.",
+      "B": "SCP만으로 값 검사도 가능하지만 표준 태그 관리는 정책이 직접적이다.",
+      "C": "태그 정책은 태그 누락 자원 생성을 일반 차단하지 않는다.",
+      "D": "생성 시 태그를 강제하고 삭제를 거부한다.",
+      "E": "사후 자원 삭제는 예방 통제가 아니며 파괴적이다."
+    },
+    "references": [
+      {
+        "title": "AWS organizations 공식 문서",
+        "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+      }
+    ]
+  },
+  {
+    "id": 989,
+    "summary": "자동 백업 보존만 30일로 수정하고 수동 스냅샷은 별도 삭제해 최근 복구 지점을 유지한다.",
+    "options": {
+      "A": "기본 RDS 보존 설정이면 충분해 Backup 추가가 불필요하다.",
+      "B": "백업을 끄면 기존 자동 백업을 잃을 수 있다.",
+      "C": "자동 만료와 수동 정리를 역할에 맞게 사용한다.",
+      "D": "CloudFormation은 임의 수동 백업 만료 정리기가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html"
+      }
+    ]
+  },
+  {
+    "id": 990,
+    "summary": "EFS는 NFS를 제공해 프로토콜 변경 없이 레거시 애플리케이션 파일을 저장한다.",
+    "options": {
+      "A": "DataSync는 데이터 전송 도구다.",
+      "B": "EBS는 블록 장치이며 직접 NFS를 제공하지 않는다.",
+      "C": "관리형 NFS 파일 시스템이다.",
+      "D": "EMRFS는 EMR의 S3 연결 계층이다."
+    },
+    "references": [
+      {
+        "title": "Amazon EFS 개요",
+        "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+      }
+    ]
+  },
+  {
+    "id": 991,
+    "summary": "SQS로 좌표 이벤트를 내구 보관하면 순간 급증 때도 작업자 처리 속도와 수집을 분리한다.",
+    "options": {
+      "A": "S3 목록 폴링과 처리 상태를 직접 관리해야 한다.",
+      "B": "동시 실행만으로 장애 시 내구 버퍼를 제공하지 않는다.",
+      "C": "메시지를 보관하고 재시도 가능한 작업자로 처리한다.",
+      "D": "새 데이터 탐색·처리 상태와 TTL을 직접 관리해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSSimpleQueueService 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+      }
+    ],
+    "reviewNote": "SQS는 삭제 전 보존 기간에 재시도할 수 있지만 처리 완료 후 삭제한 이벤트의 장기 재생 저장소는 아니다. 전체 이벤트 재생이 필요하면 Kinesis 또는 S3 원본 보존도 필요하다."
+  },
+  {
+    "id": 992,
+    "summary": "사설 RDS와 사무실 Site-to-Site VPN을 연결하면 DB 공개 없이 직접 SQL 접근을 제공한다.",
+    "options": {
+      "A": "공개 서브넷에 DB를 둘 필요가 없다.",
+      "B": "사무실에서 사설 DB 주소로 암호화 접속한다.",
+      "C": "보안 그룹만으로 사내·VPC 라우팅이 생기지 않는다.",
+      "D": "보안 그룹은 DB 사용자 이름을 네트워크 주체로 받지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS vpn 공식 문서",
+        "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html"
+      }
+    ],
+    "reviewNote": "RDS Multi-AZ DB cluster를 엄밀히 뜻한다면 최소 세 AZ의 서브넷이 필요하다. 두 서브넷 설명은 전통적 Multi-AZ DB instance 배포 전제와 혼동됐다."
+  },
+  {
+    "id": 993,
+    "summary": "EC2 간 데이터를 많이 교환한다면 같은 AZ 사설 주소 통신으로 교차 AZ 전송료를 줄인다.",
+    "options": {
+      "A": "ASG 멤버십은 데이터 전송 경로와 무관하다.",
+      "B": "같은 리전이어도 AZ 간 전송료가 생긴다.",
+      "C": "교차 AZ 비용을 피하는 근접 배치다.",
+      "D": "여러 AZ의 대량 교환은 추가 전송료가 생긴다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html"
+      }
+    ]
+  },
+  {
+    "id": 994,
+    "summary": "KMS로 암호화한 Secrets Manager 비밀에 Aurora 자격 증명을 저장하고 14일 회전을 설정한다.",
+    "options": {
+      "A": "관리형 비밀 저장과 DB 회전을 사용한다.",
+      "B": "Parameter Store의 자체 회전 함수를 유지해야 한다.",
+      "C": "공유 파일 권한과 회전 갱신을 직접 관리해야 한다.",
+      "D": "배포된 자격 증명 파일의 동기화 문제가 생긴다."
+    },
+    "references": [
+      {
+        "title": "AWS secretsmanager 공식 문서",
+        "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html"
+      }
+    ]
+  },
+  {
+    "id": 995,
+    "summary": "20분 비디오 작업은 Fargate 컨테이너에서 탄력 실행하고 S3로 대용량 영상을 저장한다.",
+    "options": {
+      "A": "Lambda의 15분 최대 시간을 초과한다.",
+      "B": "서버 운영 없이 긴 작업과 메타데이터·영상 저장을 분리한다.",
+      "C": "가능하지만 EC2 서버와 작업자 용량 운영이 필요하다.",
+      "D": "Deep Archive는 매일 소비되는 영상에 부적합하다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonECS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+      }
+    ]
+  },
+  {
+    "id": 996,
+    "summary": "EKS Fargate 프로필로 대상 Pod를 선택하면 EC2 노드를 관리하지 않고 실행한다.",
+    "options": {
+      "A": "노드 수명 주기와 패치를 직접 관리해야 한다.",
+      "B": "관리형 노드도 EC2 용량·업데이트 관리가 남는다.",
+      "C": "Pod 실행 인프라를 AWS가 관리한다.",
+      "D": "Karpenter와 노드 그룹 운영이 추가된다."
+    },
+    "references": [
+      {
+        "title": "AWS eks 공식 문서",
+        "url": "https://docs.aws.amazon.com/eks/latest/userguide/fargate.html"
+      }
+    ]
+  },
+  {
+    "id": 997,
+    "summary": "Aurora Serverless는 구조화된 트랜잭션 DB와 자동 용량 조절·관리형 백업을 제공한다.",
+    "options": {
+      "A": "Spot 중단과 자체 DB 복구 운영이 필요하다.",
+      "B": "온디맨드 구매와 트래픽 기반 자동 DB 용량은 다르다.",
+      "C": "관계형 트랜잭션과 가변 부하를 관리형으로 처리한다.",
+      "D": "자가 NoSQL은 관계 스키마와 운영 요구에 맞지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonRDS 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html"
+      }
+    ]
+  },
+  {
+    "id": 998,
+    "summary": "S3 게이트웨이 엔드포인트 경로를 추가하면 인터넷 게이트웨이를 거치지 않고 S3로 업로드한다.",
+    "options": {
+      "A": "S3 전용 라우트로 사설 서비스 경로를 사용한다.",
+      "B": "버킷을 VPC 내부로 이동할 수 없다.",
+      "C": "액세스 포인트만으로 네트워크 경로가 변경되지 않는다.",
+      "D": "DX는 VPC와 S3 사이 직접 연결 서비스가 아니다."
+    },
+    "references": [
+      {
+        "title": "S3 게이트웨이 엔드포인트",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+      }
+    ],
+    "reviewNote": "게이트웨이 엔드포인트는 공개 IP 형태의 S3 서비스 주소를 라우팅하지만 인터넷을 통하지 않는다. 요구가 사설 IP 엔드포인트 자체라면 S3 interface endpoint가 필요하며 선택지에 없다."
+  },
+  {
+    "id": 999,
+    "summary": "변경이 드문 상품 카탈로그를 Redis에 지연 로드하면 반복 검색의 DB CPU 사용을 줄인다.",
+    "options": {
+      "A": "Redshift는 온라인 카탈로그 캐시가 아니다.",
+      "B": "캐시 미스 때만 MySQL을 조회한다.",
+      "C": "앱 인스턴스 증가는 DB 조회 부하를 더 키울 수 있다.",
+      "D": "Multi-AZ 대기는 읽기 부하를 직접 분산하지 않는다."
+    },
+    "references": [
+      {
+        "title": "ElastiCache 활용 사례",
+        "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/elasticache-use-cases.html"
+      }
+    ]
+  },
+  {
+    "id": 1000,
+    "summary": "캐시 볼륨은 기존 iSCSI 블록 접근을 유지하고 전체 용량은 클라우드에, 자주 읽는 블록은 로컬에 둔다.",
+    "options": {
+      "A": "SMB로 바꾸면 블록 기반 애플리케이션 변경이 필요하다.",
+      "B": "로컬 캐시로 지연을 낮추며 저장 용량을 확장한다.",
+      "C": "저장 볼륨은 전체 데이터를 로컬에 유지해야 한다.",
+      "D": "테이프는 저지연 운영 블록 저장소가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS storagegateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/storagegateway/latest/vgw/StorageGatewayConcepts.html"
+      }
+    ]
+  },
+  {
+    "id": 1001,
+    "summary": "수집·이행 단계마다 SQS를 두고 적체량에 따라 독립 ASG를 확장하면 처리 속도 차이를 흡수한다.",
+    "options": {
+      "A": "피크 용량 고정은 비용이 크고 메시지를 보관하지 않는다.",
+      "B": "SNS가 새 ASG를 자동 생성하는 기능은 없다.",
+      "C": "SQS는 자동 확장 알림을 직접 보내지 않는다.",
+      "D": "각 큐 적체에 맞춰 단계별 작업자를 확장한다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html"
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "summary": "글로벌 테이블로 리전 장애에 대비하고 예측 가능한 부하는 프로비저닝 자동 확장으로 비용을 조절한다.",
+    "options": {
+      "A": "온디맨드도 가능하나 안정 사용량이면 더 비쌀 수 있다.",
+      "B": "DAX와 수동 복제는 필요한 운영을 늘린다.",
+      "C": "Streams 교차 리전 복제를 직접 구현해야 한다.",
+      "D": "관리형 다중 리전 복제와 용량 조절을 결합한다."
+    },
+    "references": [
+      {
+        "title": "AWS amazondynamodb 공식 문서",
+        "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html"
+      }
+    ],
+    "reviewNote": "부하 패턴이 주어지지 않아 프로비저닝 자동 확장 D가 온디맨드 글로벌 테이블 A보다 항상 저렴하다고 단정할 수 없다."
+  },
+  {
+    "id": 1003,
+    "summary": "S3 File Gateway의 로컬 캐시로 사내 렌더링 파일 접근 지연을 낮춘다.",
+    "options": {
+      "A": "직접 S3 접근은 로컬 캐시 적중 이점이 없다.",
+      "B": "S3 데이터를 파일 인터페이스와 로컬 캐시로 제공한다.",
+      "C": "FSx 복사와 별도 게이트웨이는 저장비·운영이 추가된다.",
+      "D": "파일 서버와 캐시·동기화 코드를 직접 운영해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS storagegateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/storagegateway/latest/ug/WhatIsStorageGateway.html"
+      }
+    ]
+  },
+  {
+    "id": 1004,
+    "summary": "Global Accelerator로 국제 고객 API 연결을 가까운 엣지부터 AWS 네트워크로 전달한다.",
+    "options": {
+      "A": "고객별 DX 개통은 비용·시간이 크다.",
+      "B": "일반 최적화 캐시는 민감한 ERP API 응답에 부적합할 수 있다.",
+      "C": "변경 없이 동적 API의 글로벌 전송 경로를 개선한다.",
+      "D": "고객별 VPN 운영과 인터넷 지연 변동이 남는다."
+    },
+    "references": [
+      {
+        "title": "Global Accelerator 개요",
+        "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+      }
+    ]
+  },
+  {
+    "id": 1005,
+    "summary": "API Gateway·SQS·Lambda가 설문 급증을 흡수하고 Comprehend 감정을 DynamoDB에 1년 보존한다.",
+    "options": {
+      "A": "관리형 수집·버퍼·감정 분석·TTL을 결합한다.",
+      "B": "단일 EC2 API 운영과 확장이 필요하다.",
+      "C": "Rekognition은 텍스트 감정 분석 서비스가 아니다.",
+      "D": "Lex는 대화 봇 서비스이며 해당 분석 API가 아니다."
+    },
+    "references": [
+      {
+        "title": "AWS comprehend 공식 문서",
+        "url": "https://docs.aws.amazon.com/comprehend/latest/dg/how-sentiment.html"
+      }
+    ]
+  },
+  {
+    "id": 1006,
+    "summary": "로드 밸런서 패치 런북으로 등록 해제·패치·재등록을 수행하고 대상 유형 호환성을 먼저 확인한다.",
+    "options": {
+      "A": "런북이 인스턴스 ID를 사용하므로 대상 유형 변경이 필요하다.",
+      "B": "기존 문서를 그대로 두면 호환성 문제가 남는다.",
+      "C": "대상 제외와 패치를 관리하는 전용 런북이다.",
+      "D": "유지관리 창은 예약 실행을 제공하지만 자체적으로 대상 형식을 고치지 않는다.",
+      "E": "State Manager 예약만으로 IP 대상 매핑 문제가 해결되지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWSEC2-PatchLoadBalancerInstance 런북",
+        "url": "https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-awsec2-patch-load-balancer-instance.html"
+      }
+    ],
+    "reviewNote": "AWSEC2-PatchLoadBalancerInstance는 인스턴스 ID 대상 그룹을 전제한다. IP 대상 오류를 해결하려면 대상 그룹을 instance 유형으로 재생성하는 A와 런북 C가 직접적이며 D 예약만으로 해결되지 않는다. 런북 이름의 원문 철자도 잘못됐다.",
+    "suggestedAnswer": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "id": 1007,
+    "summary": "처리 노드에서 S3 업로드 전에 고객별 암호화하려면 EMR 클라이언트 측 암호화를 사용할 수 있다.",
+    "options": {
+      "A": "SSE-S3는 고객별 키가 아니며 서버 측 암호화다.",
+      "B": "EMR 보안 구성은 사용자 지정 루트 키 CSE를 지원한다.",
+      "C": "Glue 보안 구성의 S3 암호화는 CSE-KMS 옵션을 제공하지 않는다.",
+      "D": "SSE-KMS는 S3 서버에 도착한 뒤 암호화한다."
+    },
+    "references": [
+      {
+        "title": "AWS emr 공식 문서",
+        "url": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-data-encryption-options.html"
+      },
+      {
+        "title": "Glue S3 암호화 모드 API",
+        "url": "https://docs.aws.amazon.com/glue/latest/webapi/API_S3Encryption.html"
+      }
+    ],
+    "reviewNote": "Glue 보안 구성은 S3에 SSE-S3 또는 SSE-KMS를 제공하며 CSE-KMS를 선택할 수 없다. 업로드 전 고객별 키 암호화라는 조건에는 EMR CSE-Custom인 B가 실제 지원 기능이다.",
+    "suggestedAnswer": [
+      "B"
+    ]
+  },
+  {
+    "id": 1008,
+    "summary": "상태 없는 내결함 앱은 ALB·ASG의 Spot 혼합 인스턴스로 수요에 맞춰 저비용 수평 확장한다.",
+    "options": {
+      "A": "고정 두 인스턴스는 수요에 따라 자동 증가하지 않는다.",
+      "B": "DNS 가중치만으로 자동 복구·확장이 제공되지 않는다.",
+      "C": "유형 변경 중 중단이 발생하고 수평 확장이 아니다.",
+      "D": "AMI 기반 ASG와 Spot으로 탄력 실행한다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html"
+      }
+    ],
+    "reviewNote": "시작 템플릿에 Spot Fleet 자체를 설정하지 않는다. ASG mixed instances policy와 Spot 구매 옵션으로 구현해야 하며 원문 D는 서로 다른 개념을 섞었다."
+  },
+  {
+    "id": 1009,
+    "summary": "S3 Bucket Key가 SSE-KMS 데이터 키 요청을 묶어 KMS 호출 비용을 크게 줄인다.",
+    "options": {
+      "A": "기존 KMS 통제에서 S3 관리 키로 바뀐다.",
+      "B": "KMS 보호를 유지하며 호출 빈도를 낮춘다.",
+      "C": "클라이언트 측 KMS 암호화는 별도 호출이 필요하다.",
+      "D": "SSE-C 키를 KMS에서 매번 가져오면 비용이 남는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html"
+      }
+    ],
+    "reviewNote": "Bucket Key는 KMS 호출을 줄일 뿐 항상 0으로 만들지는 않는다. 기존 객체는 자동으로 재암호화되지 않으며 새 객체에 적용한다."
+  },
+  {
+    "id": 1010,
+    "summary": "Application Migration Service로 VM 블록 복제 후 테스트하고 원본 쓰기를 중지한 뒤 최종 전환한다.",
+    "options": {
+      "A": "SCT는 VM 인벤토리·복제 도구가 아니다.",
+      "B": "VM에 복제 에이전트를 설치한다.",
+      "C": "초기 복제 후 테스트 인스턴스로 검증한다.",
+      "D": "원본 쓰기를 중지하고 최신 복제를 확인해 전환한다.",
+      "E": "App2Container는 VM 그대로 이전하는 도구가 아니다.",
+      "F": "DMS는 전체 VM을 이전하지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS mgn 공식 문서",
+        "url": "https://docs.aws.amazon.com/mgn/latest/ug/what-is-application-migration-service.html"
+      }
+    ]
+  },
+  {
+    "id": 1011,
+    "summary": "Cognito 자격 증명 풀이 로그인 신원을 IAM 임시 자격 증명으로 교환하고 S3 엔드포인트가 사설 경로를 제공한다.",
+    "options": {
+      "A": "인증 사용자의 임시 AWS 권한을 발급한다.",
+      "B": "사용자 풀 토큰만으로 S3 API에 서명하지 못한다.",
+      "C": "프라이빗 앱에서 인터넷 없이 S3에 접근한다.",
+      "D": "NAT는 신원 통제나 Cognito 전용 요청 증명을 제공하지 않는다.",
+      "E": "사용자 IP 제한은 모바일·동적 네트워크에 취약하다."
+    },
+    "references": [
+      {
+        "title": "AWS cognito 공식 문서",
+        "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html"
+      }
+    ]
+  },
+  {
+    "id": 1012,
+    "summary": "처리 계층의 큐 적체를 기준으로 ASG를 확장하면 예측 불가한 작업량 증가에 직접 반응한다.",
+    "options": {
+      "A": "예측 불가 피크에 고정 예약은 맞지 않는다.",
+      "B": "캐시는 CPU 포화 작업자 수를 늘리지 않는다.",
+      "C": "웹 캐시는 이미 큐에 쌓인 처리를 해결하지 않는다.",
+      "D": "대기 메시지 대비 작업자 용량을 자동 조절한다."
+    },
+    "references": [
+      {
+        "title": "AWS autoscaling 공식 문서",
+        "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html"
+      }
+    ],
+    "reviewNote": "대상 추적에는 보통 ApproximateNumberOfMessagesVisible을 실행 중 작업자 수로 나눈 backlog per instance 사용자 지정 지표를 사용한다. 원문의 ApproximateNumberOfMessages라는 속성 명칭과 원시 큐 길이는 불완전하다."
+  },
+  {
+    "id": 1013,
+    "summary": "주간 대부분 실행하는 중단 불허 작업은 장기 할인 약정이 적합하지만 Scheduled Reserved Instances는 현행 구매가 불가능하다.",
+    "options": {
+      "A": "과거 상품 기준이며 현재는 신규 구매할 수 없다.",
+      "B": "가능하지만 Convertible은 일반적으로 Standard보다 할인 폭이 작다.",
+      "C": "Spot은 중단 불허 조건에 어긋난다.",
+      "D": "일요일 Spot이 중단될 수 있다."
+    },
+    "references": [
+      {
+        "title": "AWS AWSEC2 공식 문서",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html"
+      }
+    ],
+    "reviewNote": "Scheduled Reserved Instances는 더 이상 신규 구매할 수 없다. 현재는 상시 사용 비중을 기준으로 Standard RI 또는 Savings Plans와 필요한 온디맨드를 조합해야 하며 유효한 완전 정답이 없다."
+  },
+  {
+    "id": 1014,
+    "summary": "Batch로 작업을 큐잉·실행하고 Step Functions로 단계를 연결하며 S3에 대형 결과를 저장한다.",
+    "options": {
+      "A": "EC2 운영이 남고 SQS는 전체 워크플로 엔진이 아니다.",
+      "B": "Fargate 기반 Batch로 서버 관리 없이 오케스트레이션한다.",
+      "C": "Spot·FSx와 함수 조합을 직접 관리해야 한다.",
+      "D": "EC2와 로컬 EBS 운영·공유를 직접 해야 한다."
+    },
+    "references": [
+      {
+        "title": "AWS batch 공식 문서",
+        "url": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html"
+      }
+    ]
+  },
+  {
+    "id": 1015,
+    "summary": "CloudFront로 이미지 다운로드를 캐시하고 Transfer Acceleration으로 글로벌 업로드를 가속한다.",
+    "options": {
+      "A": "기존 S3 앱에 두 관리형 가속 기능을 추가한다.",
+      "B": "EC2 다중 리전 재배포는 변경과 운영이 크다.",
+      "C": "멀티버킷 복제와 사용자 위치 라우팅을 추가해야 한다.",
+      "D": "Global Accelerator는 S3 버킷을 직접 엔드포인트로 받지 않는다."
+    },
+    "references": [
+      {
+        "title": "AWS AmazonS3 공식 문서",
+        "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html"
+      }
+    ]
+  },
+  {
+    "id": 1016,
+    "summary": "무료 S3 게이트웨이 엔드포인트로 NAT·인터넷 경로를 우회한다.",
+    "options": {
+      "A": "사설 연결은 가능하나 엔드포인트 요금이 있다.",
+      "B": "S3 prefix 경로를 엔드포인트로 변경한다.",
+      "C": "NAT EIP 허용은 인터넷 경로를 제거하지 않는다.",
+      "D": "추가 NAT도 인터넷 경로와 처리 요금이 남는다."
+    },
+    "references": [
+      {
+        "title": "S3 게이트웨이 엔드포인트",
+        "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+      }
+    ]
+  },
+  {
+    "id": 1017,
+    "summary": "UI와 데이터 Pod를 서로 다른 서비스 계정·IAM 역할로 실행해 DynamoDB와 S3 권한을 분리한다.",
+    "options": {
+      "A": "노드 프로파일 두 권한을 모든 Pod가 공유한다.",
+      "B": "IAM 정책을 Pod에 직접 부착하지 못한다.",
+      "C": "각 서비스 계정에 올바른 서비스 권한 역할을 연결한다.",
+      "D": "UI와 데이터 서비스의 대상 권한이 반대로 지정됐다."
+    },
+    "references": [
+      {
+        "title": "AWS eks 공식 문서",
+        "url": "https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html"
+      }
+    ],
+    "reviewNote": "IAM 정책은 Kubernetes 서비스 계정에 직접 부착하지 않고 연결된 IAM 역할에 부착한다. C의 FullAccess는 서비스 경계를 나누지만 세부 최소 권한은 별도 축소해야 한다."
+  },
+  {
+    "id": 1018,
+    "summary": "AD Connector와 Identity Center로 사내 AD 신원을 유지하며 계정별 권한 세트를 중앙 배포한다.",
+    "options": {
+      "A": "가능하지만 Managed AD와 신뢰 운영이 더 필요하다.",
+      "B": "개인 IAM 사용자 관리는 다계정 규모에서 반복된다.",
+      "C": "AD 그룹별 SSO 권한을 중앙 관리한다.",
+      "D": "Cognito는 직원 다계정 관리 콘솔 SSO에 직접적이지 않다."
+    },
+    "references": [
+      {
+        "title": "AWS singlesignon 공식 문서",
+        "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/connectonpremad.html"
+      }
+    ]
+  },
+  {
+    "id": 1019,
+    "summary": "API 리소스 정책에 IP 조건부 명시적 거부를 두면 허용한 사내 주소만 호출한다.",
+    "options": {
+      "A": "프라이빗 통합은 API와 백엔드 연결 방식이다.",
+      "B": "신뢰 IP 범위 밖의 호출을 거부한다.",
+      "C": "관리형 API Gateway를 고객 서브넷에 직접 배포하지 않는다.",
+      "D": "API Gateway에 고객 보안 그룹을 직접 연결하지 못한다."
+    },
+    "references": [
+      {
+        "title": "AWS apigateway 공식 문서",
+        "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies-examples.html"
+      }
+    ]
+  }
+]
